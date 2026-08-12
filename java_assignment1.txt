@@ -1,0 +1,78 @@
+1. Frontend, backend, and full-stack development are three important parts of web development. Frontend development is responsible for the visual part of a website that users interact with directly, such as menus, buttons, forms, and page layouts. Backend development handles the server-side operations, including data processing, authentication, and database communication. Full-stack development combines both frontend and backend skills, allowing a developer to build and manage an entire web application. For example, in an online shopping platform, the product display page is part of the frontend, while order processing and user account management are handled by the backend.
+
+2. 
+
+User Browser
+|
+| Sends Request
+v
+Web Server
+|
+| Retrieves Data
+v
+Database
+|
+| Returns Data
+v
+Web Server
+|
+| Sends Response
+v
+User Browser
+
+3. Whenever a user enters a website URL in a browser, the browser sends a request to the corresponding web server. The server receives the request and processes it. If the requested page requires data, the server fetches the necessary information from the database. After processing, the server sends the webpage files back to the browser. The browser then interprets the files and displays the webpage on the screen.
+
+4. A web development environment generally requires several tools:
+   
+   - Visual Studio Code: Used for writing and editing code.
+   - Web Browser: Used for testing and viewing websites.
+   - Git: Helps in tracking code changes.
+   - GitHub: Stores project repositories online.
+   - Node.js: Provides a runtime environment for JavaScript.
+   - Live Server Extension: Automatically updates the browser whenever changes are made in the code.
+
+5. A web server is a system that stores website files and delivers them to users when requested through a browser. It acts as a bridge between users and web applications. Some commonly used web servers are Apache, Nginx, Microsoft IIS, LiteSpeed, and Node.js Server.
+
+6. The frontend developer is responsible for creating the user interface and ensuring a good user experience. The backend developer develops the application logic, handles requests, and connects the application with databases. The database administrator manages the database system, ensures data security, performs backups, and maintains database performance.
+
+7. Visual Studio Code was installed successfully and configured for web development. Useful extensions such as Live Server, Prettier, HTML CSS Support, and JavaScript Snippets were installed to improve coding efficiency. A screenshot of the configured setup should be attached along with the assignment.
+
+8. A static website displays the same content to every visitor and does not require server-side processing. Examples include portfolio websites and informational webpages. A dynamic website generates content according to user actions and data stored in databases. Examples include Amazon, Facebook, Netflix, and Instagram.
+
+9. Some widely used web browsers are Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, and Opera. These browsers use different rendering engines to display web content. Chrome, Edge, and Opera use Blink, Firefox uses Gecko, and Safari uses WebKit. Rendering engines are responsible for converting HTML, CSS, and JavaScript code into the visual webpages that users see.
+
+10. 
+
++----------------+
+| Client Browser |
++----------------+
+|
+| Request
+v
++----------------+
+|  Web Server    |
++----------------+
+|
+| API Request
+v
++----------------+
+|      APIs      |
++----------------+
+|
+| Data Access
+v
++----------------+
+|   Database     |
++----------------+
+|
+| Response
+v
++----------------+
+|  Web Server    |
++----------------+
+|
+| Web Page
+v
++----------------+
+| Client Browser |
++----------------+

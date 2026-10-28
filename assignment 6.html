@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Flexbox and Grid Assignment — All 10 Answers</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;line-height:1.55;color:#202d3a;background:#f5f7fa}.page-wrap{max-width:1200px;margin:auto;padding:24px}.assignment-title{text-align:center;margin:8px 0 28px}.question{background:#fff;margin:0 0 28px;padding:22px;border:1px solid #dce3ea;border-radius:12px;box-shadow:0 2px 8px #00000008}.question h2{margin-top:0;color:#173d68}.demo{padding:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}.code-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.code-panel{min-width:0}.code-panel h3{margin:0 0 6px;font-size:1rem}.code-panel pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#101827;color:#e6edf3;padding:14px;border-radius:8px;font-size:12px;line-height:1.45;max-height:440px;overflow:auto}.note{font-size:.9rem;color:#526173}@media(max-width:760px){.page-wrap{padding:12px}.code-grid{grid-template-columns:1fr}.question{padding:14px}}
+.q1-demo /* Q1: Portfolio Flexbox layout */
+.portfolio-header{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 6%; background:#16324f; color:white; }.q1-demo .portfolio-header h1{ margin:0; font-size:1.5rem; }.q1-demo .portfolio-header nav{ display:flex; gap:1.25rem; flex-wrap:wrap; }.q1-demo .portfolio-header a{ color:white; text-decoration:none; }.q1-demo .portfolio-main{ display:flex; align-items:center; justify-content:center; gap:2rem; max-width:1100px; min-height:60vh; margin:auto; padding:3rem 6%; }.q1-demo .portfolio-main section{ flex:1; }.q1-demo .portfolio-image{ display:flex; justify-content:center; align-items:center; }.q1-demo .portfolio-image img{ width:100%; max-width:420px; height:auto; border-radius:12px; }.q1-demo footer{ padding:1.25rem; text-align:center; background:#e8eef4; }@media(max-width:700px){.q1-demo .portfolio-header, .q1-demo .portfolio-main{ flex-direction:column; text-align:center; }.q1-demo .portfolio-header nav{ justify-content:center; } }.q2-demo /* Q2: Product gallery Grid */
+.products{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; align-items:stretch; }.q2-demo .product-card{ min-height:200px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1.25rem; background:white; border-radius:12px; box-shadow:0 2px 8px #00000012; text-align:center; transition:transform .3s,box-shadow .3s; }.q2-demo .product-card:hover{ transform:scale(1.05); box-shadow:0 8px 20px #00000020; }.q2-demo .product-card p{ margin-top:auto; color:#176b45; font-weight:bold; }@media(max-width:900px){.q2-demo .products{ grid-template-columns:repeat(2,1fr); } }@media(max-width:520px){.q2-demo .products{ grid-template-columns:1fr; } }.q3-demo /* Q3: Flexbox homepage */
+.home-page{ min-height:100vh; display:flex; flex-direction:column; }.q3-demo .home-header{ display:flex; flex-direction:column; align-items:center; gap:1rem; padding:1.5rem; background:#16324f; color:white; }.q3-demo .home-header h1{ margin:0; }.q3-demo .home-header nav{ display:flex; flex-wrap:wrap; justify-content:space-around; width:min(100%,600px); gap:1rem; }.q3-demo .home-header a{ color:white; text-decoration:none; }.q3-demo .home-main{ flex:1; padding:2rem 5%; text-align:center; }.q3-demo .features{ display:flex; justify-content:center; align-items:stretch; gap:1.5rem; max-width:1100px; margin:2rem auto; }.q3-demo .feature{ flex:1; padding:2rem 1.25rem; border-radius:12px; background:#e8f2fb; transition:transform .25s; }.q3-demo .feature:hover{ transform:rotate(2deg); }.q3-demo .home-footer{ width:100%; padding:1.25rem; text-align:center; background:#16324f; color:white; }@media(max-width:700px){.q3-demo .features{ flex-direction:column; } }.q4-demo /* Q4: Dashboard Grid */
+.dashboard{ min-height:100vh; display:grid; grid-template-columns:230px minmax(0,1fr); grid-template-rows:auto 1fr; grid-template-areas:"header header" "sidebar content"; gap:1rem; padding:1rem; }.q4-demo .dash-header{ grid-area:header; display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:#17324d; color:white; border-radius:10px; }.q4-demo .dash-header h1{ margin:0; font-size:1.5rem; }.q4-demo .dash-sidebar{ grid-area:sidebar; padding:1.25rem; background:white; border-radius:10px; }.q4-demo .dash-sidebar nav{ display:flex; flex-direction:column; gap:1rem; }.q4-demo .dash-sidebar a{ color:#17324d; text-decoration:none; }.q4-demo .dash-content{ grid-area:content; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:minmax(150px,auto); gap:1rem; }.q4-demo .dash-box{ padding:1.5rem; background:white; border-radius:10px; box-shadow:0 2px 8px #00000010; transition:transform .25s,box-shadow .25s; }.q4-demo .dash-box:hover{ transform:scale(1.02); box-shadow:0 8px 20px #00000020; }.q4-demo .dash-box.wide{ grid-column:span 2; }@media(max-width:700px){.q4-demo .dashboard{ grid-template-columns:1fr; grid-template-areas:"header" "sidebar" "content"; }.q4-demo .dash-content{ grid-template-columns:1fr; }.q4-demo .dash-box.wide{ grid-column:span 1; }.q4-demo .dash-header{ flex-direction:column; align-items:flex-start; } }.q5-demo /* Q5: Pricing cards and fade-in animation */
+.pricing-page{ padding:3rem 1.5rem; }.q5-demo .pricing-page > h1{ text-align:center; margin-bottom:2.5rem; }.q5-demo .pricing-row{ display:flex; justify-content:center; align-items:stretch; gap:1.5rem; max-width:1100px; margin:auto; }.q5-demo .price-card{ flex:1; max-width:340px; display:flex; flex-direction:column; padding:2rem; background:white; border:1px solid #d9e0e8; border-radius:14px; box-shadow:0 4px 14px #0000000d; animation:fadeIn .8s ease both; transition:transform .3s,box-shadow .3s; }.q5-demo .price-card:nth-child(2){ animation-delay:.15s; }.q5-demo .price-card:nth-child(3){ animation-delay:.3s; }.q5-demo .price-card:hover{ transform:translateY(-10px); box-shadow:0 12px 25px #00000018; }.q5-demo .price-card.featured{ transform:scale(1.04); background:#e7f2ff; border:2px solid #3478c8; }.q5-demo .price-card.featured:hover{ transform:scale(1.04) translateY(-10px); }.q5-demo .popular{ margin:0; font-size:.75rem; font-weight:bold; color:#1c5b9f; }.q5-demo .amount{ font-size:2rem; font-weight:bold; }.q5-demo .amount span{ font-size:.9rem; font-weight:normal; }.q5-demo .price-card ul{ line-height:2; padding-left:1.2rem; flex:1; }.q5-demo .price-card a{ display:block; padding:.8rem; border-radius:8px; background:#173d68; color:white; text-align:center; text-decoration:none; }@keyframes fadeIn{ from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }@media(max-width:750px){.q5-demo .pricing-row{ flex-direction:column; align-items:center; }.q5-demo .price-card{ width:100%; }.q5-demo .price-card.featured{ transform:none; }.q5-demo .price-card.featured:hover{ transform:translateY(-10px); } }.q6-demo /* Q6: Blog Grid using grid-template-areas */
+.blog-layout{ min-height:100vh; display:grid; grid-template-columns:240px minmax(0,1fr); grid-template-rows:auto 1fr auto; grid-template-areas:"header header" "sidebar main" "footer footer"; gap:1.25rem; padding:1.25rem; }.q6-demo .blog-header{ grid-area:header; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding:1.25rem 1.5rem; background:#183a5a; color:white; border-radius:10px; }.q6-demo .blog-header h1{ margin:0; }.q6-demo .blog-header nav{ display:flex; gap:1.25rem; }.q6-demo .blog-header a{ color:white; text-decoration:none; }.q6-demo .categories{ grid-area:sidebar; padding:1.25rem; background:white; border-radius:10px; }.q6-demo .categories ul{ padding-left:1.2rem; line-height:2.2; }.q6-demo .blog-posts{ grid-area:main; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; align-content:start; }.q6-demo .post{ padding:1.5rem; background:white; border-radius:10px; box-shadow:0 2px 8px #0000000d; }.q6-demo .meta{ color:#64748b; font-size:.9rem; }.q6-demo .blog-footer{ grid-area:footer; padding:1.25rem; text-align:center; background:#e1eaf2; border-radius:10px; }@media(max-width:800px){.q6-demo .blog-layout{ grid-template-columns:1fr; grid-template-areas:"header" "main" "sidebar" "footer"; }.q6-demo .blog-posts{ grid-template-columns:1fr; } }.q7-demo /* Q7: Animated bouncing circles */
+.loader-page{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; }.q7-demo .loader{ display:flex; align-items:center; justify-content:center; gap:.65rem; }.q7-demo .loader span{ width:16px; height:16px; display:block; border-radius:50%; background:#2878b8; animation:bounce .8s ease-in-out infinite; }.q7-demo .loader span:nth-child(2){ animation-delay:.15s; }.q7-demo .loader span:nth-child(3){ animation-delay:.3s; }@keyframes bounce{ 0%,100% { transform:translateY(0); } 50% { transform:translateY(-18px); } }@media(prefers-reduced-motion:reduce){.q7-demo .loader span{ animation-duration:2s; } }.q8-demo /* Q8: Responsive photo gallery */
+.gallery-page{ max-width:1300px; margin:auto; padding:2rem; }.q8-demo .gallery-page h1{ text-align:center; margin-bottom:2rem; }.q8-demo .photo-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.25rem; }.q8-demo .photo-grid figure{ margin:0; overflow:hidden; background:white; border-radius:10px; box-shadow:0 2px 8px #00000012; }.q8-demo .photo-grid img{ display:block; width:100%; height:220px; object-fit:cover; transition:transform .5s ease; }.q8-demo .photo-grid figure:hover img{ transform:scale(1.06); }.q8-demo .photo-grid figcaption{ padding:.9rem 1rem; text-align:center; font-weight:bold; }@media(max-width:480px){.q8-demo .gallery-page{ padding:1rem; }.q8-demo .photo-grid img{ height:200px; } }.q9-demo /* Q9: 3D card flip */
+.flip-page{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; padding:1.5rem; }.q9-demo .flip-card{ width:min(360px,90vw); height:330px; perspective:1000px; }.q9-demo .flip-inner{ position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .7s ease; }.q9-demo .flip-card:hover .flip-inner, .q9-demo .flip-card:focus .flip-inner{ transform:rotateY(180deg); }.q9-demo .card-face{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.25rem; border-radius:14px; text-align:center; backface-visibility:hidden; box-shadow:0 8px 24px #0000001c; }.q9-demo .card-front{ background:#e8f2fb; }.q9-demo .card-front img{ width:100%; height:170px; object-fit:cover; border-radius:8px; }.q9-demo .card-front h2{ margin-bottom:0; }.q9-demo .card-back{ background:#173d68; color:white; transform:rotateY(180deg); }@media(prefers-reduced-motion:reduce){.q9-demo .flip-inner{ transition-duration:.01ms; } }.q10-demo /* Q10: Combined Flexbox and Grid layout */
+.combined-header{ display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem 5%; background:#183a5a; color:white; }.q10-demo .combined-logo{ color:white; text-decoration:none; font-weight:bold; font-size:1.35rem; }.q10-demo .combined-header nav{ display:flex; flex-wrap:wrap; gap:1.25rem; }.q10-demo .combined-header nav a{ color:white; text-decoration:none; }.q10-demo .combined-grid{ display:grid; grid-template-columns:minmax(0,2fr) minmax(220px,1fr); gap:1.5rem; max-width:1200px; margin:auto; padding:2rem 5%; }.q10-demo .combined-article{ min-width:0; }.q10-demo .animated-title{ animation:riseIn .8s ease both; }.q10-demo .info-row{ display:flex; align-items:stretch; gap:1rem; margin-top:2rem; }.q10-demo .info-box{ flex:1; padding:1.25rem; background:#e9f2fa; border-radius:10px; }.q10-demo .info-box h2{ margin-top:0; font-size:1.1rem; }.q10-demo .combined-sidebar{ padding:1.25rem; background:#f2f5f8; border-radius:10px; }.q10-demo .combined-sidebar ul{ padding-left:1.2rem; }.q10-demo footer{ padding:1.25rem; text-align:center; background:#183a5a; color:white; }@keyframes riseIn{ from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }@media(max-width:760px){.q10-demo .combined-header{ flex-direction:column; }.q10-demo .combined-grid{ grid-template-columns:1fr; }.q10-demo .info-row{ flex-direction:column; } }
+/* Styling adjustments for embedded live examples */
+.q1-demo .portfolio-header,.q3-demo .home-header,.q10-demo .combined-header {flex-wrap:wrap}
+.q1-demo .portfolio-main {min-height:260px}
+.q3-demo .home-page {min-height:380px}
+.q3-demo .home-main {padding:1rem}
+.q4-demo .dashboard {min-height:420px}
+.q5-demo .pricing-page {padding:1rem}
+.q5-demo .pricing-row {gap:10px}
+.q5-demo .price-card {padding:1rem}
+.q6-demo .blog-layout {min-height:420px}
+.q7-demo .loader-page {min-height:200px}
+.q8-demo .gallery-page {padding:0}
+.q9-demo .flip-page {min-height:420px}
+.q10-demo .combined-grid {padding:1rem}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <h1 class="assignment-title">Assignment 6: CSS Flexbox and Grid<br>All 10 Answers in One File</h1>
+  <p class="note">Each section includes a live example plus its HTML and CSS source. For submission, copy each question's HTML into its own .html file and its CSS into the matching style.css file, as required by the assignment instructions.</p>
+  
+<section class="question">
+  <h2>Q1. Personal Portfolio Webpage Using Flexbox</h2>
+  <div class="demo q1-demo">
+    <header class="portfolio-header">
+  <h1>Kaushlendra Raghav</h1>
+  <nav><a href="#about">About</a><a href="#image">Image</a><a href="#contact">Contact</a></nav>
+</header>
+<main class="portfolio-main">
+  <section id="about"><h2>About Me</h2><p>I am a Computer Science and Engineering learner interested in web development, artificial intelligence, and data science. I enjoy creating useful projects and learning new technologies.</p></section>
+  <section id="image" class="portfolio-image"><img src="https://placehold.co/420x260?text=Profile+Image" alt="Profile placeholder image"></section>
+</main>
+<footer id="contact">© 2026 Kaushlendra Raghav. All rights reserved.</footer>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;header class=&quot;portfolio-header&quot;&gt;
+  &lt;h1&gt;Kaushlendra Raghav&lt;/h1&gt;
+  &lt;nav&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;a href=&quot;#image&quot;&gt;Image&lt;/a&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main class=&quot;portfolio-main&quot;&gt;
+  &lt;section id=&quot;about&quot;&gt;&lt;h2&gt;About Me&lt;/h2&gt;&lt;p&gt;I am a Computer Science and Engineering learner interested in web development, artificial intelligence, and data science. I enjoy creating useful projects and learning new technologies.&lt;/p&gt;&lt;/section&gt;
+  &lt;section id=&quot;image&quot; class=&quot;portfolio-image&quot;&gt;&lt;img src=&quot;https://placehold.co/420x260?text=Profile+Image&quot; alt=&quot;Profile placeholder image&quot;&gt;&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer id=&quot;contact&quot;&gt;© 2026 Kaushlendra Raghav. All rights reserved.&lt;/footer&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q1: Portfolio Flexbox layout */
+.portfolio-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 6%; background:#16324f; color:white; }
+.portfolio-header h1 { margin:0; font-size:1.5rem; }
+.portfolio-header nav { display:flex; gap:1.25rem; flex-wrap:wrap; }
+.portfolio-header a { color:white; text-decoration:none; }
+.portfolio-main { display:flex; align-items:center; justify-content:center; gap:2rem; max-width:1100px; min-height:60vh; margin:auto; padding:3rem 6%; }
+.portfolio-main section { flex:1; }
+.portfolio-image { display:flex; justify-content:center; align-items:center; }
+.portfolio-image img { width:100%; max-width:420px; height:auto; border-radius:12px; }
+footer { padding:1.25rem; text-align:center; background:#e8eef4; }
+@media(max-width:700px) { .portfolio-header,.portfolio-main { flex-direction:column; text-align:center; } .portfolio-header nav { justify-content:center; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q2. Four-Column Product Gallery Using CSS Grid</h2>
+  <div class="demo q2-demo">
+    <section class="products">
+  <article class="product-card"><h2>Wireless Headphones</h2><p>₹1,499</p></article>
+  <article class="product-card"><h2>Smart Watch</h2><p>₹2,299</p></article>
+  <article class="product-card"><h2>Travel Backpack</h2><p>₹999</p></article>
+  <article class="product-card"><h2>Bluetooth Speaker</h2><p>₹1,199</p></article>
+  <article class="product-card"><h2>Desk Lamp</h2><p>₹799</p></article>
+  <article class="product-card"><h2>Keyboard</h2><p>₹1,599</p></article>
+  <article class="product-card"><h2>Water Bottle</h2><p>₹399</p></article>
+  <article class="product-card"><h2>Notebook Set</h2><p>₹249</p></article>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;products&quot;&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Wireless Headphones&lt;/h2&gt;&lt;p&gt;₹1,499&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Smart Watch&lt;/h2&gt;&lt;p&gt;₹2,299&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Travel Backpack&lt;/h2&gt;&lt;p&gt;₹999&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Bluetooth Speaker&lt;/h2&gt;&lt;p&gt;₹1,199&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Desk Lamp&lt;/h2&gt;&lt;p&gt;₹799&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Keyboard&lt;/h2&gt;&lt;p&gt;₹1,599&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Water Bottle&lt;/h2&gt;&lt;p&gt;₹399&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;product-card&quot;&gt;&lt;h2&gt;Notebook Set&lt;/h2&gt;&lt;p&gt;₹249&lt;/p&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q2: Product gallery Grid */
+.products { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; align-items:stretch; }
+.product-card { min-height:200px; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1.25rem; background:white; border-radius:12px; box-shadow:0 2px 8px #00000012; text-align:center; transition:transform .3s,box-shadow .3s; }
+.product-card:hover { transform:scale(1.05); box-shadow:0 8px 20px #00000020; }
+.product-card p { margin-top:auto; color:#176b45; font-weight:bold; }
+@media(max-width:900px) { .products { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:520px) { .products { grid-template-columns:1fr; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q3. Three-Section Homepage Using Flexbox</h2>
+  <div class="demo q3-demo">
+    <header class="home-header"><h1>My Website</h1><nav><a href="#services">Services</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav></header>
+<main class="home-main">
+  <h2>What We Do</h2>
+  <section class="features">
+    <article class="feature" id="services"><h3>Services</h3><p>Helpful services tailored to your needs.</p></article>
+    <article class="feature" id="projects"><h3>Projects</h3><p>Creative projects built with care.</p></article>
+    <article class="feature" id="contact"><h3>Contact</h3><p>Get in touch to start a conversation.</p></article>
+  </section>
+</main>
+<footer class="home-footer">© 2026 My Website</footer>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;header class=&quot;home-header&quot;&gt;&lt;h1&gt;My Website&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;#services&quot;&gt;Services&lt;/a&gt;&lt;a href=&quot;#projects&quot;&gt;Projects&lt;/a&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;/header&gt;
+&lt;main class=&quot;home-main&quot;&gt;
+  &lt;h2&gt;What We Do&lt;/h2&gt;
+  &lt;section class=&quot;features&quot;&gt;
+    &lt;article class=&quot;feature&quot; id=&quot;services&quot;&gt;&lt;h3&gt;Services&lt;/h3&gt;&lt;p&gt;Helpful services tailored to your needs.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class=&quot;feature&quot; id=&quot;projects&quot;&gt;&lt;h3&gt;Projects&lt;/h3&gt;&lt;p&gt;Creative projects built with care.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class=&quot;feature&quot; id=&quot;contact&quot;&gt;&lt;h3&gt;Contact&lt;/h3&gt;&lt;p&gt;Get in touch to start a conversation.&lt;/p&gt;&lt;/article&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+&lt;footer class=&quot;home-footer&quot;&gt;© 2026 My Website&lt;/footer&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q3: Flexbox homepage */
+.home-page { min-height:100vh; display:flex; flex-direction:column; }
+.home-header { display:flex; flex-direction:column; align-items:center; gap:1rem; padding:1.5rem; background:#16324f; color:white; }
+.home-header h1 { margin:0; }
+.home-header nav { display:flex; flex-wrap:wrap; justify-content:space-around; width:min(100%,600px); gap:1rem; }
+.home-header a { color:white; text-decoration:none; }
+.home-main { flex:1; padding:2rem 5%; text-align:center; }
+.features { display:flex; justify-content:center; align-items:stretch; gap:1.5rem; max-width:1100px; margin:2rem auto; }
+.feature { flex:1; padding:2rem 1.25rem; border-radius:12px; background:#e8f2fb; transition:transform .25s; }
+.feature:hover { transform:rotate(2deg); }
+.home-footer { width:100%; padding:1.25rem; text-align:center; background:#16324f; color:white; }
+@media(max-width:700px) { .features { flex-direction:column; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q4. Dashboard Layout Using CSS Grid</h2>
+  <div class="demo q4-demo">
+    <div class="dashboard">
+  <header class="dash-header"><h1>Analytics Dashboard</h1><span>Welcome back</span></header>
+  <aside class="dash-sidebar"><h2>Menu</h2><nav><a href="#">Overview</a><a href="#">Reports</a><a href="#">Projects</a><a href="#">Settings</a></nav></aside>
+  <main class="dash-content">
+    <section class="dash-box wide"><h2>Overview</h2><p>Your key metrics and recent activity appear here.</p></section>
+    <section class="dash-box"><h2>Visitors</h2><p>12,480</p></section>
+    <section class="dash-box"><h2>Conversions</h2><p>846</p></section>
+    <section class="dash-box"><h2>Tasks</h2><p>18 active</p></section>
+  </main>
+</div>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;div class=&quot;dashboard&quot;&gt;
+  &lt;header class=&quot;dash-header&quot;&gt;&lt;h1&gt;Analytics Dashboard&lt;/h1&gt;&lt;span&gt;Welcome back&lt;/span&gt;&lt;/header&gt;
+  &lt;aside class=&quot;dash-sidebar&quot;&gt;&lt;h2&gt;Menu&lt;/h2&gt;&lt;nav&gt;&lt;a href=&quot;#&quot;&gt;Overview&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Reports&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Projects&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Settings&lt;/a&gt;&lt;/nav&gt;&lt;/aside&gt;
+  &lt;main class=&quot;dash-content&quot;&gt;
+    &lt;section class=&quot;dash-box wide&quot;&gt;&lt;h2&gt;Overview&lt;/h2&gt;&lt;p&gt;Your key metrics and recent activity appear here.&lt;/p&gt;&lt;/section&gt;
+    &lt;section class=&quot;dash-box&quot;&gt;&lt;h2&gt;Visitors&lt;/h2&gt;&lt;p&gt;12,480&lt;/p&gt;&lt;/section&gt;
+    &lt;section class=&quot;dash-box&quot;&gt;&lt;h2&gt;Conversions&lt;/h2&gt;&lt;p&gt;846&lt;/p&gt;&lt;/section&gt;
+    &lt;section class=&quot;dash-box&quot;&gt;&lt;h2&gt;Tasks&lt;/h2&gt;&lt;p&gt;18 active&lt;/p&gt;&lt;/section&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q4: Dashboard Grid */
+.dashboard { min-height:100vh; display:grid; grid-template-columns:230px minmax(0,1fr); grid-template-rows:auto 1fr; grid-template-areas:&quot;header header&quot; &quot;sidebar content&quot;; gap:1rem; padding:1rem; }
+.dash-header { grid-area:header; display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:#17324d; color:white; border-radius:10px; }
+.dash-header h1 { margin:0; font-size:1.5rem; }
+.dash-sidebar { grid-area:sidebar; padding:1.25rem; background:white; border-radius:10px; }
+.dash-sidebar nav { display:flex; flex-direction:column; gap:1rem; }
+.dash-sidebar a { color:#17324d; text-decoration:none; }
+.dash-content { grid-area:content; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:minmax(150px,auto); gap:1rem; }
+.dash-box { padding:1.5rem; background:white; border-radius:10px; box-shadow:0 2px 8px #00000010; transition:transform .25s,box-shadow .25s; }
+.dash-box:hover { transform:scale(1.02); box-shadow:0 8px 20px #00000020; }
+.dash-box.wide { grid-column:span 2; }
+@media(max-width:700px) { .dashboard { grid-template-columns:1fr; grid-template-areas:&quot;header&quot; &quot;sidebar&quot; &quot;content&quot;; } .dash-content { grid-template-columns:1fr; } .dash-box.wide { grid-column:span 1; } .dash-header { flex-direction:column; align-items:flex-start; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q5. Pricing Section Using Flexbox</h2>
+  <div class="demo q5-demo">
+    <main class="pricing-page">
+  <h1>Choose Your Plan</h1>
+  <section class="pricing-row">
+    <article class="price-card"><h2>Basic</h2><p class="amount">₹0 <span>/ month</span></p><ul><li>Core features</li><li>Email support</li><li>1 project</li></ul><a href="#basic">Get Started</a></article>
+    <article class="price-card featured"><p class="popular">MOST POPULAR</p><h2>Pro</h2><p class="amount">₹499 <span>/ month</span></p><ul><li>All Basic features</li><li>Priority support</li><li>10 projects</li></ul><a href="#pro">Choose Pro</a></article>
+    <article class="price-card"><h2>Team</h2><p class="amount">₹999 <span>/ month</span></p><ul><li>All Pro features</li><li>Team collaboration</li><li>Unlimited projects</li></ul><a href="#team">Contact Sales</a></article>
+  </section>
+</main>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;main class=&quot;pricing-page&quot;&gt;
+  &lt;h1&gt;Choose Your Plan&lt;/h1&gt;
+  &lt;section class=&quot;pricing-row&quot;&gt;
+    &lt;article class=&quot;price-card&quot;&gt;&lt;h2&gt;Basic&lt;/h2&gt;&lt;p class=&quot;amount&quot;&gt;₹0 &lt;span&gt;/ month&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Core features&lt;/li&gt;&lt;li&gt;Email support&lt;/li&gt;&lt;li&gt;1 project&lt;/li&gt;&lt;/ul&gt;&lt;a href=&quot;#basic&quot;&gt;Get Started&lt;/a&gt;&lt;/article&gt;
+    &lt;article class=&quot;price-card featured&quot;&gt;&lt;p class=&quot;popular&quot;&gt;MOST POPULAR&lt;/p&gt;&lt;h2&gt;Pro&lt;/h2&gt;&lt;p class=&quot;amount&quot;&gt;₹499 &lt;span&gt;/ month&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;All Basic features&lt;/li&gt;&lt;li&gt;Priority support&lt;/li&gt;&lt;li&gt;10 projects&lt;/li&gt;&lt;/ul&gt;&lt;a href=&quot;#pro&quot;&gt;Choose Pro&lt;/a&gt;&lt;/article&gt;
+    &lt;article class=&quot;price-card&quot;&gt;&lt;h2&gt;Team&lt;/h2&gt;&lt;p class=&quot;amount&quot;&gt;₹999 &lt;span&gt;/ month&lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;All Pro features&lt;/li&gt;&lt;li&gt;Team collaboration&lt;/li&gt;&lt;li&gt;Unlimited projects&lt;/li&gt;&lt;/ul&gt;&lt;a href=&quot;#team&quot;&gt;Contact Sales&lt;/a&gt;&lt;/article&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q5: Pricing cards and fade-in animation */
+.pricing-page { padding:3rem 1.5rem; }
+.pricing-page &gt; h1 { text-align:center; margin-bottom:2.5rem; }
+.pricing-row { display:flex; justify-content:center; align-items:stretch; gap:1.5rem; max-width:1100px; margin:auto; }
+.price-card { flex:1; max-width:340px; display:flex; flex-direction:column; padding:2rem; background:white; border:1px solid #d9e0e8; border-radius:14px; box-shadow:0 4px 14px #0000000d; animation:fadeIn .8s ease both; transition:transform .3s,box-shadow .3s; }
+.price-card:nth-child(2) { animation-delay:.15s; }
+.price-card:nth-child(3) { animation-delay:.3s; }
+.price-card:hover { transform:translateY(-10px); box-shadow:0 12px 25px #00000018; }
+.price-card.featured { transform:scale(1.04); background:#e7f2ff; border:2px solid #3478c8; }
+.price-card.featured:hover { transform:scale(1.04) translateY(-10px); }
+.popular { margin:0; font-size:.75rem; font-weight:bold; color:#1c5b9f; }
+.amount { font-size:2rem; font-weight:bold; }
+.amount span { font-size:.9rem; font-weight:normal; }
+.price-card ul { line-height:2; padding-left:1.2rem; flex:1; }
+.price-card a { display:block; padding:.8rem; border-radius:8px; background:#173d68; color:white; text-align:center; text-decoration:none; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:750px) { .pricing-row { flex-direction:column; align-items:center; } .price-card { width:100%; } .price-card.featured { transform:none; } .price-card.featured:hover { transform:translateY(-10px); } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q6. Responsive Blog Layout Using CSS Grid</h2>
+  <div class="demo q6-demo">
+    <div class="blog-layout">
+  <header class="blog-header"><h1>Ideas &amp; Insights</h1><nav><a href="#">Home</a><a href="#">Articles</a><a href="#">About</a></nav></header>
+  <aside class="categories"><h2>Categories</h2><ul><li>Technology</li><li>Education</li><li>AI &amp; Data Science</li><li>Web Development</li></ul></aside>
+  <main class="blog-posts">
+    <article class="post"><h2>Getting Started with Flexbox</h2><p class="meta">Web Development · 5 min read</p><p>Flexbox makes it easier to align and distribute elements along a row or column. It is useful for navigation bars and card layouts.</p><a href="#">Read more</a></article>
+    <article class="post"><h2>Why Learn Data Science?</h2><p class="meta">Technology · 4 min read</p><p>Data science combines programming, statistics, and domain knowledge to turn data into useful insights and support better decisions.</p><a href="#">Read more</a></article>
+  </main>
+  <footer class="blog-footer">Contact: hello@example.com · © 2026 Ideas &amp; Insights</footer>
+</div>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;div class=&quot;blog-layout&quot;&gt;
+  &lt;header class=&quot;blog-header&quot;&gt;&lt;h1&gt;Ideas &amp;amp; Insights&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;Articles&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/nav&gt;&lt;/header&gt;
+  &lt;aside class=&quot;categories&quot;&gt;&lt;h2&gt;Categories&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Technology&lt;/li&gt;&lt;li&gt;Education&lt;/li&gt;&lt;li&gt;AI &amp;amp; Data Science&lt;/li&gt;&lt;li&gt;Web Development&lt;/li&gt;&lt;/ul&gt;&lt;/aside&gt;
+  &lt;main class=&quot;blog-posts&quot;&gt;
+    &lt;article class=&quot;post&quot;&gt;&lt;h2&gt;Getting Started with Flexbox&lt;/h2&gt;&lt;p class=&quot;meta&quot;&gt;Web Development · 5 min read&lt;/p&gt;&lt;p&gt;Flexbox makes it easier to align and distribute elements along a row or column. It is useful for navigation bars and card layouts.&lt;/p&gt;&lt;a href=&quot;#&quot;&gt;Read more&lt;/a&gt;&lt;/article&gt;
+    &lt;article class=&quot;post&quot;&gt;&lt;h2&gt;Why Learn Data Science?&lt;/h2&gt;&lt;p class=&quot;meta&quot;&gt;Technology · 4 min read&lt;/p&gt;&lt;p&gt;Data science combines programming, statistics, and domain knowledge to turn data into useful insights and support better decisions.&lt;/p&gt;&lt;a href=&quot;#&quot;&gt;Read more&lt;/a&gt;&lt;/article&gt;
+  &lt;/main&gt;
+  &lt;footer class=&quot;blog-footer&quot;&gt;Contact: hello@example.com · © 2026 Ideas &amp;amp; Insights&lt;/footer&gt;
+&lt;/div&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q6: Blog Grid using grid-template-areas */
+.blog-layout { min-height:100vh; display:grid; grid-template-columns:240px minmax(0,1fr); grid-template-rows:auto 1fr auto; grid-template-areas:&quot;header header&quot; &quot;sidebar main&quot; &quot;footer footer&quot;; gap:1.25rem; padding:1.25rem; }
+.blog-header { grid-area:header; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding:1.25rem 1.5rem; background:#183a5a; color:white; border-radius:10px; }
+.blog-header h1 { margin:0; }
+.blog-header nav { display:flex; gap:1.25rem; }
+.blog-header a { color:white; text-decoration:none; }
+.categories { grid-area:sidebar; padding:1.25rem; background:white; border-radius:10px; }
+.categories ul { padding-left:1.2rem; line-height:2.2; }
+.blog-posts { grid-area:main; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.25rem; align-content:start; }
+.post { padding:1.5rem; background:white; border-radius:10px; box-shadow:0 2px 8px #0000000d; }
+.meta { color:#64748b; font-size:.9rem; }
+.blog-footer { grid-area:footer; padding:1.25rem; text-align:center; background:#e1eaf2; border-radius:10px; }
+@media(max-width:800px) { .blog-layout { grid-template-columns:1fr; grid-template-areas:&quot;header&quot; &quot;main&quot; &quot;sidebar&quot; &quot;footer&quot;; } .blog-posts { grid-template-columns:1fr; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q7. CSS Loading Animation Using Three Circles</h2>
+  <div class="demo q7-demo">
+    <main class="loader-page">
+  <div class="loader" role="status" aria-label="Loading"><span></span><span></span><span></span></div>
+  <p>Loading, please wait...</p>
+</main>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;main class=&quot;loader-page&quot;&gt;
+  &lt;div class=&quot;loader&quot; role=&quot;status&quot; aria-label=&quot;Loading&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;p&gt;Loading, please wait...&lt;/p&gt;
+&lt;/main&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q7: Animated bouncing circles */
+.loader-page { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; }
+.loader { display:flex; align-items:center; justify-content:center; gap:.65rem; }
+.loader span { width:16px; height:16px; display:block; border-radius:50%; background:#2878b8; animation:bounce .8s ease-in-out infinite; }
+.loader span:nth-child(2) { animation-delay:.15s; }
+.loader span:nth-child(3) { animation-delay:.3s; }
+@keyframes bounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-18px); } }
+@media(prefers-reduced-motion:reduce) { .loader span { animation-duration:2s; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q8. Photo Gallery Using Grid and Hover Transformations</h2>
+  <div class="demo q8-demo">
+    <main class="gallery-page">
+  <h1>Photo Gallery</h1>
+  <section class="photo-grid">
+    <figure><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Mountain landscape"><figcaption>Mountain Landscape</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Lake surrounded by mountains"><figcaption>Quiet Lake</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80" alt="Sunlight in a forest"><figcaption>Forest Walk</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="Lake and mountain scenery"><figcaption>Scenic Escape</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80" alt="Wildlife in nature"><figcaption>Wild Nature</figcaption></figure>
+    <figure><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80" alt="Snow-covered mountain peaks"><figcaption>Snowy Peaks</figcaption></figure>
+  </section>
+</main>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;main class=&quot;gallery-page&quot;&gt;
+  &lt;h1&gt;Photo Gallery&lt;/h1&gt;
+  &lt;section class=&quot;photo-grid&quot;&gt;
+    &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Mountain landscape&quot;&gt;&lt;figcaption&gt;Mountain Landscape&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Lake surrounded by mountains&quot;&gt;&lt;figcaption&gt;Quiet Lake&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Sunlight in a forest&quot;&gt;&lt;figcaption&gt;Forest Walk&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Lake and mountain scenery&quot;&gt;&lt;figcaption&gt;Scenic Escape&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Wildlife in nature&quot;&gt;&lt;figcaption&gt;Wild Nature&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Snow-covered mountain peaks&quot;&gt;&lt;figcaption&gt;Snowy Peaks&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q8: Responsive photo gallery */
+.gallery-page { max-width:1300px; margin:auto; padding:2rem; }
+.gallery-page h1 { text-align:center; margin-bottom:2rem; }
+.photo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.25rem; }
+.photo-grid figure { margin:0; overflow:hidden; background:white; border-radius:10px; box-shadow:0 2px 8px #00000012; }
+.photo-grid img { display:block; width:100%; height:220px; object-fit:cover; transition:transform .5s ease; }
+.photo-grid figure:hover img { transform:scale(1.06); }
+.photo-grid figcaption { padding:.9rem 1rem; text-align:center; font-weight:bold; }
+@media(max-width:480px) { .gallery-page { padding:1rem; } .photo-grid img { height:200px; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q9. Card Flip Animation Using CSS Transformations</h2>
+  <div class="demo q9-demo">
+    <main class="flip-page">
+  <h1>Hover or focus to flip the card</h1>
+  <div class="flip-card" tabindex="0" aria-label="Flip card about web development">
+    <div class="flip-inner">
+      <section class="card-face card-front">
+        <img src="https://placehold.co/360x220?text=Web+Development" alt="Web development illustration">
+        <h2>Web Development</h2><p>Discover what is on the back.</p>
+      </section>
+      <section class="card-face card-back">
+        <h2>About This Topic</h2><p>Web development uses technologies such as HTML and CSS to build accessible, responsive websites.</p>
+      </section>
+    </div>
+  </div>
+</main>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;main class=&quot;flip-page&quot;&gt;
+  &lt;h1&gt;Hover or focus to flip the card&lt;/h1&gt;
+  &lt;div class=&quot;flip-card&quot; tabindex=&quot;0&quot; aria-label=&quot;Flip card about web development&quot;&gt;
+    &lt;div class=&quot;flip-inner&quot;&gt;
+      &lt;section class=&quot;card-face card-front&quot;&gt;
+        &lt;img src=&quot;https://placehold.co/360x220?text=Web+Development&quot; alt=&quot;Web development illustration&quot;&gt;
+        &lt;h2&gt;Web Development&lt;/h2&gt;&lt;p&gt;Discover what is on the back.&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;card-face card-back&quot;&gt;
+        &lt;h2&gt;About This Topic&lt;/h2&gt;&lt;p&gt;Web development uses technologies such as HTML and CSS to build accessible, responsive websites.&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q9: 3D card flip */
+.flip-page { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; padding:1.5rem; }
+.flip-card { width:min(360px,90vw); height:330px; perspective:1000px; }
+.flip-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .7s ease; }
+.flip-card:hover .flip-inner,.flip-card:focus .flip-inner { transform:rotateY(180deg); }
+.card-face { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.25rem; border-radius:14px; text-align:center; backface-visibility:hidden; box-shadow:0 8px 24px #0000001c; }
+.card-front { background:#e8f2fb; }
+.card-front img { width:100%; height:170px; object-fit:cover; border-radius:8px; }
+.card-front h2 { margin-bottom:0; }
+.card-back { background:#173d68; color:white; transform:rotateY(180deg); }
+@media(prefers-reduced-motion:reduce) { .flip-inner { transition-duration:.01ms; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q10. Responsive Layout Combining Flexbox and Grid</h2>
+  <div class="demo q10-demo">
+    <header class="combined-header">
+  <a class="combined-logo" href="#">TechSpace</a>
+  <nav><a href="#article">Article</a><a href="#resources">Resources</a><a href="#contact">Contact</a></nav>
+</header>
+<main class="combined-grid">
+  <article id="article" class="combined-article">
+    <h1 class="animated-title">Build Better Web Layouts</h1>
+    <p>Flexbox and Grid are powerful CSS layout tools. Flexbox works well for arranging items in one dimension, while Grid organizes content into rows and columns.</p>
+    <section class="info-row">
+      <div class="info-box"><h2>Flexbox</h2><p>Align items in a row or column.</p></div>
+      <div class="info-box"><h2>Grid</h2><p>Arrange content in two dimensions.</p></div>
+      <div class="info-box"><h2>Responsive</h2><p>Adapt to different screen sizes.</p></div>
+    </section>
+  </article>
+  <aside id="resources" class="combined-sidebar"><h2>Quick Resources</h2><ul><li>HTML semantics</li><li>Flexbox alignment</li><li>Grid templates</li><li>Responsive media queries</li></ul></aside>
+</main>
+<footer id="contact">© 2026 TechSpace. All rights reserved.</footer>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;header class=&quot;combined-header&quot;&gt;
+  &lt;a class=&quot;combined-logo&quot; href=&quot;#&quot;&gt;TechSpace&lt;/a&gt;
+  &lt;nav&gt;&lt;a href=&quot;#article&quot;&gt;Article&lt;/a&gt;&lt;a href=&quot;#resources&quot;&gt;Resources&lt;/a&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main class=&quot;combined-grid&quot;&gt;
+  &lt;article id=&quot;article&quot; class=&quot;combined-article&quot;&gt;
+    &lt;h1 class=&quot;animated-title&quot;&gt;Build Better Web Layouts&lt;/h1&gt;
+    &lt;p&gt;Flexbox and Grid are powerful CSS layout tools. Flexbox works well for arranging items in one dimension, while Grid organizes content into rows and columns.&lt;/p&gt;
+    &lt;section class=&quot;info-row&quot;&gt;
+      &lt;div class=&quot;info-box&quot;&gt;&lt;h2&gt;Flexbox&lt;/h2&gt;&lt;p&gt;Align items in a row or column.&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;info-box&quot;&gt;&lt;h2&gt;Grid&lt;/h2&gt;&lt;p&gt;Arrange content in two dimensions.&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;info-box&quot;&gt;&lt;h2&gt;Responsive&lt;/h2&gt;&lt;p&gt;Adapt to different screen sizes.&lt;/p&gt;&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;aside id=&quot;resources&quot; class=&quot;combined-sidebar&quot;&gt;&lt;h2&gt;Quick Resources&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;HTML semantics&lt;/li&gt;&lt;li&gt;Flexbox alignment&lt;/li&gt;&lt;li&gt;Grid templates&lt;/li&gt;&lt;li&gt;Responsive media queries&lt;/li&gt;&lt;/ul&gt;&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer id=&quot;contact&quot;&gt;© 2026 TechSpace. All rights reserved.&lt;/footer&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Q10: Combined Flexbox and Grid layout */
+.combined-header { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem 5%; background:#183a5a; color:white; }
+.combined-logo { color:white; text-decoration:none; font-weight:bold; font-size:1.35rem; }
+.combined-header nav { display:flex; flex-wrap:wrap; gap:1.25rem; }
+.combined-header nav a { color:white; text-decoration:none; }
+.combined-grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(220px,1fr); gap:1.5rem; max-width:1200px; margin:auto; padding:2rem 5%; }
+.combined-article { min-width:0; }
+.animated-title { animation:riseIn .8s ease both; }
+.info-row { display:flex; align-items:stretch; gap:1rem; margin-top:2rem; }
+.info-box { flex:1; padding:1.25rem; background:#e9f2fa; border-radius:10px; }
+.info-box h2 { margin-top:0; font-size:1.1rem; }
+.combined-sidebar { padding:1.25rem; background:#f2f5f8; border-radius:10px; }
+.combined-sidebar ul { padding-left:1.2rem; }
+footer { padding:1.25rem; text-align:center; background:#183a5a; color:white; }
+@keyframes riseIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:760px) { .combined-header { flex-direction:column; } .combined-grid { grid-template-columns:1fr; } .info-row { flex-direction:column; } }</code></pre></div>
+  </div>
+</section>
+</div>
+</body>
+</html>

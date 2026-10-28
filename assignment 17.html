@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 7 - DOM Solutions</title>
+<style>
+  /* ---------- Themes (Q4): colours come from CSS variables set by [data-theme] ---------- */
+  body { --bg: #f5f6f8; --card: #ffffff; --text: #222222; --accent: #4a6cf7; --border: #cccccc;
+         font-family: Arial, sans-serif; max-width: 780px; margin: 0 auto; padding: 16px;
+         background: var(--bg); color: var(--text); transition: background .2s, color .2s; }
+  body[data-theme="dark"] { --bg: #16181d; --card: #23262e; --text: #eeeeee; --accent: #8ab4ff; --border: #555555; }
+  body[data-theme="blue"] { --bg: #dbeafe; --card: #eff6ff; --text: #0b2a5b; --accent: #1d4ed8; --border: #93c5fd; }
+
+  h1 { text-align: center; }
+  section { background: var(--card); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+  h2 { margin-top: 0; font-size: 18px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; }
+  input, textarea { width: 100%; padding: 8px; box-sizing: border-box; border: 2px solid var(--border); border-radius: 4px; font-size: 14px; background: var(--card); color: var(--text); }
+  button { padding: 7px 14px; background: var(--accent); color: #fff; border: 0; border-radius: 4px; cursor: pointer; margin: 6px 4px 0 0; }
+  body[data-theme="dark"] button { color: #111; }
+  .error { color: #d93025; font-size: 12px; min-height: 14px; }
+  .success { color: #1e8e3e; font-weight: bold; }
+  .row { display: flex; gap: 8px; }
+  .row input { flex: 1; }
+
+  /* Q1 */
+  #p-list { list-style: none; padding: 0; }
+  #p-list li { display: flex; align-items: center; gap: 8px; padding: 8px; border-bottom: 1px solid var(--border); }
+  #p-list li .text { flex: 1; }
+  #p-list li input { flex: 1; width: auto; }
+  /* Q2 */
+  #cc-count { font-weight: bold; margin-top: 6px; color: #1e8e3e; }
+  #cc-count.warn { color: #c9a000; }
+  #cc-count.zero { color: #d93025; }
+  /* Q3 */
+  .step { display: none; }
+  .step.active { display: block; }
+  /* Q5 */
+  #gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  #gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 6px; cursor: pointer; }
+  #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7); align-items: center; justify-content: center; z-index: 10; }
+  #modal.open { display: flex; }
+  #modal-box { background: #fff; padding: 10px; border-radius: 8px; max-width: 90vw; }
+  #modal-box img { display: block; max-width: 80vw; max-height: 70vh; }
+  /* Q6 */
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; }
+  th { background: var(--accent); color: #fff; }
+  body[data-theme="dark"] th { color: #111; }
+  /* Q7 */
+  #mouse-box { position: relative; width: 400px; height: 400px; max-width: 100%; border: 2px solid var(--accent); background: var(--bg); overflow: hidden; }
+  .dot { position: absolute; width: 10px; height: 10px; background: red; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+  /* Q8 */
+  #dd { position: relative; display: inline-block; }
+  #dd-btn { min-width: 160px; text-align: left; margin: 0; }
+  #dd-list { display: none; position: absolute; left: 0; top: 100%; min-width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 4px; list-style: none; margin: 2px 0 0; padding: 0; z-index: 5; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+  #dd-list.open { display: block; }
+  #dd-list li { padding: 8px 12px; cursor: pointer; }
+  #dd-list li:hover { background: var(--accent); color: #fff; }
+  /* Q9 */
+  .invalid { border-color: #d93025 !important; }
+  .valid { border-color: #1e8e3e !important; }
+</style>
+</head>
+<body>
+<h1>Assignment 7 – DOM Solutions</h1>
+
+<!-- ============ Q4 theme switcher sits at the top so it themes the whole page ============ -->
+<section id="q4">
+  <h2>Q4: Theme Switcher (Attribute Manipulation)</h2>
+  <button data-theme-btn="light">Light</button>
+  <button data-theme-btn="dark">Dark</button>
+  <button data-theme-btn="blue">Blue</button>
+  <p>Current theme (read from the <code>data-theme</code> attribute): <strong id="theme-name">light</strong></p>
+</section>
+
+<!-- ============ Q1 ============ -->
+<section id="q1">
+  <h2>Q1: Dynamic Product List Manager</h2>
+  <div class="row">
+    <input id="p-input" type="text" placeholder="Add a product">
+    <button id="p-add">Add</button>
+  </div>
+  <ul id="p-list"></ul>
+</section>
+
+<!-- ============ Q2 ============ -->
+<section id="q2">
+  <h2>Q2: Live Character Counter</h2>
+  <textarea id="cc-text" rows="4" placeholder="Type here (max 100 characters)"></textarea>
+  <div id="cc-count">100 characters remaining</div>
+  <button id="cc-reset">Reset</button>
+</section>
+
+<!-- ============ Q3 ============ -->
+<section id="q3">
+  <h2>Q3: Multi-Step Form</h2>
+  <div id="ms-wrap">
+    <div class="step active" data-step="0">
+      <label>Step 1: Name</label><input id="ms-name" type="text" placeholder="Your name">
+    </div>
+    <div class="step" data-step="1">
+      <label>Step 2: Email</label><input id="ms-email" type="text" placeholder="you@example.com">
+    </div>
+    <div class="step" data-step="2">
+      <label>Step 3: Password</label><input id="ms-pass" type="password" placeholder="At least 6 characters">
+    </div>
+    <div class="error" id="ms-error"></div>
+    <button id="ms-back">Back</button>
+    <button id="ms-next">Next</button>
+  </div>
+  <div id="ms-summary"></div>
+</section>
+
+<!-- ============ Q5 ============ -->
+<section id="q5">
+  <h2>Q5: Image Gallery with Modal Preview</h2>
+  <div id="gallery"></div>
+  <div id="modal"><div id="modal-box"><img id="modal-img" alt="Preview"></div></div>
+</section>
+
+<!-- ============ Q6 ============ -->
+<section id="q6">
+  <h2>Q6: Real-Time Table Filter</h2>
+  <input id="tf-search" type="text" placeholder="Search by name, branch or CGPA">
+  <table>
+    <thead><tr><th>Name</th><th>Branch</th><th>CGPA</th></tr></thead>
+    <tbody id="tf-body"></tbody>
+  </table>
+</section>
+
+<!-- ============ Q7 ============ -->
+<section id="q7">
+  <h2>Q7: Mouse Path &amp; Coordinates Logger</h2>
+  <p>clientX: <strong id="mx">-</strong>, clientY: <strong id="my">-</strong> (double-click in the box to drop a red dot)</p>
+  <div id="mouse-box"></div>
+</section>
+
+<!-- ============ Q8 ============ -->
+<section id="q8">
+  <h2>Q8: Custom Dropdown (no &lt;select&gt;)</h2>
+  <div id="dd">
+    <button id="dd-btn">Choose a fruit ▾</button>
+    <ul id="dd-list">
+      <li>Apple</li><li>Banana</li><li>Mango</li><li>Orange</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ Q9 ============ -->
+<section id="q9">
+  <h2>Q9: Form Submit Blocker with Live Errors</h2>
+  <form id="fs-form" novalidate>
+    <label>Name</label><input id="fs-name" type="text"><div class="error" id="fs-name-err"></div>
+    <label>Email</label><input id="fs-email" type="text"><div class="error" id="fs-email-err"></div>
+    <label>Password</label><input id="fs-pass" type="password"><div class="error" id="fs-pass-err"></div>
+    <button type="submit">Submit</button>
+    <div class="success" id="fs-success"></div>
+  </form>
+</section>
+
+<script>
+/* ======================================================================
+   Q4: Theme Switcher Using Attribute Manipulation
+   ====================================================================== */
+(function () {
+  const themes = ["light", "dark", "blue"];
+
+  function applyTheme(theme) {
+    // Everything is applied with setAttribute(), as required
+    document.body.setAttribute("class", "theme-" + theme); // adds a class to <body>
+    document.body.setAttribute("data-theme", theme);       // custom attribute stores the current theme
+    document.getElementById("theme-name").textContent = document.body.getAttribute("data-theme");
+  }
+
+  document.querySelectorAll("[data-theme-btn]").forEach(btn => {
+    btn.addEventListener("click", () => applyTheme(btn.getAttribute("data-theme-btn")));
+  });
+
+  applyTheme(themes[0]);
+})();
+
+/* ======================================================================
+   Q1: Dynamic Product List Manager (Event Delegation)
+   ====================================================================== */
+(function () {
+  const list = document.getElementById("p-list");
+  const input = document.getElementById("p-input");
+  let editingItem = null; // the <li> currently in edit mode
+
+  function addProduct() {
+    const name = input.value.trim();
+    if (!name) return;
+    const li = document.createElement("li");
+
+    const text = document.createElement("span");
+    text.className = "text";
+    text.textContent = name;
+
+    const edit = document.createElement("button");
+    edit.textContent = "Edit";
+    edit.dataset.action = "edit";
+
+    const del = document.createElement("button");
+    del.textContent = "Delete";
+    del.dataset.action = "delete";
+
+    li.append(text, edit, del);
+    list.appendChild(li);
+    input.value = "";
+    input.focus();
+  }
+
+  // Switch an item into inline edit mode
+  function startEdit(li) {
+    const text = li.querySelector(".text");
+    const field = document.createElement("input");
+    field.type = "text";
+    field.className = "text";
+    field.value = text.textContent;
+    li.replaceChild(field, text);
+    li.querySelector("[data-action=edit]").textContent = "Save";
+    editingItem = li;
+    field.focus();
+  }
+
+  // Save the edit and go back to normal mode (keeps old text if left empty)
+  function saveEdit(li) {
+    const field = li.querySelector("input.text");
+    if (!field) return;
+    const text = document.createElement("span");
+    text.className = "text";
+    text.textContent = field.value.trim() || field.defaultValue;
+    li.replaceChild(text, field);
+    li.querySelector("[data-action=edit]").textContent = "Edit";
+    if (editingItem === li) editingItem = null;
+  }
+
+  document.getElementById("p-add").addEventListener("click", addProduct);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") addProduct(); });
+
+  // ONE listener on the parent <ul> handles every Edit / Delete button (event delegation)
+  list.addEventListener("click", e => {
+    const button = e.target.closest("button");
+    if (!button) return;
+    const li = button.closest("li");
+
+    if (button.dataset.action === "delete") {
+      if (editingItem === li) editingItem = null;
+      li.remove();
+    } else if (button.dataset.action === "edit") {
+      if (editingItem === li) {
+        saveEdit(li);                              // "Save" pressed
+      } else {
+        if (editingItem) saveEdit(editingItem);    // only one item edited at a time
+        startEdit(li);
+      }
+    }
+  });
+
+  list.addEventListener("keydown", e => {
+    if (e.key === "Enter" && e.target.matches("input.text")) saveEdit(e.target.closest("li"));
+  });
+
+  // Click anywhere outside the edited item -> auto-save
+  document.addEventListener("click", e => {
+    if (editingItem && !editingItem.contains(e.target)) saveEdit(editingItem);
+  });
+})();
+
+/* ======================================================================
+   Q2: Live Character Counter with Warning Behaviour
+   ====================================================================== */
+(function () {
+  const MAX = 100;
+  const textarea = document.getElementById("cc-text");
+  const counter = document.getElementById("cc-count");
+
+  function updateCounter() {
+    const remaining = MAX - textarea.value.length;
+    counter.textContent = `${remaining} characters remaining`;
+    counter.classList.toggle("warn", remaining <= 20 && remaining > 0); // yellow
+    counter.classList.toggle("zero", remaining <= 0);                   // red
+  }
+
+  // Block printable keys once the limit is reached
+  textarea.addEventListener("keydown", e => {
+    const isPrintable = e.key.length === 1 && !e.ctrlKey && !e.metaKey;
+    const hasSelection = textarea.selectionStart !== textarea.selectionEnd;
+    if (textarea.value.length >= MAX && isPrintable && !hasSelection) {
+      e.preventDefault();
+    }
+  });
+
+  // Pasted text could exceed the limit, so trim it here
+  textarea.addEventListener("input", () => {
+    if (textarea.value.length > MAX) textarea.value = textarea.value.slice(0, MAX);
+    updateCounter();
+  });
+
+  document.getElementById("cc-reset").addEventListener("click", () => {
+    textarea.value = "";
+    updateCounter();
+    textarea.focus();
+  });
+
+  updateCounter();
+})();
+
+/* ======================================================================
+   Q3: Multi-Step Form with Next/Back & Validation
+   ====================================================================== */
+(function () {
+  const steps = document.querySelectorAll("#q3 .step");
+  const errorEl = document.getElementById("ms-error");
+  const backBtn = document.getElementById("ms-back");
+  const nextBtn = document.getElementById("ms-next");
+  let current = 0;
+
+  const validators = [
+    { el: document.getElementById("ms-name"),  ok: v => /^[A-Za-z]+(?: [A-Za-z]+)*$/.test(v), msg: "Enter a valid name (alphabets only)." },
+    { el: document.getElementById("ms-email"), ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v), msg: "Enter a valid email address." },
+    { el: document.getElementById("ms-pass"),  ok: v => v.length >= 6, msg: "Password must be at least 6 characters." }
+  ];
+
+  function showStep() {
+    steps.forEach((s, i) => s.classList.toggle("active", i === current));
+    backBtn.style.visibility = current === 0 ? "hidden" : "visible";
+    nextBtn.textContent = current === steps.length - 1 ? "Finish" : "Next";
+    errorEl.textContent = "";
+  }
+
+  nextBtn.addEventListener("click", () => {
+    const rule = validators[current];
+    if (!rule.ok(rule.el.value.trim())) {     // stay on this step if invalid
+      errorEl.textContent = rule.msg;
+      return;
+    }
+    if (current < steps.length - 1) {
+      current++;
+      showStep();
+    } else {
+      // All 3 steps complete -> summary (password is masked)
+      document.getElementById("ms-wrap").style.display = "none";
+      const summary = document.getElementById("ms-summary");
+      summary.innerHTML = "";
+      const title = document.createElement("div");
+      title.className = "success";
+      title.textContent = "Summary";
+      summary.appendChild(title);
+      [["Name", validators[0].el.value.trim()],
+       ["Email", validators[1].el.value.trim()],
+       ["Password", "*".repeat(validators[2].el.value.length)]].forEach(([k, v]) => {
+        const p = document.createElement("div");
+        p.textContent = `${k}: ${v}`;
+        summary.appendChild(p);
+      });
+    }
+  });
+
+  backBtn.addEventListener("click", () => {
+    if (current > 0) { current--; showStep(); }
+  });
+
+  showStep();
+})();
+
+/* ======================================================================
+   Q5: Image Gallery with Modal Preview
+   ====================================================================== */
+(function () {
+  const gallery = document.getElementById("gallery");
+  const modal = document.getElementById("modal");
+  const modalBox = document.getElementById("modal-box");
+  const modalImg = document.getElementById("modal-img");
+
+  // Build 6 placeholder images as SVG data URIs (works offline)
+  const colours = ["#e57373", "#64b5f6", "#81c784", "#ffb74d", "#ba68c8", "#4db6ac"];
+  function makeImage(index, size) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size * 0.7}">` +
+      `<rect width="100%" height="100%" fill="${colours[index]}"/>` +
+      `<text x="50%" y="50%" font-size="${size / 6}" fill="#fff" text-anchor="middle" dominant-baseline="middle" font-family="Arial">Image ${index + 1}</text></svg>`;
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+
+  colours.forEach((_, i) => {
+    const img = document.createElement("img");
+    img.src = makeImage(i, 200);
+    img.alt = "Image " + (i + 1);
+    img.dataset.index = i;
+    gallery.appendChild(img);
+  });
+
+  gallery.addEventListener("click", e => {
+    if (e.target.tagName !== "IMG") return;
+    modalImg.src = makeImage(Number(e.target.dataset.index), 800); // bigger version
+    modal.classList.add("open");
+  });
+
+  // Click on the dark backdrop closes the modal
+  modal.addEventListener("click", () => modal.classList.remove("open"));
+
+  // Click inside the modal box must NOT bubble up to the backdrop
+  modalBox.addEventListener("click", e => e.stopPropagation());
+})();
+
+/* ======================================================================
+   Q6: Real-Time Table Filter Using input Event
+   ====================================================================== */
+(function () {
+  const students = [
+    { name: "Amit Sharma", branch: "CSE", cgpa: 8.7 },
+    { name: "Riya Verma", branch: "ECE", cgpa: 9.1 },
+    { name: "Karan Singh", branch: "ME", cgpa: 7.4 },
+    { name: "Sneha Gupta", branch: "CSE", cgpa: 8.2 },
+    { name: "Vikas Yadav", branch: "IT", cgpa: 7.9 },
+    { name: "Priya Nair", branch: "ECE", cgpa: 8.8 }
+  ];
+  const tbody = document.getElementById("tf-body");
+
+  students.forEach(s => {
+    const tr = document.createElement("tr");
+    [s.name, s.branch, s.cgpa].forEach(v => {
+      const td = document.createElement("td");
+      td.textContent = v;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  // Extra row shown only when nothing matches
+  const emptyRow = document.createElement("tr");
+  const emptyCell = document.createElement("td");
+  emptyCell.colSpan = 3;
+  emptyCell.textContent = "No results found";
+  emptyRow.appendChild(emptyCell);
+  emptyRow.style.display = "none";
+  tbody.appendChild(emptyRow);
+
+  document.getElementById("tf-search").addEventListener("input", e => {
+    const query = e.target.value.trim().toLowerCase(); // case-insensitive
+    let visible = 0;
+    tbody.querySelectorAll("tr").forEach(row => {
+      if (row === emptyRow) return;
+      const match = row.textContent.toLowerCase().includes(query);
+      row.style.display = match ? "" : "none";
+      if (match) visible++;
+    });
+    emptyRow.style.display = visible === 0 ? "" : "none";
+  });
+})();
+
+/* ======================================================================
+   Q7: Mouse Path & Coordinates Logger
+   ====================================================================== */
+(function () {
+  const box = document.getElementById("mouse-box");
+
+  // Live clientX / clientY while the mouse moves inside the box
+  box.addEventListener("mousemove", e => {
+    document.getElementById("mx").textContent = e.clientX;
+    document.getElementById("my").textContent = e.clientY;
+  });
+
+  // Double-click drops a red dot at the click position (relative to the box)
+  box.addEventListener("dblclick", e => {
+    const rect = box.getBoundingClientRect();
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = (e.clientX - rect.left - box.clientLeft) + "px";
+    dot.style.top = (e.clientY - rect.top - box.clientTop) + "px";
+    box.appendChild(dot);
+  });
+})();
+
+/* ======================================================================
+   Q8: Custom Dropdown Using Only JavaScript
+   ====================================================================== */
+(function () {
+  const dropdown = document.getElementById("dd");
+  const button = document.getElementById("dd-btn");
+  const list = document.getElementById("dd-list");
+
+  button.addEventListener("click", () => list.classList.toggle("open"));
+
+  list.addEventListener("click", e => {
+    if (e.target.tagName === "LI") {
+      button.textContent = e.target.textContent + " ▾";
+      list.classList.remove("open");
+    }
+  });
+
+  // Third argument `true` = CAPTURING phase: this runs before any other click handler
+  document.addEventListener("click", e => {
+    if (!dropdown.contains(e.target)) list.classList.remove("open");
+  }, true);
+})();
+
+/* ======================================================================
+   Q9: Form Submit Blocker with Live Errors
+   ====================================================================== */
+(function () {
+  const form = document.getElementById("fs-form");
+  const success = document.getElementById("fs-success");
+
+  const fields = {
+    name:  { el: document.getElementById("fs-name"),  err: document.getElementById("fs-name-err"),
+             ok: v => v.trim() !== "", msg: "Name is required." },
+    email: { el: document.getElementById("fs-email"), err: document.getElementById("fs-email-err"),
+             ok: v => v.trim() !== "" && v.includes("@"), msg: "Email is required and must contain @." },
+    pass:  { el: document.getElementById("fs-pass"),  err: document.getElementById("fs-pass-err"),
+             ok: v => v.length >= 6, msg: "Password must be at least 6 characters." }
+  };
+
+  function validate(field) {
+    const ok = field.ok(field.el.value);
+    field.err.textContent = ok ? "" : field.msg;
+    field.el.classList.toggle("invalid", !ok);
+    field.el.classList.toggle("valid", ok);
+    return ok;
+  }
+
+  // Live: once a field was shown an error, re-check it on every keystroke
+  Object.values(fields).forEach(field => {
+    field.el.addEventListener("input", () => {
+      success.textContent = "";
+      if (field.el.classList.contains("invalid")) validate(field); // error disappears when corrected
+    });
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault(); // always stop the real browser submission
+    const results = Object.values(fields).map(validate);
+    success.textContent = results.every(Boolean) ? "Form Submitted Successfully" : "";
+  });
+})();
+</script>
+</body>
+</html>

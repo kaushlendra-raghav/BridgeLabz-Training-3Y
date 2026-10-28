@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration</title>
+</head>
+<body>
+    <header>
+        <h1>Course Registration Form</h1>
+    </header>
+
+    <main>
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Student Details</legend>
+
+                <p>
+                    <label for="student-name">Full Name:</label>
+                    <input type="text" id="student-name" name="student_name" required>
+                </p>
+
+                <p>
+                    <label for="student-email">Email:</label>
+                    <input type="email" id="student-email" name="student_email" required>
+                </p>
+
+                <p>
+                    <label for="course">Select Course:</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Choose a course --</option>
+                        <option value="html">HTML Fundamentals</option>
+                        <option value="python">Python Programming</option>
+                        <option value="sql">SQL and Databases</option>
+                    </select>
+                </p>
+
+                <p><button type="submit">Register</button> <button type="reset">Reset</button></p>
+            </fieldset>
+        </form>
+
+        <h2>Available Course Schedules</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Monday</td><td>10:00 AM–11:00 AM</td><td>Ms. Sharma</td></tr>
+                <tr><td>Wednesday</td><td>12:00 PM–1:00 PM</td><td>Mr. Verma</td></tr>
+                <tr><td>Friday</td><td>2:00 PM–3:00 PM</td><td>Ms. Khan</td></tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

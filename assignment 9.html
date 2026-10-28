@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 9 — All 10 Answers</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;line-height:1.55;color:#202d3a;background:#f4f7fb}.page-wrap{max-width:1200px;margin:auto;padding:24px}.assignment-title{text-align:center;margin:8px 0 10px;color:#173d68}.intro{text-align:center;color:#526173;margin-bottom:28px}.question{background:white;margin:0 0 28px;padding:22px;border:1px solid #dce3ea;border-radius:12px;box-shadow:0 2px 8px #00000008}.question h2{margin-top:0;color:#173d68}.demo{padding:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}.code-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.code-panel{min-width:0}.code-panel h3{margin:0 0 6px;font-size:1rem}.code-panel pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#101827;color:#e6edf3;padding:14px;border-radius:8px;font-size:12px;line-height:1.45;max-height:440px;overflow:auto}.note{font-size:.9rem;color:#526173}@media(max-width:760px){.page-wrap{padding:12px}.code-grid{grid-template-columns:1fr}.question{padding:14px}}
+.q1-demo /* Responsive grid; each image has a distinct filter removed on hover */
+.filter-gallery-page h1{ text-align:center; }.q1-demo .filter-gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; }.q1-demo .filter-gallery figure{ margin:0; overflow:hidden; background:white; border-radius:12px; box-shadow:0 5px 16px #00000018; }.q1-demo .filter-gallery img{ display:block; width:100%; height:180px; object-fit:cover; transition:filter .4s ease,transform .4s ease; }.q1-demo .filter-blur{ filter:blur(2px); }.q1-demo .filter-gray{ filter:grayscale(100%); }.q1-demo .filter-sepia{ filter:sepia(100%); }.q1-demo .filter-bright{ filter:brightness(1.45); }.q1-demo .filter-contrast{ filter:contrast(180%); }.q1-demo .filter-hue{ filter:hue-rotate(120deg); }.q1-demo .filter-gallery figure:hover img{ filter:none; transform:scale(1.03); }.q1-demo .filter-gallery figcaption{ padding:10px; text-align:center; font-weight:bold; }@media(max-width:600px){.q1-demo .filter-gallery{ grid-template-columns:1fr; } }.q2-demo /* Header, .q2-demo feature row and footer use Flexbox */
+.home-layout{ min-height:360px; display:flex; flex-direction:column; }.q2-demo .home-header{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 5%; background:#17324d; color:white; }.q2-demo .home-logo{ color:white; text-decoration:none; font-size:1.3rem; font-weight:bold; }.q2-demo .home-header nav{ display:flex; gap:18px; flex-wrap:wrap; }.q2-demo .home-header nav a{ color:white; text-decoration:none; }.q2-demo .home-header nav a:hover{ text-decoration:underline; }.q2-demo .home-main{ flex:1; padding:20px; text-align:center; }.q2-demo .home-features{ display:flex; gap:16px; max-width:950px; margin:20px auto; }.q2-demo .home-feature{ flex:1; padding:20px; border-radius:10px; background:#e4f1fb; transition:transform .3s ease,background .3s ease; }.q2-demo .home-feature:hover{ transform:scale(1.04); background:#c9e4f8; }.q2-demo .home-footer{ margin-top:auto; padding:14px; text-align:center; background:#17324d; color:white; }@media(max-width:750px){.q2-demo .home-header{ flex-direction:column; }.q2-demo .home-features{ flex-direction:column; } }.q3-demo /* Four cards on desktop, .q3-demo two on tablet, .q3-demo one on mobile */
+.responsive-cards{ display:flex; flex-wrap:wrap; gap:18px; }.q3-demo .responsive-card{ flex:0 0 calc(25% - 14px); padding:22px; border-radius:12px; background:#e5f1fb; transition:background .3s ease,transform .3s ease; }.q3-demo .responsive-card:hover{ background:#c8e7cf; transform:translateY(-4px); }@media(max-width:900px){.q3-demo .responsive-card{ flex-basis:calc(50% - 9px); } }@media(max-width:600px){.q3-demo .responsive-card{ flex-basis:100%; } }.q4-demo /* clamp(minimum, .q4-demo preferred, .q4-demo maximum) scales typography with viewport width */
+.responsive-type{ padding:clamp(18px,5vw,56px); margin:0 auto; max-width:900px; text-align:center; }.q4-demo .responsive-type h1{ font-size:clamp(1.5rem,4vw,3rem); line-height:1.15; margin:0 0 1rem; }.q4-demo .responsive-type p{ font-size:clamp(1rem,2vw,1.5rem); line-height:1.7; margin:0 auto; }@media(max-width:700px){.q4-demo .responsive-type{ padding:18px; }.q4-demo .responsive-type p{ line-height:1.8; } }.q5-demo /* Cards fade in on load; images lose filters and cards lift on hover */
+.profile-cards{ display:flex; justify-content:center; align-items:stretch; gap:18px; }.q5-demo .profile-card{ flex:1; max-width:300px; padding:18px; text-align:center; background:white; border-radius:12px; box-shadow:0 4px 14px #00000012; animation:cardFade .7s ease both; transition:transform .3s ease,box-shadow .3s ease; }.q5-demo .profile-card:nth-child(2){ animation-delay:.15s; }.q5-demo .profile-card:nth-child(3){ animation-delay:.3s; }.q5-demo .profile-card img{ width:100%; height:170px; object-fit:cover; border-radius:8px; filter:grayscale(100%); transition:filter .35s ease; }.q5-demo .profile-card img.profile-sepia{ filter:sepia(100%); }.q5-demo .profile-card:hover{ transform:translateY(-10px); box-shadow:0 14px 26px #00000020; }.q5-demo .profile-card:hover img{ filter:none; }@keyframes cardFade{ from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }@media(max-width:800px){.q5-demo .profile-cards{ flex-direction:column; align-items:center; }.q5-demo .profile-card{ width:100%; } }.q6-demo /* Grid-based cheat sheet with hover effects */
+.cheat-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }.q6-demo .cheat-item{ padding:20px; border:1px solid #dce4ed; border-radius:10px; background:white; transition:transform .25s ease,box-shadow .25s ease,background .25s ease; }.q6-demo .cheat-item:hover{ transform:translateY(-3px); background:#eaf5ff; box-shadow:0 8px 18px #00000012; }.q6-demo .cheat-item h2{ margin-top:0; }.q6-demo .cheat-item code{ display:block; overflow-wrap:anywhere; padding:8px; border-radius:6px; background:#eef2f6; font-size:.85rem; }@media(max-width:700px){.q6-demo .cheat-grid{ grid-template-columns:1fr; }.q6-demo .cheat-item{ display:flex; flex-direction:column; gap:5px; }.q6-demo .cheat-item h2{ margin-bottom:0; } }.q7-demo /* Flexbox header, .q7-demo Grid main content, .q7-demo hover and fade-in */
+.combined-demo{ animation:demoFade .8s ease both; }.q7-demo .combined-header{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 5%; background:#17324d; color:white; }.q7-demo .combined-logo{ color:white; font-weight:bold; font-size:1.2rem; text-decoration:none; }.q7-demo .combined-header nav{ display:flex; flex-wrap:wrap; gap:14px; }.q7-demo .combined-header nav a{ color:white; text-decoration:none; }.q7-demo .combined-header nav a:hover{ text-decoration:underline; }.q7-demo .combined-main{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; padding:20px 0; }.q7-demo .combined-section{ padding:16px; border:1px solid #dce4ed; border-radius:10px; background:white; transition:transform .3s,box-shadow .3s; }.q7-demo .combined-section:hover{ transform:translateY(-4px); box-shadow:0 8px 18px #00000015; }.q7-demo .mini-gallery{ display:grid; grid-template-columns:1fr; gap:8px; }.q7-demo .mini-gallery img{ width:100%; height:90px; object-fit:cover; border-radius:6px; }.q7-demo .combined-footer{ padding:14px; text-align:center; background:#17324d; color:white; }@keyframes demoFade{ from { opacity:0; } to { opacity:1; } }@media(max-width:700px){.q7-demo .combined-header{ flex-direction:column; }.q7-demo .combined-main{ grid-template-columns:1fr; } }.q8-demo /* Two-column comparison; filter fades away on hover */
+.comparison-layout{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }.q8-demo .comparison-layout figure{ margin:0; padding:12px; border-radius:12px; background:white; box-shadow:0 4px 14px #00000012; }.q8-demo .comparison-layout img{ display:block; width:100%; height:240px; object-fit:cover; border-radius:8px; }.q8-demo .comparison-layout .comparison-filter{ filter:brightness(1.5) contrast(1.15); transition:filter .4s ease; }.q8-demo .comparison-layout figure:hover .comparison-filter{ filter:none; }.q8-demo .comparison-layout figcaption{ padding:10px 4px 0; text-align:center; font-weight:bold; }@media(max-width:700px){.q8-demo .comparison-layout{ grid-template-columns:1fr; } }.q9-demo /* Three-column Grid with gradient hover effect */
+.principles-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }.q9-demo .principle-card{ padding:20px; border:1px solid #dbe4ee; border-radius:12px; background:white; transition:background .3s ease,color .3s ease,transform .3s ease; }.q9-demo .principle-card h2{ margin-top:0; }.q9-demo .principle-card code{ display:block; padding:9px; overflow-wrap:anywhere; border-radius:6px; background:#eef2f6; color:#172033; }.q9-demo .principle-card:hover{ background:linear-gradient(135deg,#1769aa,#6a4c93); color:white; transform:translateY(-4px); }.q9-demo .principle-card:hover code{ background:#ffffffeb; color:#172033; }@media(max-width:600px){.q9-demo .principles-grid{ grid-template-columns:1fr; } }.q10-demo /* Grid dashboard; sidebar moves above content below 750px */
+.dashboard-layout{ min-height:420px; display:grid; grid-template-columns:220px minmax(0,1fr); grid-template-rows:auto 1fr; grid-template-areas:"header header" "sidebar content"; gap:14px; }.q10-demo .dashboard-header{ grid-area:header; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:16px; border-radius:10px; background:#17324d; color:white; animation:dashFade .7s ease both; }.q10-demo .dashboard-header h1{ margin:0; font-size:1.35rem; }.q10-demo .dashboard-sidebar{ grid-area:sidebar; padding:16px; border-radius:10px; background:#e5eef7; }.q10-demo .dashboard-sidebar nav{ display:flex; flex-direction:column; gap:12px; }.q10-demo .dashboard-sidebar a{ color:#17324d; text-decoration:none; }.q10-demo .dashboard-sidebar a:hover{ text-decoration:underline; }.q10-demo .dashboard-content{ grid-area:content; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-content:start; }.q10-demo .dashboard-card{ padding:16px; border:1px solid #dce4ed; border-radius:10px; background:white; box-shadow:0 2px 8px #0000000d; animation:dashFade .7s ease both; transition:transform .25s,box-shadow .25s; }.q10-demo .dashboard-card:hover{ transform:scale(1.025); box-shadow:0 9px 20px #00000018; }.q10-demo .dashboard-card h2{ margin-top:0; }.q10-demo .dashboard-card code{ overflow-wrap:anywhere; }@keyframes dashFade{ from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }@media(max-width:750px){.q10-demo .dashboard-layout{ grid-template-columns:1fr; grid-template-areas:"header" "sidebar" "content"; }.q10-demo .dashboard-content{ grid-template-columns:1fr; }.q10-demo .dashboard-header{ flex-direction:column; align-items:flex-start; } }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<h1 class="assignment-title">Assignment 9: Responsive CSS</h1>
+<p class="intro">All 10 answers in one HTML file — live examples plus HTML and CSS source code for every question.</p>
+<p class="note">The PDF requests separate HTML and CSS files per question. This one-file reference includes both code sections for every answer; copy each section into separate files if required. No JavaScript or external frameworks are used.</p>
+
+<section class="question">
+  <h2>Q1. Responsive Image Filter Gallery</h2>
+  <div class="demo q1-demo">
+    <main class="filter-gallery-page">
+  <h1>Image Filter Gallery</h1>
+  <section class="filter-gallery">
+    <figure><img class="filter-blur" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Mountain landscape"><figcaption>Blur Filter</figcaption></figure>
+    <figure><img class="filter-gray" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Lake surrounded by mountains"><figcaption>Grayscale Filter</figcaption></figure>
+    <figure><img class="filter-sepia" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80" alt="Forest sunlight"><figcaption>Sepia Filter</figcaption></figure>
+    <figure><img class="filter-bright" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="Lake and mountains"><figcaption>Brightness Filter</figcaption></figure>
+    <figure><img class="filter-contrast" src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80" alt="Wildlife in nature"><figcaption>Contrast Filter</figcaption></figure>
+    <figure><img class="filter-hue" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80" alt="Snowy mountain peaks"><figcaption>Hue-Rotate Filter</figcaption></figure>
+  </section>
+</main>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;main class=&quot;filter-gallery-page&quot;&gt;
+  &lt;h1&gt;Image Filter Gallery&lt;/h1&gt;
+  &lt;section class=&quot;filter-gallery&quot;&gt;
+    &lt;figure&gt;&lt;img class=&quot;filter-blur&quot; src=&quot;https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Mountain landscape&quot;&gt;&lt;figcaption&gt;Blur Filter&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img class=&quot;filter-gray&quot; src=&quot;https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Lake surrounded by mountains&quot;&gt;&lt;figcaption&gt;Grayscale Filter&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img class=&quot;filter-sepia&quot; src=&quot;https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Forest sunlight&quot;&gt;&lt;figcaption&gt;Sepia Filter&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img class=&quot;filter-bright&quot; src=&quot;https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Lake and mountains&quot;&gt;&lt;figcaption&gt;Brightness Filter&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img class=&quot;filter-contrast&quot; src=&quot;https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Wildlife in nature&quot;&gt;&lt;figcaption&gt;Contrast Filter&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure&gt;&lt;img class=&quot;filter-hue&quot; src=&quot;https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&amp;fit=crop&amp;w=700&amp;q=80&quot; alt=&quot;Snowy mountain peaks&quot;&gt;&lt;figcaption&gt;Hue-Rotate Filter&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Responsive grid; each image has a distinct filter removed on hover */
+.filter-gallery-page h1 { text-align:center; }
+.filter-gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px; }
+.filter-gallery figure { margin:0; overflow:hidden; background:white; border-radius:12px; box-shadow:0 5px 16px #00000018; }
+.filter-gallery img { display:block; width:100%; height:180px; object-fit:cover; transition:filter .4s ease,transform .4s ease; }
+.filter-blur { filter:blur(2px); }
+.filter-gray { filter:grayscale(100%); }
+.filter-sepia { filter:sepia(100%); }
+.filter-bright { filter:brightness(1.45); }
+.filter-contrast { filter:contrast(180%); }
+.filter-hue { filter:hue-rotate(120deg); }
+.filter-gallery figure:hover img { filter:none; transform:scale(1.03); }
+.filter-gallery figcaption { padding:10px; text-align:center; font-weight:bold; }
+@media(max-width:600px) { .filter-gallery { grid-template-columns:1fr; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q2. Responsive Web Design Layout</h2>
+  <div class="demo q2-demo">
+    <div class="home-layout">
+  <header class="home-header"><a class="home-logo" href="#home">FlexHome</a><nav><a href="#features">Features</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
+  <main class="home-main" id="home">
+    <h1>Responsive Homepage</h1>
+    <section class="home-features" id="features">
+      <article class="home-feature"><h2>Fast</h2><p>Clean and lightweight design.</p></article>
+      <article class="home-feature"><h2>Flexible</h2><p>Layouts adapt to different screens.</p></article>
+      <article class="home-feature"><h2>Accessible</h2><p>Readable content and clear navigation.</p></article>
+    </section>
+  </main>
+  <footer class="home-footer" id="contact">© 2026 FlexHome</footer>
+</div>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;div class=&quot;home-layout&quot;&gt;
+  &lt;header class=&quot;home-header&quot;&gt;&lt;a class=&quot;home-logo&quot; href=&quot;#home&quot;&gt;FlexHome&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;#features&quot;&gt;Features&lt;/a&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;/header&gt;
+  &lt;main class=&quot;home-main&quot; id=&quot;home&quot;&gt;
+    &lt;h1&gt;Responsive Homepage&lt;/h1&gt;
+    &lt;section class=&quot;home-features&quot; id=&quot;features&quot;&gt;
+      &lt;article class=&quot;home-feature&quot;&gt;&lt;h2&gt;Fast&lt;/h2&gt;&lt;p&gt;Clean and lightweight design.&lt;/p&gt;&lt;/article&gt;
+      &lt;article class=&quot;home-feature&quot;&gt;&lt;h2&gt;Flexible&lt;/h2&gt;&lt;p&gt;Layouts adapt to different screens.&lt;/p&gt;&lt;/article&gt;
+      &lt;article class=&quot;home-feature&quot;&gt;&lt;h2&gt;Accessible&lt;/h2&gt;&lt;p&gt;Readable content and clear navigation.&lt;/p&gt;&lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer class=&quot;home-footer&quot; id=&quot;contact&quot;&gt;© 2026 FlexHome&lt;/footer&gt;
+&lt;/div&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Header, feature row and footer use Flexbox */
+.home-layout { min-height:360px; display:flex; flex-direction:column; }
+.home-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 5%; background:#17324d; color:white; }
+.home-logo { color:white; text-decoration:none; font-size:1.3rem; font-weight:bold; }
+.home-header nav { display:flex; gap:18px; flex-wrap:wrap; }
+.home-header nav a { color:white; text-decoration:none; }
+.home-header nav a:hover { text-decoration:underline; }
+.home-main { flex:1; padding:20px; text-align:center; }
+.home-features { display:flex; gap:16px; max-width:950px; margin:20px auto; }
+.home-feature { flex:1; padding:20px; border-radius:10px; background:#e4f1fb; transition:transform .3s ease,background .3s ease; }
+.home-feature:hover { transform:scale(1.04); background:#c9e4f8; }
+.home-footer { margin-top:auto; padding:14px; text-align:center; background:#17324d; color:white; }
+@media(max-width:750px) { .home-header { flex-direction:column; } .home-features { flex-direction:column; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q3. Responsive Cards with Media Queries</h2>
+  <div class="demo q3-demo">
+    <section class="responsive-cards">
+  <article class="responsive-card"><h2>Design</h2><p>Plan clear and useful experiences.</p></article>
+  <article class="responsive-card"><h2>Develop</h2><p>Build accessible web components.</p></article>
+  <article class="responsive-card"><h2>Test</h2><p>Check different screen sizes.</p></article>
+  <article class="responsive-card"><h2>Launch</h2><p>Publish and improve your project.</p></article>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;responsive-cards&quot;&gt;
+  &lt;article class=&quot;responsive-card&quot;&gt;&lt;h2&gt;Design&lt;/h2&gt;&lt;p&gt;Plan clear and useful experiences.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;responsive-card&quot;&gt;&lt;h2&gt;Develop&lt;/h2&gt;&lt;p&gt;Build accessible web components.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;responsive-card&quot;&gt;&lt;h2&gt;Test&lt;/h2&gt;&lt;p&gt;Check different screen sizes.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;responsive-card&quot;&gt;&lt;h2&gt;Launch&lt;/h2&gt;&lt;p&gt;Publish and improve your project.&lt;/p&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Four cards on desktop, two on tablet, one on mobile */
+.responsive-cards { display:flex; flex-wrap:wrap; gap:18px; }
+.responsive-card { flex:0 0 calc(25% - 14px); padding:22px; border-radius:12px; background:#e5f1fb; transition:background .3s ease,transform .3s ease; }
+.responsive-card:hover { background:#c8e7cf; transform:translateY(-4px); }
+@media(max-width:900px) { .responsive-card { flex-basis:calc(50% - 9px); } }
+@media(max-width:600px) { .responsive-card { flex-basis:100%; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q4. Responsive Typography</h2>
+  <div class="demo q4-demo">
+    <section class="responsive-type">
+  <h1>Typography That Adapts</h1>
+  <p>Responsive typography uses flexible font sizes to keep text readable on mobile phones, tablets, and desktop screens. The clamp() function sets a minimum, preferred, and maximum size.</p>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;responsive-type&quot;&gt;
+  &lt;h1&gt;Typography That Adapts&lt;/h1&gt;
+  &lt;p&gt;Responsive typography uses flexible font sizes to keep text readable on mobile phones, tablets, and desktop screens. The clamp() function sets a minimum, preferred, and maximum size.&lt;/p&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* clamp(minimum, preferred, maximum) scales typography with viewport width */
+.responsive-type { padding:clamp(18px,5vw,56px); margin:0 auto; max-width:900px; text-align:center; }
+.responsive-type h1 { font-size:clamp(1.5rem,4vw,3rem); line-height:1.15; margin:0 0 1rem; }
+.responsive-type p { font-size:clamp(1rem,2vw,1.5rem); line-height:1.7; margin:0 auto; }
+@media(max-width:700px) { .responsive-type { padding:18px; } .responsive-type p { line-height:1.8; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q5. Filter Cards with Animation</h2>
+  <div class="demo q5-demo">
+    <section class="profile-cards">
+  <article class="profile-card"><img class="profile-gray" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Profile portrait"><h2>Alex Morgan</h2><p>UI Designer who enjoys creating simple, accessible interfaces.</p></article>
+  <article class="profile-card"><img class="profile-sepia" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Profile portrait"><h2>Jamie Lee</h2><p>Developer focused on responsive layouts and clean code.</p></article>
+  <article class="profile-card"><img class="profile-gray" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Profile portrait"><h2>Sam Taylor</h2><p>Product thinker who turns ideas into useful experiences.</p></article>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;profile-cards&quot;&gt;
+  &lt;article class=&quot;profile-card&quot;&gt;&lt;img class=&quot;profile-gray&quot; src=&quot;https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=500&amp;q=80&quot; alt=&quot;Profile portrait&quot;&gt;&lt;h2&gt;Alex Morgan&lt;/h2&gt;&lt;p&gt;UI Designer who enjoys creating simple, accessible interfaces.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;profile-card&quot;&gt;&lt;img class=&quot;profile-sepia&quot; src=&quot;https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=500&amp;q=80&quot; alt=&quot;Profile portrait&quot;&gt;&lt;h2&gt;Jamie Lee&lt;/h2&gt;&lt;p&gt;Developer focused on responsive layouts and clean code.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;profile-card&quot;&gt;&lt;img class=&quot;profile-gray&quot; src=&quot;https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=500&amp;q=80&quot; alt=&quot;Profile portrait&quot;&gt;&lt;h2&gt;Sam Taylor&lt;/h2&gt;&lt;p&gt;Product thinker who turns ideas into useful experiences.&lt;/p&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Cards fade in on load; images lose filters and cards lift on hover */
+.profile-cards { display:flex; justify-content:center; align-items:stretch; gap:18px; }
+.profile-card { flex:1; max-width:300px; padding:18px; text-align:center; background:white; border-radius:12px; box-shadow:0 4px 14px #00000012; animation:cardFade .7s ease both; transition:transform .3s ease,box-shadow .3s ease; }
+.profile-card:nth-child(2) { animation-delay:.15s; }
+.profile-card:nth-child(3) { animation-delay:.3s; }
+.profile-card img { width:100%; height:170px; object-fit:cover; border-radius:8px; filter:grayscale(100%); transition:filter .35s ease; }
+.profile-card img.profile-sepia { filter:sepia(100%); }
+.profile-card:hover { transform:translateY(-10px); box-shadow:0 14px 26px #00000020; }
+.profile-card:hover img { filter:none; }
+@keyframes cardFade { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:800px) { .profile-cards { flex-direction:column; align-items:center; } .profile-card { width:100%; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q6. Responsive CSS Cheat Sheet</h2>
+  <div class="demo q6-demo">
+    <section class="cheat-grid">
+  <article class="cheat-item"><h2>Filters</h2><p>Apply visual effects to images.</p><code>filter: grayscale(100%);</code></article>
+  <article class="cheat-item"><h2>Media Queries</h2><p>Apply styles at chosen screen widths.</p><code>@media (max-width: 700px) { ... }</code></article>
+  <article class="cheat-item"><h2>Responsive Design</h2><p>Make content adapt to different devices.</p><code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</code></article>
+  <article class="cheat-item"><h2>Typography</h2><p>Scale font sizes fluidly.</p><code>font-size: clamp(1rem, 2vw, 1.5rem);</code></article>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;cheat-grid&quot;&gt;
+  &lt;article class=&quot;cheat-item&quot;&gt;&lt;h2&gt;Filters&lt;/h2&gt;&lt;p&gt;Apply visual effects to images.&lt;/p&gt;&lt;code&gt;filter: grayscale(100%);&lt;/code&gt;&lt;/article&gt;
+  &lt;article class=&quot;cheat-item&quot;&gt;&lt;h2&gt;Media Queries&lt;/h2&gt;&lt;p&gt;Apply styles at chosen screen widths.&lt;/p&gt;&lt;code&gt;@media (max-width: 700px) { ... }&lt;/code&gt;&lt;/article&gt;
+  &lt;article class=&quot;cheat-item&quot;&gt;&lt;h2&gt;Responsive Design&lt;/h2&gt;&lt;p&gt;Make content adapt to different devices.&lt;/p&gt;&lt;code&gt;grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));&lt;/code&gt;&lt;/article&gt;
+  &lt;article class=&quot;cheat-item&quot;&gt;&lt;h2&gt;Typography&lt;/h2&gt;&lt;p&gt;Scale font sizes fluidly.&lt;/p&gt;&lt;code&gt;font-size: clamp(1rem, 2vw, 1.5rem);&lt;/code&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Grid-based cheat sheet with hover effects */
+.cheat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.cheat-item { padding:20px; border:1px solid #dce4ed; border-radius:10px; background:white; transition:transform .25s ease,box-shadow .25s ease,background .25s ease; }
+.cheat-item:hover { transform:translateY(-3px); background:#eaf5ff; box-shadow:0 8px 18px #00000012; }
+.cheat-item h2 { margin-top:0; }
+.cheat-item code { display:block; overflow-wrap:anywhere; padding:8px; border-radius:6px; background:#eef2f6; font-size:.85rem; }
+@media(max-width:700px) { .cheat-grid { grid-template-columns:1fr; } .cheat-item { display:flex; flex-direction:column; gap:5px; } .cheat-item h2 { margin-bottom:0; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q7. Combined Responsive Web Demo</h2>
+  <div class="demo q7-demo">
+    <div class="combined-demo">
+  <header class="combined-header"><a href="#combined-home" class="combined-logo">ResponsiveLab</a><nav><a href="#gallery">Gallery</a><a href="#principles">Principles</a><a href="#cheats">Cheat Sheet</a></nav></header>
+  <main class="combined-main" id="combined-home">
+    <section class="combined-section" id="gallery"><h2>Image Gallery</h2><div class="mini-gallery"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="Mountain"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=400&q=80" alt="Lake"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80" alt="Forest"></div></section>
+    <section class="combined-section" id="principles"><h2>Responsive Design</h2><p>Responsive design helps a website adapt to different screen sizes. Use fluid grids, flexible images, media queries, and scalable typography to improve usability on phones, tablets, and desktops.</p></section>
+    <section class="combined-section" id="cheats"><h2>Cheat Sheet Preview</h2><p><strong>Grid:</strong> arrange rows and columns.</p><p><strong>Flexbox:</strong> align items in one direction.</p><p><strong>clamp():</strong> create fluid font sizes.</p></section>
+  </main>
+  <footer class="combined-footer">Contact: hello@example.com · © 2026 ResponsiveLab</footer>
+</div>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;div class=&quot;combined-demo&quot;&gt;
+  &lt;header class=&quot;combined-header&quot;&gt;&lt;a href=&quot;#combined-home&quot; class=&quot;combined-logo&quot;&gt;ResponsiveLab&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;a href=&quot;#principles&quot;&gt;Principles&lt;/a&gt;&lt;a href=&quot;#cheats&quot;&gt;Cheat Sheet&lt;/a&gt;&lt;/nav&gt;&lt;/header&gt;
+  &lt;main class=&quot;combined-main&quot; id=&quot;combined-home&quot;&gt;
+    &lt;section class=&quot;combined-section&quot; id=&quot;gallery&quot;&gt;&lt;h2&gt;Image Gallery&lt;/h2&gt;&lt;div class=&quot;mini-gallery&quot;&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=400&amp;q=80&quot; alt=&quot;Mountain&quot;&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=400&amp;q=80&quot; alt=&quot;Lake&quot;&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&amp;fit=crop&amp;w=400&amp;q=80&quot; alt=&quot;Forest&quot;&gt;&lt;/div&gt;&lt;/section&gt;
+    &lt;section class=&quot;combined-section&quot; id=&quot;principles&quot;&gt;&lt;h2&gt;Responsive Design&lt;/h2&gt;&lt;p&gt;Responsive design helps a website adapt to different screen sizes. Use fluid grids, flexible images, media queries, and scalable typography to improve usability on phones, tablets, and desktops.&lt;/p&gt;&lt;/section&gt;
+    &lt;section class=&quot;combined-section&quot; id=&quot;cheats&quot;&gt;&lt;h2&gt;Cheat Sheet Preview&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Grid:&lt;/strong&gt; arrange rows and columns.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Flexbox:&lt;/strong&gt; align items in one direction.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;clamp():&lt;/strong&gt; create fluid font sizes.&lt;/p&gt;&lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer class=&quot;combined-footer&quot;&gt;Contact: hello@example.com · © 2026 ResponsiveLab&lt;/footer&gt;
+&lt;/div&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Flexbox header, Grid main content, hover and fade-in */
+.combined-demo { animation:demoFade .8s ease both; }
+.combined-header { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 5%; background:#17324d; color:white; }
+.combined-logo { color:white; font-weight:bold; font-size:1.2rem; text-decoration:none; }
+.combined-header nav { display:flex; flex-wrap:wrap; gap:14px; }
+.combined-header nav a { color:white; text-decoration:none; }
+.combined-header nav a:hover { text-decoration:underline; }
+.combined-main { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; padding:20px 0; }
+.combined-section { padding:16px; border:1px solid #dce4ed; border-radius:10px; background:white; transition:transform .3s,box-shadow .3s; }
+.combined-section:hover { transform:translateY(-4px); box-shadow:0 8px 18px #00000015; }
+.mini-gallery { display:grid; grid-template-columns:1fr; gap:8px; }
+.mini-gallery img { width:100%; height:90px; object-fit:cover; border-radius:6px; }
+.combined-footer { padding:14px; text-align:center; background:#17324d; color:white; }
+@keyframes demoFade { from { opacity:0; } to { opacity:1; } }
+@media(max-width:700px) { .combined-header { flex-direction:column; } .combined-main { grid-template-columns:1fr; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q8. Filter Comparison Layout</h2>
+  <div class="demo q8-demo">
+    <section class="comparison-layout">
+  <figure><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Original mountain landscape"><figcaption>Before: Original Image</figcaption></figure>
+  <figure><img class="comparison-filter" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Filtered mountain landscape"><figcaption>After: Brightness Filter (hover to remove)</figcaption></figure>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;comparison-layout&quot;&gt;
+  &lt;figure&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=800&amp;q=80&quot; alt=&quot;Original mountain landscape&quot;&gt;&lt;figcaption&gt;Before: Original Image&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;figure&gt;&lt;img class=&quot;comparison-filter&quot; src=&quot;https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=800&amp;q=80&quot; alt=&quot;Filtered mountain landscape&quot;&gt;&lt;figcaption&gt;After: Brightness Filter (hover to remove)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Two-column comparison; filter fades away on hover */
+.comparison-layout { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.comparison-layout figure { margin:0; padding:12px; border-radius:12px; background:white; box-shadow:0 4px 14px #00000012; }
+.comparison-layout img { display:block; width:100%; height:240px; object-fit:cover; border-radius:8px; }
+.comparison-layout .comparison-filter { filter:brightness(1.5) contrast(1.15); transition:filter .4s ease; }
+.comparison-layout figure:hover .comparison-filter { filter:none; }
+.comparison-layout figcaption { padding:10px 4px 0; text-align:center; font-weight:bold; }
+@media(max-width:700px) { .comparison-layout { grid-template-columns:1fr; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q9. Responsive Design Principles Summary</h2>
+  <div class="demo q9-demo">
+    <section class="principles-grid">
+  <article class="principle-card"><h2>Fluid Layouts</h2><p>Use relative units and flexible columns so content adjusts to available space.</p><code>width: 100%; max-width: 1100px;</code></article>
+  <article class="principle-card"><h2>Flexible Media</h2><p>Prevent images from overflowing their containers.</p><code>img { max-width: 100%; height: auto; }</code></article>
+  <article class="principle-card"><h2>Breakpoints</h2><p>Change layout when the viewport reaches a chosen width.</p><code>@media (max-width: 600px) { ... }</code></article>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;principles-grid&quot;&gt;
+  &lt;article class=&quot;principle-card&quot;&gt;&lt;h2&gt;Fluid Layouts&lt;/h2&gt;&lt;p&gt;Use relative units and flexible columns so content adjusts to available space.&lt;/p&gt;&lt;code&gt;width: 100%; max-width: 1100px;&lt;/code&gt;&lt;/article&gt;
+  &lt;article class=&quot;principle-card&quot;&gt;&lt;h2&gt;Flexible Media&lt;/h2&gt;&lt;p&gt;Prevent images from overflowing their containers.&lt;/p&gt;&lt;code&gt;img { max-width: 100%; height: auto; }&lt;/code&gt;&lt;/article&gt;
+  &lt;article class=&quot;principle-card&quot;&gt;&lt;h2&gt;Breakpoints&lt;/h2&gt;&lt;p&gt;Change layout when the viewport reaches a chosen width.&lt;/p&gt;&lt;code&gt;@media (max-width: 600px) { ... }&lt;/code&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Three-column Grid with gradient hover effect */
+.principles-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.principle-card { padding:20px; border:1px solid #dbe4ee; border-radius:12px; background:white; transition:background .3s ease,color .3s ease,transform .3s ease; }
+.principle-card h2 { margin-top:0; }
+.principle-card code { display:block; padding:9px; overflow-wrap:anywhere; border-radius:6px; background:#eef2f6; color:#172033; }
+.principle-card:hover { background:linear-gradient(135deg,#1769aa,#6a4c93); color:white; transform:translateY(-4px); }
+.principle-card:hover code { background:#ffffffeb; color:#172033; }
+@media(max-width:600px) { .principles-grid { grid-template-columns:1fr; } }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q10. Responsive Dashboard Summary</h2>
+  <div class="demo q10-demo">
+    <div class="dashboard-layout">
+  <header class="dashboard-header"><h1>Responsive Dashboard</h1><span>Overview</span></header>
+  <aside class="dashboard-sidebar"><h2>Navigation</h2><nav><a href="#filters">Filters</a><a href="#type">Typography</a><a href="#media">Media Queries</a><a href="#links">Cheat Sheet Links</a></nav></aside>
+  <main class="dashboard-content">
+    <article class="dashboard-card" id="filters"><h2>Filters</h2><p>Use CSS filters to change image appearance.</p><code>filter: grayscale(100%);</code></article>
+    <article class="dashboard-card" id="type"><h2>Typography</h2><p>Scale text to fit different screens.</p><code>font-size: clamp(1rem, 2vw, 1.5rem);</code></article>
+    <article class="dashboard-card" id="media"><h2>Media Queries</h2><p>Adapt styles to screen width.</p><code>@media (max-width: 750px) { ... }</code></article>
+    <article class="dashboard-card" id="links"><h2>Cheat Sheet Links</h2><p>Keep useful responsive CSS rules together for quick reference.</p><a href="#filters">Review filters</a></article>
+  </main>
+</div>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;div class=&quot;dashboard-layout&quot;&gt;
+  &lt;header class=&quot;dashboard-header&quot;&gt;&lt;h1&gt;Responsive Dashboard&lt;/h1&gt;&lt;span&gt;Overview&lt;/span&gt;&lt;/header&gt;
+  &lt;aside class=&quot;dashboard-sidebar&quot;&gt;&lt;h2&gt;Navigation&lt;/h2&gt;&lt;nav&gt;&lt;a href=&quot;#filters&quot;&gt;Filters&lt;/a&gt;&lt;a href=&quot;#type&quot;&gt;Typography&lt;/a&gt;&lt;a href=&quot;#media&quot;&gt;Media Queries&lt;/a&gt;&lt;a href=&quot;#links&quot;&gt;Cheat Sheet Links&lt;/a&gt;&lt;/nav&gt;&lt;/aside&gt;
+  &lt;main class=&quot;dashboard-content&quot;&gt;
+    &lt;article class=&quot;dashboard-card&quot; id=&quot;filters&quot;&gt;&lt;h2&gt;Filters&lt;/h2&gt;&lt;p&gt;Use CSS filters to change image appearance.&lt;/p&gt;&lt;code&gt;filter: grayscale(100%);&lt;/code&gt;&lt;/article&gt;
+    &lt;article class=&quot;dashboard-card&quot; id=&quot;type&quot;&gt;&lt;h2&gt;Typography&lt;/h2&gt;&lt;p&gt;Scale text to fit different screens.&lt;/p&gt;&lt;code&gt;font-size: clamp(1rem, 2vw, 1.5rem);&lt;/code&gt;&lt;/article&gt;
+    &lt;article class=&quot;dashboard-card&quot; id=&quot;media&quot;&gt;&lt;h2&gt;Media Queries&lt;/h2&gt;&lt;p&gt;Adapt styles to screen width.&lt;/p&gt;&lt;code&gt;@media (max-width: 750px) { ... }&lt;/code&gt;&lt;/article&gt;
+    &lt;article class=&quot;dashboard-card&quot; id=&quot;links&quot;&gt;&lt;h2&gt;Cheat Sheet Links&lt;/h2&gt;&lt;p&gt;Keep useful responsive CSS rules together for quick reference.&lt;/p&gt;&lt;a href=&quot;#filters&quot;&gt;Review filters&lt;/a&gt;&lt;/article&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Grid dashboard; sidebar moves above content below 750px */
+.dashboard-layout { min-height:420px; display:grid; grid-template-columns:220px minmax(0,1fr); grid-template-rows:auto 1fr; grid-template-areas:&quot;header header&quot; &quot;sidebar content&quot;; gap:14px; }
+.dashboard-header { grid-area:header; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:16px; border-radius:10px; background:#17324d; color:white; animation:dashFade .7s ease both; }
+.dashboard-header h1 { margin:0; font-size:1.35rem; }
+.dashboard-sidebar { grid-area:sidebar; padding:16px; border-radius:10px; background:#e5eef7; }
+.dashboard-sidebar nav { display:flex; flex-direction:column; gap:12px; }
+.dashboard-sidebar a { color:#17324d; text-decoration:none; }
+.dashboard-sidebar a:hover { text-decoration:underline; }
+.dashboard-content { grid-area:content; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-content:start; }
+.dashboard-card { padding:16px; border:1px solid #dce4ed; border-radius:10px; background:white; box-shadow:0 2px 8px #0000000d; animation:dashFade .7s ease both; transition:transform .25s,box-shadow .25s; }
+.dashboard-card:hover { transform:scale(1.025); box-shadow:0 9px 20px #00000018; }
+.dashboard-card h2 { margin-top:0; }
+.dashboard-card code { overflow-wrap:anywhere; }
+@keyframes dashFade { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:750px) { .dashboard-layout { grid-template-columns:1fr; grid-template-areas:&quot;header&quot; &quot;sidebar&quot; &quot;content&quot;; } .dashboard-content { grid-template-columns:1fr; } .dashboard-header { flex-direction:column; align-items:flex-start; } }</code></pre></div>
+  </div>
+</section>
+</div>
+</body>
+</html>

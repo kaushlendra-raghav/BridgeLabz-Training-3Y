@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 7 — All 10 CSS Answers</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;line-height:1.55;color:#202d3a;background:#f4f7fb}.page-wrap{max-width:1200px;margin:auto;padding:24px}.assignment-title{text-align:center;margin:8px 0 10px;color:#173d68}.intro{text-align:center;color:#526173;margin-bottom:28px}.question{background:white;margin:0 0 28px;padding:22px;border:1px solid #dce3ea;border-radius:12px;box-shadow:0 2px 8px #00000008}.question h2{margin-top:0;color:#173d68}.demo{padding:16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}.code-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.code-panel{min-width:0}.code-panel h3{margin:0 0 6px;font-size:1rem}.code-panel pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#101827;color:#e6edf3;padding:14px;border-radius:8px;font-size:12px;line-height:1.45;max-height:440px;overflow:auto}.note{font-size:.9rem;color:#526173}@media(max-width:760px){.page-wrap{padding:12px}.code-grid{grid-template-columns:1fr}.question{padding:14px}}
+.q1-demo /* Different border styles, .q1-demo padding, .q1-demo rounded corners and hover transition */
+.border-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:16px; }.q1-demo .border-box{ padding:12px; border-width:4px; border-color:#2475a8; border-radius:12px; background:#f0f8ff; transition:border-color .3s ease; }.q1-demo .border-box:hover{ border-color:#e05252; }.q1-demo .solid{ border-style:solid; }.q1-demo .dashed{ border-style:dashed; padding:20px; }.q1-demo .double{ border-style:double; padding:16px; }.q1-demo .groove{ border-style:groove; border-radius:24px; }.q2-demo /* Demonstrates px, .q2-demo %, .q2-demo vh, .q2-demo em, .q2-demo min-height, .q2-demo max-width and overflow */
+.size-stage{ min-height:300px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:18px; padding:20px; background:#f2f5f9; }.q2-demo .size-box{ display:flex; justify-content:center; align-items:center; text-align:center; padding:12px; border-radius:10px; color:#172033; }.q2-demo .size-one{ width:180px; height:100px; background:#ffd6a5; }.q2-demo .size-two{ width:40%; max-width:280px; min-height:8em; background:#caffbf; }.q2-demo .size-three{ width:22vw; min-width:130px; height:20vh; min-height:100px; overflow:auto; background:#bde0fe; }.q3-demo /* Fixed header/footer and a parallax-like fixed background */
+.gradient-header{ position:sticky; top:0; z-index:2; padding:16px; text-align:center; color:white; background:#17324d; font-weight:bold; }.q3-demo .gradient-main{ padding:20px; }.q3-demo .linear-section, .q3-demo .radial-section{ min-height:220px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; margin-bottom:18px; border-radius:12px; color:#172033; }.q3-demo .linear-section{ background:linear-gradient(120deg,#a8edea,#fed6e3); background-attachment:fixed; }.q3-demo .radial-section{ background:radial-gradient(circle,#fff3b0 0%,#ffd6a5 45%,#f28482 100%); }.q3-demo .gradient-footer{ position:sticky; bottom:0; padding:14px; text-align:center; color:white; background:#17324d; }.q4-demo /* Three card shadows, .q4-demo heading text-shadow, .q4-demo and smooth lift on hover */
+.shadow-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }.q4-demo .shadow-card{ flex:1 1 180px; max-width:280px; padding:22px; background:white; border-radius:12px; transition:transform .3s ease,box-shadow .3s ease; }.q4-demo .shadow-card h2{ text-shadow:2px 2px 3px #aab4c0; }.q4-demo .shadow-soft{ box-shadow:0 4px 12px #00000018; }.q4-demo .shadow-hard{ box-shadow:0 8px 0 #cbd5e1,0 12px 24px #00000020; }.q4-demo .shadow-colored{ box-shadow:0 6px 18px #6c63ff35; }.q4-demo .shadow-card:hover{ transform:translateY(-8px); box-shadow:0 16px 30px #00000025; }.q5-demo /* Attribute selectors: match input type and href beginning with https */
+.selector-demo input[type="text"]{ padding:10px; border:2px solid #9aa8b8; border-radius:6px; }.q5-demo .selector-demo a[href^="https"]{ color:#087443; font-weight:bold; }.q5-demo /* Pseudo-classes: hover, .q5-demo focus and nth-child */
+.selector-demo a:hover{ color:#d94841; }.q5-demo .selector-demo input:focus{ outline:3px solid #8ecae6; }.q5-demo .selector-list li:nth-child(2){ background:#eef6ff; }.q5-demo /* Pseudo-elements: add decorative content before and after */
+.selector-demo h2::before{ content:"★ "; color:#e09f3e; }.q5-demo .selector-demo h2::after{ content:""; display:block; width:70px; height:3px; background:#2475a8; }.q5-demo /* Combinators: descendant, .q5-demo child (>), .q5-demo adjacent sibling (+), .q5-demo general sibling (~) */
+.selector-parent p{ padding:5px; }.q5-demo .selector-parent > p{ border-left:3px solid #2475a8; }.q5-demo .selector-note + ul{ margin-top:8px; }.q5-demo .sibling-target + p{ color:#a33; }.q5-demo .sibling-target ~ p{ text-decoration:underline; }.q6-demo /* Each transform activates on hover with the required transition */
+.transform-row{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:28px; }.q6-demo .transform-row figure{ margin:12px; text-align:center; }.q6-demo .transform-box{ width:115px; height:95px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:#bde0fe; color:#17324d; font-weight:bold; transition:all .4s ease; }.q6-demo .rotate-box:hover{ transform:rotate(12deg); }.q6-demo .scale-box:hover{ transform:scale(1.15); }.q6-demo .translate-box:hover{ transform:translateY(-12px); }.q6-demo .skew-box:hover{ transform:skew(-8deg); }.q6-demo .transform-row figcaption{ margin-top:18px; }.q7-demo /* Font families, .q7-demo weights, .q7-demo sizes, .q7-demo spacing and semantic text elements */
+.typography-article{ max-width:760px; margin:auto; padding:18px; background:white; border-radius:10px; }.q7-demo .typography-article h2{ font-family:Arial,sans-serif; font-weight:700; letter-spacing:1px; text-align:center; }.q7-demo .typography-article p{ font-family:Verdana,sans-serif; font-size:16px; line-height:1.8; text-align:left; }.q7-demo .typography-article .serif-example{ font-family:Georgia,serif; }.q7-demo .typography-article .large-example{ font-size:1.25em; font-weight:600; }.q7-demo .typography-article strong{ color:#173d68; }.q7-demo .typography-article em{ color:#a23b72; }.q7-demo .typography-article mark{ background:#fff0a8; color:#513c00; padding:2px 4px; }.q7-demo .typography-article .first-paragraph::first-letter{ float:left; font-size:2.5em; line-height:1; padding-right:5px; color:#2475a8; font-weight:bold; }.q7-demo .typography-article .first-paragraph::first-line{ letter-spacing:.4px; }.q8-demo /* Colored layers show margin, .q8-demo border, .q8-demo padding and content */
+.box-model-stage{ display:flex; justify-content:center; align-items:center; padding:18px; }.q8-demo .margin-layer{ width:min(100%,520px); padding:24px; background:#fff0c2; outline:2px dashed #b58900; text-align:center; }.q8-demo .border-layer{ padding:18px; border:8px solid #e07a5f; background:#ffe1d6; }.q8-demo .padding-layer{ padding:22px; background:#cdeac0; }.q8-demo .content-layer{ padding:18px; background:#bde0fe; }.q8-demo .layer-label{ display:block; font-size:.75rem; font-weight:bold; letter-spacing:1px; margin-bottom:8px; }.q8-demo .box-sizing-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:18px; }.q8-demo .sizing-default, .q8-demo .sizing-border{ width:220px; padding:18px; border:5px solid #2475a8; background:#eaf4ff; text-align:center; }.q8-demo .sizing-default{ box-sizing:content-box; }.q8-demo .sizing-border{ box-sizing:border-box; }.q9-demo /* Form spacing, .q9-demo border radius, .q9-demo subtle shadows and focus outlines */
+.focus-form{ max-width:480px; margin:auto; display:flex; flex-direction:column; gap:10px; padding:22px; background:white; border-radius:12px; box-shadow:0 5px 18px #00000012; }.q9-demo .focus-form input, .q9-demo .focus-form textarea{ width:100%; padding:11px; border:1px solid #aab6c4; border-radius:7px; font:inherit; }.q9-demo .focus-form input:focus, .q9-demo .focus-form textarea:focus{ outline:3px solid #5aa9e6; outline-offset:3px; border-color:#1769aa; }.q9-demo .focus-form textarea{ resize:vertical; }.q9-demo .focus-form button{ margin-top:6px; padding:11px; border:0; border-radius:7px; color:white; background:#173d68; cursor:pointer; }.q9-demo .focus-form button:focus{ outline:3px dashed #e09f3e; outline-offset:3px; }.q9-demo .focus-form button:hover{ background:#245b91; }.q10-demo /* Five-link navbar, .q10-demo active link, .q10-demo hover transition and mobile stacking */
+.nav-header{ background:#17324d; padding:12px; }.q10-demo .main-nav{ display:flex; justify-content:center; flex-wrap:wrap; gap:8px; }.q10-demo .nav-link{ padding:10px 18px; color:white; text-decoration:none; border:1px solid #63809b; border-radius:6px; transition:all .3s ease; }.q10-demo .nav-link:hover{ background:#fff; color:#17324d; border-color:white; }.q10-demo .nav-link.active{ background:#e09f3e; color:#172033; border-color:#e09f3e; font-weight:bold; }.q10-demo .nav-content{ min-height:160px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; }.q10-demo .nav-footer{ padding:14px; text-align:center; color:white; background:#17324d; }@media(max-width:700px){.q10-demo .main-nav{ flex-direction:column; }.q10-demo .nav-link{ text-align:center; } }
+/* Keep the embedded examples visually contained in this one-file reference. */
+.q3-demo .gradient-main{padding:12px}
+.q3-demo .linear-section,.q3-demo .radial-section{min-height:150px}
+.q8-demo .box-model-stage{padding:8px}
+.q8-demo .margin-layer{max-width:100%}
+.q10-demo .nav-content{min-height:120px}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<h1 class="assignment-title">Assignment 7: CSS Styling and Layout</h1>
+<p class="intro">All 10 answers in one HTML file — each question includes a live demonstration and its HTML and CSS source code.</p>
+<p class="note">For submission, your PDF requests separate HTML and CSS files for each question. This combined file is provided as a single reference; copy each section's HTML and CSS into separate files if required. No JavaScript or external frameworks are used.</p>
+
+<section class="question">
+  <h2>Q1. Borders and Padding Demonstration</h2>
+  <div class="demo q1-demo">
+    <section class="border-row">
+  <div class="border-box solid">Solid border<br>Padding: 12px</div>
+  <div class="border-box dashed">Dashed border<br>Padding: 20px</div>
+  <div class="border-box double">Double border<br>Padding: 16px</div>
+  <div class="border-box groove">Groove border<br>Rounded corners</div>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;border-row&quot;&gt;
+  &lt;div class=&quot;border-box solid&quot;&gt;Solid border&lt;br&gt;Padding: 12px&lt;/div&gt;
+  &lt;div class=&quot;border-box dashed&quot;&gt;Dashed border&lt;br&gt;Padding: 20px&lt;/div&gt;
+  &lt;div class=&quot;border-box double&quot;&gt;Double border&lt;br&gt;Padding: 16px&lt;/div&gt;
+  &lt;div class=&quot;border-box groove&quot;&gt;Groove border&lt;br&gt;Rounded corners&lt;/div&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Different border styles, padding, rounded corners and hover transition */
+.border-row { display:flex; flex-wrap:wrap; justify-content:center; align-items:stretch; gap:16px; }
+.border-box { padding:12px; border-width:4px; border-color:#2475a8; border-radius:12px; background:#f0f8ff; transition:border-color .3s ease; }
+.border-box:hover { border-color:#e05252; }
+.solid { border-style:solid; }
+.dashed { border-style:dashed; padding:20px; }
+.double { border-style:double; padding:16px; }
+.groove { border-style:groove; border-radius:24px; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q2. Height and Width Practice Layout</h2>
+  <div class="demo q2-demo">
+    <section class="size-stage">
+  <div class="size-box size-one">Width: 180px<br>Height: 100px</div>
+  <div class="size-box size-two">Width: 40%<br>Min-height: 8em</div>
+  <div class="size-box size-three">Width: 22vw<br>Height: 20vh<br>Overflow: auto</div>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;size-stage&quot;&gt;
+  &lt;div class=&quot;size-box size-one&quot;&gt;Width: 180px&lt;br&gt;Height: 100px&lt;/div&gt;
+  &lt;div class=&quot;size-box size-two&quot;&gt;Width: 40%&lt;br&gt;Min-height: 8em&lt;/div&gt;
+  &lt;div class=&quot;size-box size-three&quot;&gt;Width: 22vw&lt;br&gt;Height: 20vh&lt;br&gt;Overflow: auto&lt;/div&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Demonstrates px, %, vh, em, min-height, max-width and overflow */
+.size-stage { min-height:300px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:18px; padding:20px; background:#f2f5f9; }
+.size-box { display:flex; justify-content:center; align-items:center; text-align:center; padding:12px; border-radius:10px; color:#172033; }
+.size-one { width:180px; height:100px; background:#ffd6a5; }
+.size-two { width:40%; max-width:280px; min-height:8em; background:#caffbf; }
+.size-three { width:22vw; min-width:130px; height:20vh; min-height:100px; overflow:auto; background:#bde0fe; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q3. Gradient Background Webpage</h2>
+  <div class="demo q3-demo">
+    <header class="gradient-header">Gradient Showcase</header>
+<main class="gradient-main">
+  <section class="linear-section"><h2>Linear Gradient</h2><p>This background blends colors in a straight direction.</p></section>
+  <section class="radial-section"><h2>Radial Gradient</h2><p>This background spreads colors outward from a central point.</p></section>
+</main>
+<footer class="gradient-footer">© 2026 Gradient Showcase</footer>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;header class=&quot;gradient-header&quot;&gt;Gradient Showcase&lt;/header&gt;
+&lt;main class=&quot;gradient-main&quot;&gt;
+  &lt;section class=&quot;linear-section&quot;&gt;&lt;h2&gt;Linear Gradient&lt;/h2&gt;&lt;p&gt;This background blends colors in a straight direction.&lt;/p&gt;&lt;/section&gt;
+  &lt;section class=&quot;radial-section&quot;&gt;&lt;h2&gt;Radial Gradient&lt;/h2&gt;&lt;p&gt;This background spreads colors outward from a central point.&lt;/p&gt;&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer class=&quot;gradient-footer&quot;&gt;© 2026 Gradient Showcase&lt;/footer&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Fixed header/footer and a parallax-like fixed background */
+.gradient-header { position:sticky; top:0; z-index:2; padding:16px; text-align:center; color:white; background:#17324d; font-weight:bold; }
+.gradient-main { padding:20px; }
+.linear-section,.radial-section { min-height:220px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; margin-bottom:18px; border-radius:12px; color:#172033; }
+.linear-section { background:linear-gradient(120deg,#a8edea,#fed6e3); background-attachment:fixed; }
+.radial-section { background:radial-gradient(circle,#fff3b0 0%,#ffd6a5 45%,#f28482 100%); }
+.gradient-footer { position:sticky; bottom:0; padding:14px; text-align:center; color:white; background:#17324d; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q4. Shadows and Depth Effect Layout</h2>
+  <div class="demo q4-demo">
+    <section class="shadow-row">
+  <article class="shadow-card shadow-soft"><h2>Soft Shadow</h2><p>A gentle shadow creates a light floating effect.</p></article>
+  <article class="shadow-card shadow-hard"><h2>Deep Shadow</h2><p>A stronger shadow creates more depth.</p></article>
+  <article class="shadow-card shadow-colored"><h2>Colored Shadow</h2><p>A colored shadow adds a visual accent.</p></article>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;shadow-row&quot;&gt;
+  &lt;article class=&quot;shadow-card shadow-soft&quot;&gt;&lt;h2&gt;Soft Shadow&lt;/h2&gt;&lt;p&gt;A gentle shadow creates a light floating effect.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;shadow-card shadow-hard&quot;&gt;&lt;h2&gt;Deep Shadow&lt;/h2&gt;&lt;p&gt;A stronger shadow creates more depth.&lt;/p&gt;&lt;/article&gt;
+  &lt;article class=&quot;shadow-card shadow-colored&quot;&gt;&lt;h2&gt;Colored Shadow&lt;/h2&gt;&lt;p&gt;A colored shadow adds a visual accent.&lt;/p&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Three card shadows, heading text-shadow, and smooth lift on hover */
+.shadow-row { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+.shadow-card { flex:1 1 180px; max-width:280px; padding:22px; background:white; border-radius:12px; transition:transform .3s ease,box-shadow .3s ease; }
+.shadow-card h2 { text-shadow:2px 2px 3px #aab4c0; }
+.shadow-soft { box-shadow:0 4px 12px #00000018; }
+.shadow-hard { box-shadow:0 8px 0 #cbd5e1,0 12px 24px #00000020; }
+.shadow-colored { box-shadow:0 6px 18px #6c63ff35; }
+.shadow-card:hover { transform:translateY(-8px); box-shadow:0 16px 30px #00000025; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q5. Advanced CSS Selectors</h2>
+  <div class="demo q5-demo">
+    <section class="selector-demo">
+  <h2>Selector Practice</h2>
+  <label>Name: <input type="text" placeholder="Enter your name"></label>
+  <p class="selector-note">Hover or focus on the input and links.</p>
+  <ul class="selector-list">
+    <li><a href="https://example.com">Secure example link</a><span> — HTTPS link</span></li>
+    <li><a href="https://developer.mozilla.org">MDN Web Docs</a></li>
+    <li><a href="http://example.org">Non-HTTPS example link</a></li>
+  </ul>
+  <div class="selector-parent"><p>Direct child paragraph</p><div><p>Nested descendant paragraph</p></div><p class="sibling-target">Adjacent sibling target</p><p>General sibling target</p></div>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;selector-demo&quot;&gt;
+  &lt;h2&gt;Selector Practice&lt;/h2&gt;
+  &lt;label&gt;Name: &lt;input type=&quot;text&quot; placeholder=&quot;Enter your name&quot;&gt;&lt;/label&gt;
+  &lt;p class=&quot;selector-note&quot;&gt;Hover or focus on the input and links.&lt;/p&gt;
+  &lt;ul class=&quot;selector-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;https://example.com&quot;&gt;Secure example link&lt;/a&gt;&lt;span&gt; — HTTPS link&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org&quot;&gt;MDN Web Docs&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://example.org&quot;&gt;Non-HTTPS example link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class=&quot;selector-parent&quot;&gt;&lt;p&gt;Direct child paragraph&lt;/p&gt;&lt;div&gt;&lt;p&gt;Nested descendant paragraph&lt;/p&gt;&lt;/div&gt;&lt;p class=&quot;sibling-target&quot;&gt;Adjacent sibling target&lt;/p&gt;&lt;p&gt;General sibling target&lt;/p&gt;&lt;/div&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Attribute selectors: match input type and href beginning with https */
+.selector-demo input[type=&quot;text&quot;] { padding:10px; border:2px solid #9aa8b8; border-radius:6px; }
+.selector-demo a[href^=&quot;https&quot;] { color:#087443; font-weight:bold; }
+/* Pseudo-classes: hover, focus and nth-child */
+.selector-demo a:hover { color:#d94841; }
+.selector-demo input:focus { outline:3px solid #8ecae6; }
+.selector-list li:nth-child(2) { background:#eef6ff; }
+/* Pseudo-elements: add decorative content before and after */
+.selector-demo h2::before { content:&quot;★ &quot;; color:#e09f3e; }
+.selector-demo h2::after { content:&quot;&quot;; display:block; width:70px; height:3px; background:#2475a8; }
+/* Combinators: descendant, child (&gt;), adjacent sibling (+), general sibling (~) */
+.selector-parent p { padding:5px; }
+.selector-parent &gt; p { border-left:3px solid #2475a8; }
+.selector-note + ul { margin-top:8px; }
+.sibling-target + p { color:#a33; }
+.sibling-target ~ p { text-decoration:underline; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q6. CSS Transformations Showcase</h2>
+  <div class="demo q6-demo">
+    <section class="transform-row">
+  <figure><div class="transform-box rotate-box">Rotate</div><figcaption>rotate(12deg)</figcaption></figure>
+  <figure><div class="transform-box scale-box">Scale</div><figcaption>scale(1.15)</figcaption></figure>
+  <figure><div class="transform-box translate-box">Translate</div><figcaption>translateY(-12px)</figcaption></figure>
+  <figure><div class="transform-box skew-box">Skew</div><figcaption>skew(-8deg)</figcaption></figure>
+</section>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;transform-row&quot;&gt;
+  &lt;figure&gt;&lt;div class=&quot;transform-box rotate-box&quot;&gt;Rotate&lt;/div&gt;&lt;figcaption&gt;rotate(12deg)&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;figure&gt;&lt;div class=&quot;transform-box scale-box&quot;&gt;Scale&lt;/div&gt;&lt;figcaption&gt;scale(1.15)&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;figure&gt;&lt;div class=&quot;transform-box translate-box&quot;&gt;Translate&lt;/div&gt;&lt;figcaption&gt;translateY(-12px)&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;figure&gt;&lt;div class=&quot;transform-box skew-box&quot;&gt;Skew&lt;/div&gt;&lt;figcaption&gt;skew(-8deg)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/section&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Each transform activates on hover with the required transition */
+.transform-row { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:28px; }
+.transform-row figure { margin:12px; text-align:center; }
+.transform-box { width:115px; height:95px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:#bde0fe; color:#17324d; font-weight:bold; transition:all .4s ease; }
+.rotate-box:hover { transform:rotate(12deg); }
+.scale-box:hover { transform:scale(1.15); }
+.translate-box:hover { transform:translateY(-12px); }
+.skew-box:hover { transform:skew(-8deg); }
+.transform-row figcaption { margin-top:18px; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q7. Typography and Text Styling</h2>
+  <div class="demo q7-demo">
+    <article class="typography-article">
+  <h2>Why Good Typography Matters</h2>
+  <p class="first-paragraph">Typography helps readers understand information quickly. Clear fonts, suitable sizes, and balanced spacing make a webpage more comfortable to read.</p>
+  <p>Use <strong>strong emphasis</strong> for important information, <em>emphasis</em> for a subtle change in tone, and <mark>highlighting</mark> for key terms.</p>
+  <p class="serif-example">This sentence demonstrates a serif font family.</p>
+  <p class="large-example">This sentence uses a larger font size.</p>
+</article>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;article class=&quot;typography-article&quot;&gt;
+  &lt;h2&gt;Why Good Typography Matters&lt;/h2&gt;
+  &lt;p class=&quot;first-paragraph&quot;&gt;Typography helps readers understand information quickly. Clear fonts, suitable sizes, and balanced spacing make a webpage more comfortable to read.&lt;/p&gt;
+  &lt;p&gt;Use &lt;strong&gt;strong emphasis&lt;/strong&gt; for important information, &lt;em&gt;emphasis&lt;/em&gt; for a subtle change in tone, and &lt;mark&gt;highlighting&lt;/mark&gt; for key terms.&lt;/p&gt;
+  &lt;p class=&quot;serif-example&quot;&gt;This sentence demonstrates a serif font family.&lt;/p&gt;
+  &lt;p class=&quot;large-example&quot;&gt;This sentence uses a larger font size.&lt;/p&gt;
+&lt;/article&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Font families, weights, sizes, spacing and semantic text elements */
+.typography-article { max-width:760px; margin:auto; padding:18px; background:white; border-radius:10px; }
+.typography-article h2 { font-family:Arial,sans-serif; font-weight:700; letter-spacing:1px; text-align:center; }
+.typography-article p { font-family:Verdana,sans-serif; font-size:16px; line-height:1.8; text-align:left; }
+.typography-article .serif-example { font-family:Georgia,serif; }
+.typography-article .large-example { font-size:1.25em; font-weight:600; }
+.typography-article strong { color:#173d68; }
+.typography-article em { color:#a23b72; }
+.typography-article mark { background:#fff0a8; color:#513c00; padding:2px 4px; }
+.typography-article .first-paragraph::first-letter { float:left; font-size:2.5em; line-height:1; padding-right:5px; color:#2475a8; font-weight:bold; }
+.typography-article .first-paragraph::first-line { letter-spacing:.4px; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q8. Box Model Exploration</h2>
+  <div class="demo q8-demo">
+    <section class="box-model-stage">
+  <div class="margin-layer"><span class="layer-label">MARGIN</span>
+    <div class="border-layer"><span class="layer-label">BORDER</span>
+      <div class="padding-layer"><span class="layer-label">PADDING</span>
+        <div class="content-layer"><strong>CONTENT</strong><p>Text or image content appears here.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="box-sizing-row">
+  <div class="sizing-default">content-box<br>width: 160px + padding + border</div>
+  <div class="sizing-border">border-box<br>width includes padding + border</div>
+</div>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;section class=&quot;box-model-stage&quot;&gt;
+  &lt;div class=&quot;margin-layer&quot;&gt;&lt;span class=&quot;layer-label&quot;&gt;MARGIN&lt;/span&gt;
+    &lt;div class=&quot;border-layer&quot;&gt;&lt;span class=&quot;layer-label&quot;&gt;BORDER&lt;/span&gt;
+      &lt;div class=&quot;padding-layer&quot;&gt;&lt;span class=&quot;layer-label&quot;&gt;PADDING&lt;/span&gt;
+        &lt;div class=&quot;content-layer&quot;&gt;&lt;strong&gt;CONTENT&lt;/strong&gt;&lt;p&gt;Text or image content appears here.&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;div class=&quot;box-sizing-row&quot;&gt;
+  &lt;div class=&quot;sizing-default&quot;&gt;content-box&lt;br&gt;width: 160px + padding + border&lt;/div&gt;
+  &lt;div class=&quot;sizing-border&quot;&gt;border-box&lt;br&gt;width includes padding + border&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Colored layers show margin, border, padding and content */
+.box-model-stage { display:flex; justify-content:center; align-items:center; padding:18px; }
+.margin-layer { width:min(100%,520px); padding:24px; background:#fff0c2; outline:2px dashed #b58900; text-align:center; }
+.border-layer { padding:18px; border:8px solid #e07a5f; background:#ffe1d6; }
+.padding-layer { padding:22px; background:#cdeac0; }
+.content-layer { padding:18px; background:#bde0fe; }
+.layer-label { display:block; font-size:.75rem; font-weight:bold; letter-spacing:1px; margin-bottom:8px; }
+.box-sizing-row { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:18px; }
+.sizing-default,.sizing-border { width:220px; padding:18px; border:5px solid #2475a8; background:#eaf4ff; text-align:center; }
+.sizing-default { box-sizing:content-box; }
+.sizing-border { box-sizing:border-box; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q9. Outline and Focus Styling Form</h2>
+  <div class="demo q9-demo">
+    <form class="focus-form" action="#" method="post">
+  <h2>Contact Form</h2>
+  <label for="focus-name">Name</label><input id="focus-name" name="name" type="text" placeholder="Your name" required>
+  <label for="focus-email">Email</label><input id="focus-email" name="email" type="email" placeholder="you@example.com" required>
+  <label for="focus-message">Message</label><textarea id="focus-message" name="message" rows="4" placeholder="Write your message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;form class=&quot;focus-form&quot; action=&quot;#&quot; method=&quot;post&quot;&gt;
+  &lt;h2&gt;Contact Form&lt;/h2&gt;
+  &lt;label for=&quot;focus-name&quot;&gt;Name&lt;/label&gt;&lt;input id=&quot;focus-name&quot; name=&quot;name&quot; type=&quot;text&quot; placeholder=&quot;Your name&quot; required&gt;
+  &lt;label for=&quot;focus-email&quot;&gt;Email&lt;/label&gt;&lt;input id=&quot;focus-email&quot; name=&quot;email&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; required&gt;
+  &lt;label for=&quot;focus-message&quot;&gt;Message&lt;/label&gt;&lt;textarea id=&quot;focus-message&quot; name=&quot;message&quot; rows=&quot;4&quot; placeholder=&quot;Write your message&quot; required&gt;&lt;/textarea&gt;
+  &lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Form spacing, border radius, subtle shadows and focus outlines */
+.focus-form { max-width:480px; margin:auto; display:flex; flex-direction:column; gap:10px; padding:22px; background:white; border-radius:12px; box-shadow:0 5px 18px #00000012; }
+.focus-form input,.focus-form textarea { width:100%; padding:11px; border:1px solid #aab6c4; border-radius:7px; font:inherit; }
+.focus-form input:focus,.focus-form textarea:focus { outline:3px solid #5aa9e6; outline-offset:3px; border-color:#1769aa; }
+.focus-form textarea { resize:vertical; }
+.focus-form button { margin-top:6px; padding:11px; border:0; border-radius:7px; color:white; background:#173d68; cursor:pointer; }
+.focus-form button:focus { outline:3px dashed #e09f3e; outline-offset:3px; }
+.focus-form button:hover { background:#245b91; }</code></pre></div>
+  </div>
+</section>
+<section class="question">
+  <h2>Q10. Responsive Navigation Bar with Transitions</h2>
+  <div class="demo q10-demo">
+    <header class="nav-header">
+  <nav class="main-nav" aria-label="Main navigation">
+    <a class="nav-link active" href="#home">Home</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#portfolio">Portfolio</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </nav>
+</header>
+<main class="nav-content" id="home"><h2>Welcome</h2><p>This example demonstrates a responsive navigation bar with hover transitions.</p></main>
+<footer class="nav-footer">© 2026 My Website</footer>
+  </div>
+  <div class="code-grid">
+    <div class="code-panel"><h3>HTML Code</h3><pre><code>&lt;header class=&quot;nav-header&quot;&gt;
+  &lt;nav class=&quot;main-nav&quot; aria-label=&quot;Main navigation&quot;&gt;
+    &lt;a class=&quot;nav-link active&quot; href=&quot;#home&quot;&gt;Home&lt;/a&gt;
+    &lt;a class=&quot;nav-link&quot; href=&quot;#about&quot;&gt;About&lt;/a&gt;
+    &lt;a class=&quot;nav-link&quot; href=&quot;#services&quot;&gt;Services&lt;/a&gt;
+    &lt;a class=&quot;nav-link&quot; href=&quot;#portfolio&quot;&gt;Portfolio&lt;/a&gt;
+    &lt;a class=&quot;nav-link&quot; href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main class=&quot;nav-content&quot; id=&quot;home&quot;&gt;&lt;h2&gt;Welcome&lt;/h2&gt;&lt;p&gt;This example demonstrates a responsive navigation bar with hover transitions.&lt;/p&gt;&lt;/main&gt;
+&lt;footer class=&quot;nav-footer&quot;&gt;© 2026 My Website&lt;/footer&gt;</code></pre></div>
+    <div class="code-panel"><h3>CSS Code</h3><pre><code>/* Five-link navbar, active link, hover transition and mobile stacking */
+.nav-header { background:#17324d; padding:12px; }
+.main-nav { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; }
+.nav-link { padding:10px 18px; color:white; text-decoration:none; border:1px solid #63809b; border-radius:6px; transition:all .3s ease; }
+.nav-link:hover { background:#fff; color:#17324d; border-color:white; }
+.nav-link.active { background:#e09f3e; color:#172033; border-color:#e09f3e; font-weight:bold; }
+.nav-content { min-height:160px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; }
+.nav-footer { padding:14px; text-align:center; color:white; background:#17324d; }
+@media(max-width:700px) { .main-nav { flex-direction:column; } .nav-link { text-align:center; } }</code></pre></div>
+  </div>
+</section>
+</div>
+</body>
+</html>

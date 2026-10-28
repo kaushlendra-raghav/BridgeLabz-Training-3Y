@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Assignment - Answers to All 15 Questions</title>
+</head>
+<body>
+    <header>
+        <h1>HTML Assignment: Answers to All 15 Questions</h1>
+        <p>Complete solutions using HTML only, without CSS or JavaScript.</p>
+    </header>
+    <nav>
+        <h2>Question Index</h2>
+        <ol>
+            <li><a href="#question-1">Question 1</a></li>
+            <li><a href="#question-2">Question 2</a></li>
+            <li><a href="#question-3">Question 3</a></li>
+            <li><a href="#question-4">Question 4</a></li>
+            <li><a href="#question-5">Question 5</a></li>
+            <li><a href="#question-6">Question 6</a></li>
+            <li><a href="#question-7">Question 7</a></li>
+            <li><a href="#question-8">Question 8</a></li>
+            <li><a href="#question-9">Question 9</a></li>
+            <li><a href="#question-10">Question 10</a></li>
+            <li><a href="#question-11">Question 11</a></li>
+            <li><a href="#question-12">Question 12</a></li>
+            <li><a href="#question-13">Question 13</a></li>
+            <li><a href="#question-14">Question 14</a></li>
+            <li><a href="#question-15">Question 15</a></li>
+        </ol>
+    </nav>
+    <main>
+
+    <section id="question-1">
+        <h1>Question 1: Resume - Kaushlendra Raghav</h1>
+        
+    <!-- Header: name and contact information -->
+    <header>
+        <h1>Kaushlendra Raghav</h1>
+        <p>Email: kaushlendra@example.com | Phone: +91-9876543210</p>
+        <p>Location: Mathura, Uttar Pradesh, India</p>
+    </header>
+
+    <!-- Navigation links to page sections -->
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#skills">Skills</a> |
+        <a href="#projects">Projects</a> |
+        <a href="#education">Education</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a Computer Science and Engineering learner focused on Artificial Intelligence and Data Science. I enjoy solving problems and building useful technology projects.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>Data Analysis</li>
+                <li>Machine Learning Fundamentals</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <ol>
+                <li>StudentMate AI: Performance Predictor</li>
+                <li>StudyPilot: Personalized Study Plan and Doubt-Resolution Agent</li>
+                <li>Travel and Tour Management Platform</li>
+            </ol>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Institute</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Tech CSE (AI and Data Science)</td>
+                        <td>GLA University</td>
+                        <td>2024–2028 (expected)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kaushlendra Raghav. All rights reserved.</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-2">
+        <h1>Question 2: Online Store - Product Catalog</h1>
+        
+    <header>
+        <h1>Everyday Essentials Store</h1>
+        <p>Product Catalog</p>
+    </header>
+
+    <main>
+        <table border="1">
+            <caption>Available Products</caption>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Notebook</td>
+                    <td><img src="https://placehold.co/100x80?text=Notebook" alt="Notebook" width="100" height="80"></td>
+                    <td>200-page ruled notebook for everyday writing.</td>
+                    <td>₹120</td>
+                    <td rowspan="2">In stock</td>
+                </tr>
+                <tr>
+                    <td>Ball Pen</td>
+                    <td><img src="https://placehold.co/100x80?text=Ball+Pen" alt="Ball pen" width="100" height="80"></td>
+                    <td>Blue-ink ball pen with a comfortable grip.</td>
+                    <td>₹20</td>
+                </tr>
+                <tr>
+                    <td>Water Bottle</td>
+                    <td><img src="https://placehold.co/100x80?text=Bottle" alt="Water bottle" width="100" height="80"></td>
+                    <td>Reusable 1-litre water bottle.</td>
+                    <td>₹250</td>
+                    <td>In stock</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><strong>Catalog note:</strong> Prices are illustrative.</td>
+                    <td colspan="2">Availability may change</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>For orders, contact store@example.com.</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-3">
+        <h1>Question 3: Course Registration</h1>
+        
+    <header>
+        <h1>Course Registration Form</h1>
+    </header>
+
+    <main>
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Student Details</legend>
+
+                <p>
+                    <label for="student-name">Full Name:</label>
+                    <input type="text" id="student-name" name="student_name" required>
+                </p>
+
+                <p>
+                    <label for="student-email">Email:</label>
+                    <input type="email" id="student-email" name="student_email" required>
+                </p>
+
+                <p>
+                    <label for="course">Select Course:</label>
+                    <select id="course" name="course" required>
+                        <option value="">-- Choose a course --</option>
+                        <option value="html">HTML Fundamentals</option>
+                        <option value="python">Python Programming</option>
+                        <option value="sql">SQL and Databases</option>
+                    </select>
+                </p>
+
+                <p><button type="submit">Register</button> <button type="reset">Reset</button></p>
+            </fieldset>
+        </form>
+
+        <h2>Available Course Schedules</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Monday</td><td>10:00 AM–11:00 AM</td><td>Ms. Sharma</td></tr>
+                <tr><td>Wednesday</td><td>12:00 PM–1:00 PM</td><td>Mr. Verma</td></tr>
+                <tr><td>Friday</td><td>2:00 PM–3:00 PM</td><td>Ms. Khan</td></tr>
+            </tbody>
+        </table>
+    </main>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-4">
+        <h1>Question 4: Company Layout</h1>
+        
+    <!-- Semantic block-level page layout -->
+    <header>
+        <h1>BrightPath Technologies</h1>
+    </header>
+
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#services">Services</a> |
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About the Company</h2>
+            <p>BrightPath Technologies develops practical digital solutions that help organizations work more efficiently.</p>
+        </section>
+
+        <section id="services">
+            <h2>Services Offered</h2>
+            <ul>
+                <li>Web Development</li>
+                <li>Data Analytics</li>
+                <li>Cloud Solutions</li>
+                <li>Technical Consulting</li>
+            </ul>
+        </section>
+    </main>
+
+    <aside>
+        <h2>Message from the CEO</h2>
+        <blockquote>
+            “Our goal is to make technology useful, accessible, and reliable for every customer.”
+        </blockquote>
+        <p>— CEO, BrightPath Technologies</p>
+    </aside>
+
+    <footer id="contact">
+        <p>Email: contact@brightpath.example</p>
+        <p>Address: 21 Innovation Road, New Delhi, India</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-5">
+        <h1>Question 5: University Departments and Courses</h1>
+        
+    <h1>University Structure</h1>
+
+    <ul>
+        <li>School of Engineering
+            <ol>
+                <li>Computer Science Department
+                    <ul>
+                        <li>B.Tech Computer Science
+                            <ol>
+                                <li>Programming Fundamentals</li>
+                                <li>Data Structures</li>
+                                <li>Database Management Systems</li>
+                            </ol>
+                        </li>
+                        <li>B.Tech Artificial Intelligence
+                            <ol>
+                                <li>Machine Learning</li>
+                                <li>Neural Networks</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </li>
+                <li>Electrical Engineering Department
+                    <ul>
+                        <li>B.Tech Electrical Engineering
+                            <ol>
+                                <li>Circuit Theory</li>
+                                <li>Electrical Machines</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li>School of Business
+            <ol>
+                <li>Management Department
+                    <ul>
+                        <li>BBA
+                            <ol>
+                                <li>Marketing</li>
+                                <li>Accounting</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+    </ul>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-6">
+        <h1>Question 6: Spice Garden Restaurant Menu</h1>
+        
+    <header>
+        <h1>Spice Garden Restaurant</h1>
+        <p>Fresh food, warm hospitality</p>
+    </header>
+
+    <nav>
+        <a href="#starters">Starters</a> |
+        <a href="#main-course">Main Course</a> |
+        <a href="#desserts">Desserts</a>
+    </nav>
+
+    <main>
+        <section id="starters">
+            <h2>Starters</h2>
+            <table border="1">
+                <thead><tr><th>Dish Name</th><th>Description</th><th>Price</th></tr></thead>
+                <tbody>
+                    <tr><td>Tomato Soup</td><td>Fresh tomato soup with herbs.</td><td>₹100</td></tr>
+                    <tr><td>Paneer Tikka</td><td>Marinated paneer grilled with spices.</td><td>₹220</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="main-course">
+            <h2>Main Course</h2>
+            <table border="1">
+                <thead><tr><th>Dish Name</th><th>Description</th><th>Price</th></tr></thead>
+                <tbody>
+                    <tr><td>Dal Tadka</td><td>Lentils cooked with traditional spices.</td><td>₹180</td></tr>
+                    <tr><td>Shahi Paneer</td><td>Paneer in a creamy tomato-based gravy.</td><td>₹260</td></tr>
+                    <tr><td>Jeera Rice</td><td>Steamed rice tempered with cumin.</td><td>₹140</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="desserts">
+            <h2>Desserts</h2>
+            <table border="1">
+                <thead><tr><th>Dish Name</th><th>Description</th><th>Price</th></tr></thead>
+                <tbody>
+                    <tr><td>Gulab Jamun</td><td>Soft milk-solid dumplings in syrup.</td><td>₹90</td></tr>
+                    <tr><td>Vanilla Ice Cream</td><td>Classic vanilla-flavoured ice cream.</td><td>₹80</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact: +91-9876543210 | Email: spicegarden@example.com</p>
+        <p>Address: 10 Market Road, Mathura, Uttar Pradesh</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-7">
+        <h1>Question 7: Conference Schedule</h1>
+        
+    <header>
+        <h1>Technology Conference 2026</h1>
+    </header>
+
+    <main>
+        <table border="1">
+            <caption>Conference Sessions</caption>
+            <thead>
+                <tr><th>Session</th><th>Time</th><th>Topic</th><th>Speaker</th></tr>
+            </thead>
+            <tbody>
+                <tr><td rowspan="2">Morning</td><td>9:00 AM</td><td>Opening Keynote</td><td>Dr. Mehta</td></tr>
+                <tr><td>10:00 AM</td><td>AI in Everyday Life</td><td>Ms. Rao</td></tr>
+                <tr><td>Afternoon</td><td>1:00 PM</td><td>Cloud Computing</td><td>Mr. Singh</td></tr>
+                <tr><td>Evening</td><td>4:00 PM</td><td>Future of Data Science</td><td>Dr. Kapoor</td></tr>
+            </tbody>
+            <tfoot>
+                <tr><td colspan="4">Please arrive 15 minutes before your session.</td></tr>
+            </tfoot>
+        </table>
+    </main>
+
+    <footer>
+        <p>Conference Secretariat | conference@example.com</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-8">
+        <h1>Question 8: Student Report Card</h1>
+        
+    <h1 title="Name of the educational institution">Green Valley School</h1>
+    <h2>Student Report Card</h2>
+    <p><strong>Student Name:</strong> Aarav Sharma</p>
+    <p><strong>Class:</strong> X &nbsp; <strong>Roll Number:</strong> 12</p>
+
+    <table border="1">
+        <caption>Marks Obtained</caption>
+        <thead>
+            <tr>
+                <th rowspan="2">Subject</th>
+                <th colspan="2">Marks</th>
+            </tr>
+            <tr><th>Maximum</th><th>Obtained</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>English</td><td>100</td><td>85</td></tr>
+            <tr><td>Mathematics</td><td>100</td><td>92</td></tr>
+            <tr><td>Science</td><td>100</td><td>88</td></tr>
+            <tr><td>Social Studies</td><td>100</td><td>81</td></tr>
+            <tr><td>Computer</td><td>100</td><td>95</td></tr>
+        </tbody>
+        <tfoot>
+            <tr><th colspan="2">Total</th><td>441 / 500</td></tr>
+            <tr><th colspan="2">Percentage</th><td>88.2%</td></tr>
+        </tfoot>
+    </table>
+
+    <p title="This is a sample report card for HTML practice."><small>Note: This is sample data for demonstration only.</small></p>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-9">
+        <h1>Question 9: Top 3 Travel Destinations</h1>
+        
+    <header>
+        <h1>Top 3 Travel Destinations</h1>
+    </header>
+
+    <main>
+        <article>
+            <h2>Manali, Himachal Pradesh</h2>
+            <img src="https://placehold.co/320x180?text=Manali" alt="Illustrative image representing Manali" width="320" height="180">
+            <p>Manali is known for mountain scenery, pine forests, river views, and outdoor activities.</p>
+            <blockquote>“A refreshing mountain escape with beautiful views.”</blockquote>
+        </article>
+
+        <article>
+            <h2>Jaipur, Rajasthan</h2>
+            <img src="https://placehold.co/320x180?text=Jaipur" alt="Illustrative image representing Jaipur" width="320" height="180">
+            <p>Jaipur offers historic forts, colourful markets, traditional crafts, and Rajasthani cuisine.</p>
+            <blockquote>“A wonderful place to explore history and culture.”</blockquote>
+        </article>
+
+        <article>
+            <h2>Goa, India</h2>
+            <img src="https://placehold.co/320x180?text=Goa" alt="Illustrative image representing Goa" width="320" height="180">
+            <p>Goa is popular for its beaches, coastal scenery, Portuguese-influenced heritage, and seafood.</p>
+            <blockquote>“A relaxed coastal destination with something for everyone.”</blockquote>
+        </article>
+    </main>
+
+    <aside>
+        <h2>Travel Tips</h2>
+        <ul>
+            <li>Check the weather before travelling.</li>
+            <li>Carry identification and booking details.</li>
+            <li>Respect local customs and keep places clean.</li>
+            <li>Keep emergency contact details available.</li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>&copy; 2026 Travel Guide. All rights reserved.</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-10">
+        <h1>Question 10: Travel Preference Selection</h1>
+        
+    <h1>Select Your Travel Preferences</h1>
+
+    <form action="#" method="get">
+        <p>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="India" selected>India</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Japan">Japan</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="state">State:</label>
+            <select id="state" name="state">
+                <option value="Uttar Pradesh" selected>Uttar Pradesh</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Rajasthan">Rajasthan</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="city">City:</label>
+            <select id="city" name="city">
+                <option value="Mathura" selected>Mathura</option>
+                <option value="Manali">Manali</option>
+                <option value="Jaipur">Jaipur</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="place">Favorite Tourist Place:</label>
+            <select id="place" name="favorite_place">
+                <option value="Taj Mahal" selected>Taj Mahal</option>
+                <option value="Hadimba Temple">Hadimba Temple</option>
+                <option value="Hawa Mahal">Hawa Mahal</option>
+            </select>
+        </p>
+
+        <p><button type="submit">Submit Choices</button></p>
+    </form>
+
+    <p><strong>Summary of sample choices:</strong> Country: India; State: Uttar Pradesh; City: Mathura; Favorite Tourist Place: Taj Mahal.</p>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-11">
+        <h1>Question 11: Daily Update News</h1>
+        
+    <header>
+        <h1>Daily Update News</h1>
+        <p>Your sample source for current-affairs practice</p>
+    </header>
+
+    <nav>
+        <a href="#sports">Sports</a> |
+        <a href="#technology">Technology</a> |
+        <a href="#politics">Politics</a>
+    </nav>
+
+    <main>
+        <article id="sports">
+            <h2>Community Sports Festival Announced</h2>
+            <p><time datetime="2026-10-28">October 28, 2026</time></p>
+            <p>A local community is planning a sports festival featuring team games and activities for young people.</p>
+            <p>Source: <a href="https://example.com/sports" target="_blank" rel="noopener">Sample Sports Desk</a></p>
+        </article>
+
+        <article id="technology">
+            <h2>Students Explore New Technology Projects</h2>
+            <p><time datetime="2026-10-28">October 28, 2026</time></p>
+            <p>Student teams are presenting ideas involving data analysis, accessible applications, and responsible AI.</p>
+            <p>Source: <a href="https://example.com/technology" target="_blank" rel="noopener">Sample Technology Desk</a></p>
+        </article>
+
+        <article id="politics">
+            <h2>Civic Group Hosts Public Discussion</h2>
+            <p><time datetime="2026-10-28">October 28, 2026</time></p>
+            <p>A civic group has arranged a public discussion about community priorities and local services.</p>
+            <p>Source: <a href="https://example.com/politics" target="_blank" rel="noopener">Sample Politics Desk</a></p>
+        </article>
+    </main>
+
+    <aside>
+        <h2>Popular Topics</h2>
+        <ul>
+            <li>Artificial Intelligence</li>
+            <li>Education</li>
+            <li>Sports</li>
+            <li>Environment</li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>Contact: editor@example.com</p>
+        <p>&copy; 2026 Daily Update News. Sample educational content.</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-12">
+        <h1>Question 12: Quotation Showcase</h1>
+        
+    <header>
+        <h1>Quotation Showcase</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Learning</h2>
+            <blockquote>
+                <p>“Live as if you were to die tomorrow. Learn as if you were to live forever.”</p>
+            </blockquote>
+            <p><cite>Mahatma Gandhi</cite></p>
+        </section>
+
+        <section>
+            <h2>Perseverance</h2>
+            <blockquote>
+                <p>“It always seems impossible until it's done.”</p>
+            </blockquote>
+            <p><cite>Nelson Mandela</cite></p>
+        </section>
+
+        <section>
+            <h2>Imagination</h2>
+            <blockquote>
+                <p>“Imagination is more important than knowledge.”</p>
+            </blockquote>
+            <p><cite>Albert Einstein</cite></p>
+        </section>
+    </main>
+
+    <p>Quotes inspire people by sharing ideas, encouraging reflection, and reminding us to keep learning and working toward meaningful goals.</p>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-13">
+        <h1>Question 13: Kaushlendra's Blog</h1>
+        
+    <header>
+        <h1>Kaushlendra's Blog</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a> |
+        <a href="#blogs">Blogs</a> |
+        <a href="#about">About</a>
+    </nav>
+
+    <main id="home">
+        <article id="blogs">
+            <h2>My First Blog</h2>
+            <p>Published on <time datetime="2026-10-28">October 28, 2026</time></p>
+            <p>This is my first blog post. I am beginning to document what I learn about programming, technology, and problem-solving.</p>
+            <blockquote>“Every expert was once a beginner.”</blockquote>
+        </article>
+
+        <article>
+            <h2>Things I Learned This Week</h2>
+            <p>Published on <time datetime="2026-10-28">October 28, 2026</time></p>
+            <p>This week I practised HTML structure, semantic elements, links, forms, and tables. Writing small examples helped me understand how web pages are organised.</p>
+            <blockquote>“Small steps every day lead to progress.”</blockquote>
+        </article>
+
+        <section id="about">
+            <h2>About This Blog</h2>
+            <p>This blog records learning notes and small projects as I develop my technical skills.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Written by Kaushlendra Raghav</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-14">
+        <h1>Question 14: Movie Database</h1>
+        
+    <h1>Movie Database</h1>
+
+    <table border="1">
+        <caption>Sample Movie Database</caption>
+        <thead>
+            <tr>
+                <th>Movie Name</th>
+                <th>Genre</th>
+                <th>Year</th>
+                <th>IMDb Rating</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td title="Science-fiction film">Interstellar</td>
+                <td>Science Fiction</td>
+                <td>2014</td>
+                <td>8.7/10</td>
+                <td><a href="https://www.imdb.com/title/tt0816692/" target="_blank" rel="noopener">IMDb page</a></td>
+            </tr>
+            <tr>
+                <td title="Fantasy drama film">The Lord of the Rings: The Fellowship of the Ring</td>
+                <td>Fantasy</td>
+                <td>2001</td>
+                <td>8.9/10</td>
+                <td><a href="https://www.imdb.com/title/tt0120737/" target="_blank" rel="noopener">IMDb page</a></td>
+            </tr>
+            <tr>
+                <td title="Animated adventure film">Toy Story</td>
+                <td>Animation</td>
+                <td>1995</td>
+                <td>8.3/10</td>
+                <td><a href="https://www.imdb.com/title/tt0114709/" target="_blank" rel="noopener">IMDb page</a></td>
+            </tr>
+            <tr>
+                <td colspan="5">Ratings are illustrative and may change; check IMDb for current details.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><small>Note: This table is for HTML practice. Ratings are examples, not a live database.</small></p>
+
+    </section>
+    <hr>
+    
+
+    <section id="question-15">
+        <h1>Question 15: Kaushlendra Raghav - Portfolio</h1>
+        
+    <header>
+        <h1>Kaushlendra Raghav</h1>
+        <p>Computer Science and Engineering | AI and Data Science</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a> |
+        <a href="#skills">Skills</a> |
+        <a href="#projects">Projects</a> |
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am interested in computer science, artificial intelligence, data science, and building practical applications that solve everyday problems.</p>
+            <blockquote>“Great things are done by a series of small things brought together.”</blockquote>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>Python</li>
+                <li>SQL and Database Fundamentals</li>
+                <li>Data Analysis</li>
+                <li>Machine Learning Fundamentals</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <ol>
+                <li>StudentMate AI: Performance Predictor</li>
+                <li>StudyPilot: Personalized Study Plan and Doubt-Resolution Agent</li>
+                <li>Travel and Tour Management Platform</li>
+            </ol>
+        </section>
+    </main>
+
+    <aside id="contact">
+        <h2>Contact Information</h2>
+        <p>Email: <a href="mailto:kaushlendra@example.com">kaushlendra@example.com</a></p>
+        <p>Phone: +91-9876543210</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+    </aside>
+
+    <footer>
+        <p>&copy; 2026 Kaushlendra Raghav. All rights reserved.</p>
+    </footer>
+
+    </section>
+    <hr>
+    
+    </main>
+    <footer>
+        <p>&copy; 2026 HTML Assignment Solutions.</p>
+    </footer>
+</body>
+</html>

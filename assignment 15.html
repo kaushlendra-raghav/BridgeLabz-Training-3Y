@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 4 - All Solutions</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 760px; margin: 0 auto; padding: 16px; background: #f5f6f8; color: #222; }
+  h1 { text-align: center; }
+  section { background: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+  h2 { margin-top: 0; font-size: 18px; border-bottom: 2px solid #4a6cf7; padding-bottom: 6px; }
+  label { display: block; margin: 10px 0 4px; font-weight: bold; font-size: 14px; }
+  input, select, textarea { width: 100%; padding: 8px; box-sizing: border-box; border: 2px solid #ccc; border-radius: 4px; font-size: 14px; }
+  input[type=checkbox] { width: auto; }
+  button { margin-top: 12px; padding: 8px 16px; background: #4a6cf7; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+  button:hover { background: #3a58d6; }
+  .valid { border-color: green !important; }
+  .invalid { border-color: red !important; }
+  .error { color: red; font-size: 12px; min-height: 14px; }
+  .success { color: green; font-weight: bold; }
+  pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 4px; white-space: pre-wrap; font-size: 13px; }
+  .ticket { border: 2px dashed #4a6cf7; padding: 10px; margin-top: 10px; background: #eef1ff; }
+  ul { padding-left: 20px; }
+</style>
+</head>
+<body>
+<h1>Assignment 4 – JavaScript Solutions</h1>
+<p style="text-align:center">Open the browser console (F12) to also see console output for Q1, Q3 and Q6.</p>
+
+<!-- ===================== Q1 ===================== -->
+<section id="q1">
+  <h2>Q1: E-Commerce Product Manager</h2>
+  <pre id="q1-out"></pre>
+</section>
+
+<!-- ===================== Q2 ===================== -->
+<section id="q2">
+  <h2>Q2: Student Form Validator</h2>
+  <form id="q2-form" novalidate>
+    <label>Name</label><input id="q2-name" type="text"><div class="error" id="q2-name-err"></div>
+    <label>Email</label><input id="q2-email" type="text"><div class="error" id="q2-email-err"></div>
+    <label>Phone</label><input id="q2-phone" type="text"><div class="error" id="q2-phone-err"></div>
+    <label>Password</label><input id="q2-password" type="password"><div class="error" id="q2-password-err"></div>
+    <button type="submit">Register</button>
+    <div id="q2-result" class="success"></div>
+  </form>
+</section>
+
+<!-- ===================== Q3 ===================== -->
+<section id="q3">
+  <h2>Q3: Library Management System</h2>
+  <h4>Available books</h4>
+  <ul id="q3-list"></ul>
+  <label>Enter ISBN to issue a book</label>
+  <input id="q3-isbn" type="text" placeholder="e.g. 111">
+  <button id="q3-issue">Issue Book</button>
+  <button id="q3-return">Return Book</button>
+  <div id="q3-msg"></div>
+</section>
+
+<!-- ===================== Q4 ===================== -->
+<section id="q4">
+  <h2>Q4: Custom Form Builder</h2>
+  <div id="q4-container"></div>
+  <pre id="q4-out"></pre>
+</section>
+
+<!-- ===================== Q5 ===================== -->
+<section id="q5">
+  <h2>Q5: Movie Ticket Booking</h2>
+  <form id="q5-form" novalidate>
+    <label>Name</label><input id="q5-name" type="text"><div class="error" id="q5-name-err"></div>
+    <label>Email</label><input id="q5-email" type="text"><div class="error" id="q5-email-err"></div>
+    <label>Seats (1 to 10)</label><input id="q5-seats" type="text"><div class="error" id="q5-seats-err"></div>
+    <button type="submit">Book Ticket</button>
+  </form>
+  <div id="q5-ticket"></div>
+</section>
+
+<!-- ===================== Q6 ===================== -->
+<section id="q6">
+  <h2>Q6: Employee Management System</h2>
+  <pre id="q6-out"></pre>
+</section>
+
+<!-- ===================== Q7 ===================== -->
+<section id="q7">
+  <h2>Q7: Login Form Validation</h2>
+  <form id="q7-form" novalidate>
+    <label>Username</label><input id="q7-user" type="text">
+    <label>Password</label><input id="q7-pass" type="password">
+    <ul id="q7-errors" class="error"></ul>
+    <div id="q7-success" class="success"></div>
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+<!-- ===================== Q8 ===================== -->
+<section id="q8">
+  <h2>Q8: Dynamic Object Updater</h2>
+  <form id="q8-form">
+    <label>Name</label><input id="q8-name" type="text">
+    <label>Email</label><input id="q8-email" type="email">
+    <label>Age</label><input id="q8-age" type="number">
+    <button type="submit">Update</button>
+  </form>
+  <h4>Current user object</h4>
+  <pre id="q8-out"></pre>
+</section>
+
+<!-- ===================== Q9 ===================== -->
+<section id="q9">
+  <h2>Q9: Shopping Cart Total</h2>
+  <label>Item name</label><input id="q9-name" type="text">
+  <label>Price</label><input id="q9-price" type="number" min="0">
+  <label>Quantity</label><input id="q9-qty" type="number" min="1" value="1">
+  <button id="q9-add">Add Item</button>
+  <ul id="q9-items"></ul>
+  <label>Coupon (SAVE20 or DISC10)</label>
+  <input id="q9-coupon" type="text">
+  <button id="q9-apply">Apply Coupon</button>
+  <div id="q9-msg"></div>
+  <pre id="q9-total"></pre>
+</section>
+
+<script>
+/* ======================================================================
+   Q1: E-Commerce Product Manager (Classes + Objects)
+   ====================================================================== */
+(function () {
+  class Product {
+    constructor(id, name, price, category) {
+      this.id = id;
+      this.name = name;
+      this.price = price;
+      this.category = category;
+    }
+    // Reduce the price by the given percentage
+    applyDiscount(percent) {
+      this.price = this.price - (this.price * percent) / 100;
+    }
+    // Return a formatted description
+    getDetails() {
+      return `#${this.id} | ${this.name} | ₹${this.price.toFixed(2)} | ${this.category}`;
+    }
+  }
+
+  const products = [
+    new Product(1, "Laptop", 55000, "Electronics"),
+    new Product(2, "Mouse", 599, "Accessories"),
+    new Product(3, "Smartphone", 20000, "Electronics"),
+    new Product(4, "Notebook", 120, "Stationery"),
+    new Product(5, "Headphones", 1500, "Accessories"),
+    new Product(6, "Office Chair", 7500, "Furniture")
+  ];
+
+  let out = "All products:\n";
+  products.forEach(p => out += p.getDetails() + "\n");
+
+  products[0].applyDiscount(10); // 10% off the laptop
+  out += "\nAfter 10% discount on Laptop:\n" + products[0].getDetails() + "\n";
+
+  const expensive = products.filter(p => p.price > 1000);
+  out += "\nProducts with price > 1000:\n";
+  expensive.forEach(p => out += p.getDetails() + "\n");
+
+  console.log(out);
+  document.getElementById("q1-out").textContent = out;
+})();
+
+/* ======================================================================
+   Q2: Student Form Validator (Forms + RegExp)
+   ====================================================================== */
+(function () {
+  const rules = {
+    name:     { re: /^[A-Za-z]+(?: [A-Za-z]+)*$/, msg: "Name must contain alphabets only" },
+    email:    { re: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, msg: "Enter a valid email (example@domain.com)" },
+    phone:    { re: /^\d{10}$/, msg: "Phone must be exactly 10 digits" },
+    password: { re: /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, msg: "Password needs 1 uppercase, 1 number and 1 special character" }
+  };
+
+  // Validate one field, update border colour and message
+  function validateField(key) {
+    const input = document.getElementById("q2-" + key);
+    const err = document.getElementById("q2-" + key + "-err");
+    const ok = rules[key].re.test(input.value.trim());
+    input.classList.toggle("valid", ok);
+    input.classList.toggle("invalid", !ok);
+    err.textContent = ok ? "" : rules[key].msg;
+    return ok;
+  }
+
+  Object.keys(rules).forEach(k =>
+    document.getElementById("q2-" + k).addEventListener("input", () => validateField(k))
+  );
+
+  document.getElementById("q2-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const allValid = Object.keys(rules).map(validateField).every(Boolean);
+    document.getElementById("q2-result").textContent =
+      allValid ? "Registration successful!" : "";
+  });
+})();
+
+/* ======================================================================
+   Q3: Library Management System (Classes + Objects)
+   ====================================================================== */
+(function () {
+  class Book {
+    constructor(title, author, isbn, isIssued = false) {
+      this.title = title;
+      this.author = author;
+      this.isbn = isbn;
+      this.isIssued = isIssued;
+    }
+    issueBook() {
+      if (this.isIssued) return false;
+      this.isIssued = true;
+      return true;
+    }
+    returnBook() {
+      if (!this.isIssued) return false;
+      this.isIssued = false;
+      return true;
+    }
+  }
+
+  const books = [
+    new Book("JavaScript: The Good Parts", "Douglas Crockford", "111"),
+    new Book("Eloquent JavaScript", "Marijn Haverbeke", "222"),
+    new Book("You Don't Know JS", "Kyle Simpson", "333"),
+    new Book("Clean Code", "Robert C. Martin", "444")
+  ];
+
+  const list = document.getElementById("q3-list");
+  const msg = document.getElementById("q3-msg");
+
+  function showAvailable() {
+    const available = books.filter(b => !b.isIssued);
+    list.innerHTML = "";
+    available.forEach(b => {
+      const li = document.createElement("li");
+      li.textContent = `${b.title} by ${b.author} (ISBN: ${b.isbn})`;
+      list.appendChild(li);
+    });
+    console.log("Available books:", available.map(b => b.title));
+  }
+
+  function findBook() {
+    const isbn = document.getElementById("q3-isbn").value.trim();
+    return books.find(b => b.isbn === isbn);
+  }
+
+  document.getElementById("q3-issue").addEventListener("click", () => {
+    const book = findBook();
+    if (!book) msg.textContent = "No book found with that ISBN.";
+    else if (book.issueBook()) msg.textContent = `"${book.title}" issued successfully.`;
+    else msg.textContent = `"${book.title}" is already issued.`;
+    showAvailable();
+  });
+
+  document.getElementById("q3-return").addEventListener("click", () => {
+    const book = findBook();
+    if (!book) msg.textContent = "No book found with that ISBN.";
+    else if (book.returnBook()) msg.textContent = `"${book.title}" returned successfully.`;
+    else msg.textContent = `"${book.title}" was not issued.`;
+    showAvailable();
+  });
+
+  showAvailable();
+})();
+
+/* ======================================================================
+   Q4: Custom Form Builder (Forms + Classes)
+   ====================================================================== */
+(function () {
+  class FormBuilder {
+    constructor(fields, container) {
+      this.fields = fields;
+      this.container = container;
+      this.render();
+    }
+
+    // Helper: escape text before placing it into innerHTML
+    static esc(s) {
+      return String(s).replace(/[&<>"']/g, c =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+
+    // Convert a label into a usable key, e.g. "User Name" -> "user_name"
+    static key(label) {
+      return label.toLowerCase().replace(/\s+/g, "_");
+    }
+
+    // Build the form using innerHTML
+    render() {
+      let html = '<form id="fb-form">';
+      this.fields.forEach(f => {
+        const key = FormBuilder.key(f.label);
+        const label = FormBuilder.esc(f.label);
+        html += `<label for="fb-${key}">${label}</label>`;
+        if (f.type === "select") {
+          html += `<select id="fb-${key}" name="${key}">` +
+            (f.options || []).map(o => `<option>${FormBuilder.esc(o)}</option>`).join("") +
+            `</select>`;
+        } else if (f.type === "textarea") {
+          html += `<textarea id="fb-${key}" name="${key}"></textarea>`;
+        } else {
+          html += `<input type="${FormBuilder.esc(f.type)}" id="fb-${key}" name="${key}">`;
+        }
+      });
+      html += '<button type="submit">Submit</button></form>';
+      this.container.innerHTML = html;
+
+      this.container.querySelector("#fb-form").addEventListener("submit", e => {
+        e.preventDefault();
+        const data = this.getFormData();
+        console.log("Form data:", data);
+        document.getElementById("q4-out").textContent = JSON.stringify(data, null, 2);
+      });
+    }
+
+    // Return all entered values as an object
+    getFormData() {
+      const data = {};
+      this.fields.forEach(f => {
+        const key = FormBuilder.key(f.label);
+        const el = this.container.querySelector("#fb-" + key);
+        data[key] = f.type === "checkbox" ? el.checked : el.value;
+      });
+      return data;
+    }
+  }
+
+  new FormBuilder([
+    { type: "text", label: "Username" },
+    { type: "email", label: "Email" },
+    { type: "password", label: "Password" },
+    { type: "number", label: "Age" },
+    { type: "select", label: "Country", options: ["India", "USA", "UK"] },
+    { type: "textarea", label: "About" },
+    { type: "checkbox", label: "Subscribe" }
+  ], document.getElementById("q4-container"));
+})();
+
+/* ======================================================================
+   Q5: Movie Ticket Booking (Objects + RegExp)
+   ====================================================================== */
+(function () {
+  const rules = {
+    name:  { re: /^[A-Za-z]+(?: [A-Za-z]+)*$/, msg: "Name must contain alphabets only" },
+    email: { re: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, msg: "Enter a valid email address" },
+    seats: { re: /^([1-9]|10)$/, msg: "Seats must be a number from 1 to 10" }
+  };
+
+  function validate(key) {
+    const input = document.getElementById("q5-" + key);
+    const err = document.getElementById("q5-" + key + "-err");
+    const ok = rules[key].re.test(input.value.trim());
+    input.classList.toggle("valid", ok);
+    input.classList.toggle("invalid", !ok);
+    err.textContent = ok ? "" : rules[key].msg;
+    return ok;
+  }
+
+  document.getElementById("q5-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const allValid = Object.keys(rules).map(validate).every(Boolean);
+    const ticketDiv = document.getElementById("q5-ticket");
+    if (!allValid) { ticketDiv.innerHTML = ""; return; }
+
+    // Store booking info in an object
+    const booking = {
+      name: document.getElementById("q5-name").value.trim(),
+      email: document.getElementById("q5-email").value.trim(),
+      seats: Number(document.getElementById("q5-seats").value)
+    };
+
+    ticketDiv.innerHTML = "";
+    const t = document.createElement("div");
+    t.className = "ticket";
+    t.innerHTML = "<strong>🎟 Ticket Confirmed</strong>";
+    [["Name", booking.name], ["Email", booking.email], ["Seats", booking.seats]].forEach(([k, v]) => {
+      const p = document.createElement("div");
+      p.textContent = `${k}: ${v}`;
+      t.appendChild(p);
+    });
+    ticketDiv.appendChild(t);
+    console.log("Booking:", booking);
+  });
+})();
+
+/* ======================================================================
+   Q6: Employee Management System (Classes + Object Methods)
+   ====================================================================== */
+(function () {
+  class Employee {
+    constructor(id, name, department, salary) {
+      this.id = id;
+      this.name = name;
+      this.department = department;
+      this.salary = salary; // monthly salary
+    }
+    getAnnualSalary() {
+      return this.salary * 12;
+    }
+    // Increase monthly salary by the given percent
+    applyBonus(percent) {
+      this.salary += (this.salary * percent) / 100;
+    }
+  }
+
+  const employees = [
+    new Employee(1, "Amit", "IT", 50000),
+    new Employee(2, "Riya", "HR", 40000),
+    new Employee(3, "Karan", "Finance", 45000),
+    new Employee(4, "Sneha", "IT", 60000),
+    new Employee(5, "Vikas", "Sales", 35000)
+  ];
+
+  let out = "Annual salaries:\n";
+  employees.forEach(e => out += `${e.name} (${e.department}): ₹${e.getAnnualSalary()}\n`);
+
+  employees[0].applyBonus(10);
+  out += `\nAfter 10% bonus, ${employees[0].name}'s annual salary: ₹${employees[0].getAnnualSalary()}\n`;
+
+  const total = employees.reduce((sum, e) => sum + e.getAnnualSalary(), 0);
+  out += `\nTotal annual payout of the company: ₹${total}`;
+
+  console.log(out);
+  document.getElementById("q6-out").textContent = out;
+})();
+
+/* ======================================================================
+   Q7: Login Form Validation using RegExp
+   ====================================================================== */
+(function () {
+  document.getElementById("q7-form").addEventListener("submit", e => {
+    e.preventDefault();
+    const username = document.getElementById("q7-user").value;
+    const password = document.getElementById("q7-pass").value;
+    const errors = [];
+
+    if (!/^.{5,}$/.test(username)) errors.push("Username must be at least 5 characters long.");
+    if (!/^.{8,}$/.test(password)) errors.push("Password must be at least 8 characters long.");
+    if (!/\d/.test(password)) errors.push("Password must include a number.");
+    if (!/[A-Z]/.test(password)) errors.push("Password must include an uppercase letter.");
+    if (!/[a-z]/.test(password)) errors.push("Password must include a lowercase letter.");
+    if (!/[^A-Za-z0-9]/.test(password)) errors.push("Password must include a special character.");
+
+    const list = document.getElementById("q7-errors");
+    const success = document.getElementById("q7-success");
+    list.innerHTML = "";
+    success.textContent = "";
+
+    if (errors.length === 0) {
+      success.textContent = "Login successful!";
+    } else {
+      errors.forEach(msg => {
+        const li = document.createElement("li");
+        li.textContent = msg;
+        list.appendChild(li);
+      });
+    }
+  });
+})();
+
+/* ======================================================================
+   Q8: Dynamic Object Updater
+   ====================================================================== */
+(function () {
+  const user = { name: "John", email: "john@mail.com", age: 21 };
+
+  const nameEl = document.getElementById("q8-name");
+  const emailEl = document.getElementById("q8-email");
+  const ageEl = document.getElementById("q8-age");
+  const out = document.getElementById("q8-out");
+
+  function show() {
+    out.textContent = JSON.stringify(user, null, 2);
+  }
+
+  // Pre-fill form with the current object values
+  nameEl.value = user.name;
+  emailEl.value = user.email;
+  ageEl.value = user.age;
+  show();
+
+  function update() {
+    user.name = nameEl.value;
+    user.email = emailEl.value;
+    user.age = Number(ageEl.value);
+    show();
+  }
+
+  // Real-time update while typing, and also on submit
+  [nameEl, emailEl, ageEl].forEach(el => el.addEventListener("input", update));
+  document.getElementById("q8-form").addEventListener("submit", e => {
+    e.preventDefault();
+    update();
+  });
+})();
+
+/* ======================================================================
+   Q9: Shopping Cart Total (Classes + RegExp for Coupon)
+   ====================================================================== */
+(function () {
+  class Cart {
+    constructor() {
+      this.items = [];
+      this.discountPercent = 0;
+    }
+    addItem(name, price, quantity) {
+      this.items.push({ name, price, quantity });
+    }
+    getTotal() {
+      return this.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    }
+    // Coupon must look like SAVE20 or DISC10 (prefix + 1-2 digit percent)
+    applyCoupon(code) {
+      const match = /^(SAVE|DISC)(\d{1,2})$/.exec(code.trim().toUpperCase());
+      if (!match) {
+        this.discountPercent = 0;
+        return false;
+      }
+      this.discountPercent = Number(match[2]);
+      return true;
+    }
+    getFinalTotal() {
+      const total = this.getTotal();
+      return total - (total * this.discountPercent) / 100;
+    }
+  }
+
+  const cart = new Cart();
+  const itemsEl = document.getElementById("q9-items");
+  const msg = document.getElementById("q9-msg");
+  const totalEl = document.getElementById("q9-total");
+
+  function render() {
+    itemsEl.innerHTML = "";
+    cart.items.forEach(i => {
+      const li = document.createElement("li");
+      li.textContent = `${i.name} - ₹${i.price} x ${i.quantity} = ₹${i.price * i.quantity}`;
+      itemsEl.appendChild(li);
+    });
+    totalEl.textContent =
+      `Subtotal: ₹${cart.getTotal().toFixed(2)}\n` +
+      `Discount: ${cart.discountPercent}%\n` +
+      `Final Total: ₹${cart.getFinalTotal().toFixed(2)}`;
+  }
+
+  document.getElementById("q9-add").addEventListener("click", () => {
+    const name = document.getElementById("q9-name").value.trim();
+    const price = parseFloat(document.getElementById("q9-price").value);
+    const qty = parseInt(document.getElementById("q9-qty").value, 10);
+    if (!name || isNaN(price) || price < 0 || isNaN(qty) || qty < 1) {
+      msg.textContent = "Enter a valid name, price and quantity.";
+      return;
+    }
+    cart.addItem(name, price, qty);
+    msg.textContent = "";
+    render();
+  });
+
+  document.getElementById("q9-apply").addEventListener("click", () => {
+    const code = document.getElementById("q9-coupon").value;
+    if (cart.applyCoupon(code)) {
+      msg.className = "success";
+      msg.textContent = `Coupon applied: ${cart.discountPercent}% off`;
+    } else {
+      msg.className = "error";
+      msg.textContent = "Invalid coupon. Use a format like SAVE20 or DISC10.";
+    }
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

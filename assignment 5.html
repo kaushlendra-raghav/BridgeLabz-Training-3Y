@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics Assignment - Answers to All 10 Questions</title>
+    <style>
+        /* Shared document styles */
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f3f6fb;
+        }
+        a { color: #155e9a; }
+        .assignment-header {
+            padding: 2rem 1rem;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(120deg, #102a43, #176b87);
+        }
+        .assignment-header h1 { margin: 0 0 .5rem; }
+        .question-index {
+            max-width: 1100px;
+            margin: 1.5rem auto;
+            padding: 1.25rem;
+            background: white;
+            border: 1px solid #d5deea;
+            border-radius: 12px;
+        }
+        .question-index ol {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: .5rem 1.5rem;
+        }
+        .answer {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid #d5deea;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(20, 45, 75, .08);
+        }
+        .answer > h2 {
+            padding-bottom: .5rem;
+            border-bottom: 2px solid #dbe7f3;
+            color: #123b5d;
+        }
+        img { max-width: 100%; }
+        button, .demo-button {
+            display: inline-block;
+            padding: .7rem 1rem;
+            border: 0;
+            border-radius: 7px;
+            color: #fff;
+            background: #155e9a;
+            text-decoration: none;
+            cursor: pointer;
+            font: inherit;
+        }
+        input, textarea, select {
+            max-width: 100%;
+            font: inherit;
+        }
+        footer.assignment-footer {
+            padding: 1.25rem;
+            text-align: center;
+            color: white;
+            background: #102a43;
+        }
+
+        /* Q1: Personal portfolio homepage */
+        #q1 .portfolio-demo {
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            color: #f8fafc;
+            background: #102a43;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #q1 .portfolio-nav {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 5%;
+            background: #071a2d;
+        }
+        #q1 .portfolio-nav a { color: #e0f2fe; margin-left: 1rem; }
+        #q1 .portfolio-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 2rem;
+            padding: 5vh 8%;
+        }
+        #q1 .portfolio-main p { max-width: 34rem; font-size: 1.1em; }
+        #q1 .profile-image {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border: 5px solid #7dd3fc;
+            border-radius: 50%;
+        }
+        #q1 .portfolio-demo footer {
+            margin-top: auto;
+            padding: 1rem;
+            text-align: center;
+            background: #071a2d;
+        }
+        @media (max-width: 600px) {
+            #q1 .portfolio-nav, #q1 .portfolio-main { flex-direction: column; text-align: center; }
+            #q1 .portfolio-nav a { margin: 0 .3rem; }
+        }
+
+        /* Q2: Multi-section informational page with gradients and fixed backgrounds */
+        #q2 .city-demo { color: #172033; background: #eaf2f8; }
+        #q2 .city-demo header, #q2 .city-demo nav, #q2 .city-demo footer {
+            padding: 1rem; text-align: center; background: #123b5d; color: white;
+        }
+        #q2 .city-demo nav a { color: white; margin: 0 .7rem; }
+        #q2 .city-section { margin: 1rem; padding: 2rem; border: 2px solid #b8cfe0; border-radius: 10px; }
+        #q2 .city-linear { background: linear-gradient(120deg, #dbeafe, #a7f3d0); }
+        #q2 .city-radial { background: radial-gradient(circle, #fff7ed, #fed7aa); }
+        #q2 .city-parallax {
+            min-height: 180px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-align: center;
+            background-image: linear-gradient(rgba(9, 35, 55, .65), rgba(9, 35, 55, .65)), url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80');
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        @media (max-width: 700px) { #q2 .city-parallax { background-attachment: scroll; } }
+
+        /* Q3: Team member cards */
+        #q3 .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+        #q3 .team-card {
+            padding: 1.5rem;
+            margin: .25rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+            text-align: center;
+            background: #f8fafc;
+        }
+        #q3 .team-card.lead { background: #e0f2fe; border: 3px solid #0284c7; }
+        #q3 .avatar {
+            width: 90px; height: 90px; margin: auto; border-radius: 50%;
+            display: grid; place-items: center; color: white; background: #155e9a; font-size: 1.6rem;
+        }
+        @media (max-width: 599px) { #q3 .team-grid { grid-template-columns: 1fr; } }
+
+        /* Q4: Article, pseudo-elements, mark and blockquote */
+        #q4 .article-demo { max-width: 800px; margin: auto; padding: 1.5rem; font-family: Georgia, serif; }
+        #q4 .article-demo p { margin: 1.25rem 0; text-align: justify; }
+        #q4 .article-demo p::first-letter { font-size: 2.1rem; color: #155e9a; font-weight: bold; }
+        #q4 .article-demo p::first-line { font-weight: bold; }
+        #q4 mark { background: #fde68a; color: #422006; padding: .1rem .2rem; }
+        #q4 blockquote { margin: 1.5rem 0; padding: 1rem 1.25rem; border-left: 5px solid #0284c7; background: #e0f2fe; }
+
+        /* Q5: Pricing cards with hover transitions */
+        #q5 .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; align-items: stretch; }
+        #q5 .price-card {
+            display: flex; flex-direction: column; padding: 1.5rem; text-align: center;
+            border: 2px solid #cbd5e1; border-radius: 12px; background: #f8fafc;
+            transition: transform .25s ease, background-color .25s ease, box-shadow .25s ease;
+        }
+        #q5 .price-card:hover { transform: scale(1.04); background: #e0f2fe; box-shadow: 0 12px 25px rgba(15, 23, 42, .15); }
+        #q5 .price-card.popular { border: 3px solid #0d9488; background: #f0fdfa; }
+        #q5 .price-card ul { text-align: left; }
+        #q5 .price-card .price { font-size: 2rem; font-weight: bold; color: #0f766e; }
+        #q5 .price-card .demo-button { margin-top: auto; }
+        @media (max-width: 700px) { #q5 .pricing-grid { grid-template-columns: 1fr; } }
+
+        /* Q6: Responsive CSS-only image gallery */
+        #q6 .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        #q6 .gallery-item { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 6px 16px rgba(15, 23, 42, .2); }
+        #q6 .gallery-item img { display: block; width: 100%; height: 190px; object-fit: cover; transition: transform .3s ease; }
+        #q6 .gallery-item:hover img { transform: scale(1.1); }
+        #q6 .gallery-caption {
+            position: absolute; inset: auto 0 0; padding: .8rem; color: white; text-align: center;
+            background: rgba(0, 0, 0, .72); opacity: 0; transition: opacity .3s ease;
+        }
+        #q6 .gallery-item:hover .gallery-caption, #q6 .gallery-item:focus-within .gallery-caption { opacity: 1; }
+        @media (max-width: 750px) { #q6 .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 480px) { #q6 .gallery-grid { grid-template-columns: 1fr; } }
+
+        /* Q7: Centered contact form with focus states */
+        #q7 .contact-demo {
+            min-height: 560px; display: flex; align-items: center; justify-content: center;
+            padding: 1rem; border-radius: 10px; background: linear-gradient(135deg, #dbeafe, #ccfbf1);
+        }
+        #q7 .contact-form { width: min(100%, 520px); padding: 1.5rem; border-radius: 14px; background: white; box-shadow: 0 10px 28px rgba(15, 23, 42, .15); }
+        #q7 .form-field { margin-bottom: 1rem; }
+        #q7 .form-field label { display: block; margin-bottom: .35rem; font-weight: bold; }
+        #q7 .form-field input, #q7 .form-field textarea {
+            width: 100%; padding: .8rem; border: 1px solid #94a3b8; border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(15, 23, 42, .06);
+        }
+        #q7 .form-field input:focus, #q7 .form-field textarea:focus { outline: 2px solid #93c5fd; border-color: #0369a1; }
+
+        /* Q8: Dashboard with fixed header and responsive sidebar */
+        #q8 .dashboard-demo { min-height: 560px; padding-top: 58px; background: #eef2f7; }
+        #q8 .dashboard-header { position: sticky; top: 0; z-index: 2; margin-top: -58px; height: 58px; display: flex; align-items: center; padding: 0 1.25rem; color: white; background: #102a43; }
+        #q8 .dashboard-layout { display: flex; min-height: 500px; }
+        #q8 .dashboard-sidebar { width: 220px; flex-shrink: 0; padding: 1.25rem; background: #dbeafe; }
+        #q8 .dashboard-sidebar a { display: block; padding: .65rem; margin-bottom: .35rem; border-radius: 6px; text-decoration: none; }
+        #q8 .dashboard-content { flex: 1; padding: 1.25rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-content: start; }
+        #q8 .dashboard-box { padding: 1.25rem; min-height: 140px; border-radius: 10px; background: white; box-shadow: 0 5px 15px rgba(15, 23, 42, .1); }
+        @media (max-width: 650px) {
+            #q8 .dashboard-layout { flex-direction: column; }
+            #q8 .dashboard-sidebar { width: 100%; }
+            #q8 .dashboard-sidebar nav { display: flex; flex-wrap: wrap; gap: .4rem; }
+            #q8 .dashboard-content { grid-template-columns: 1fr; }
+        }
+
+        /* Q9: Newspaper columns */
+        #q9 .newspaper-demo { padding: 1.5rem; color: #28251f; background: #f5eedf; font-family: Georgia, serif; }
+        #q9 .newspaper-title { column-span: all; margin: 0 0 1rem; padding-bottom: .8rem; border-bottom: 3px double #5b4636; text-align: center; font-size: clamp(1.8rem, 4vw, 3rem); }
+        #q9 .newspaper-columns { column-count: 3; column-gap: 2rem; column-rule: 1px solid #c5b8a5; text-align: justify; }
+        #q9 .newspaper-columns p { margin-top: 0; }
+        #q9 .newspaper-columns img { float: left; width: 42%; margin: .25rem .8rem .5rem 0; border-radius: 6px; }
+        @media (max-width: 800px) { #q9 .newspaper-columns { column-count: 2; } }
+        @media (max-width: 520px) { #q9 .newspaper-columns { column-count: 1; } }
+
+        /* Q10: Full webpage showing box model and positioning */
+        #q10 .full-demo { overflow: hidden; color: #1f2937; background: #f8fafc; }
+        #q10 .site-nav { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .8rem; padding: 1rem 5%; color: white; background: rgba(15, 23, 42, .96); }
+        #q10 .site-nav a { color: white; margin-left: .75rem; }
+        #q10 .hero {
+            position: relative; min-height: 320px; display: grid; place-items: center; text-align: center; color: white;
+            padding: 2rem; background: linear-gradient(rgba(8, 47, 73, .55), rgba(8, 47, 73, .65)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80') center/cover;
+        }
+        #q10 .hero h3 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; }
+        #q10 .hero .absolute-note { position: absolute; right: 1rem; bottom: 1rem; padding: .4rem .7rem; border-radius: 6px; background: rgba(0, 0, 0, .55); }
+        #q10 .about-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; padding: 2rem; margin: 1rem; border: 2px solid #cbd5e1; outline: 2px solid #e2e8f0; }
+        #q10 .about-columns img { width: 100%; max-height: 240px; object-fit: cover; border-radius: 10px; }
+        #q10 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1rem 2rem 2rem; }
+        #q10 .service-box { padding: 1.25rem; border: 1px solid #bfdbfe; border-radius: 10px; background: linear-gradient(135deg, #eff6ff, #ecfeff); box-shadow: 0 5px 12px rgba(15, 23, 42, .08); }
+        #q10 .site-contact { padding: 2rem; background: #e0f2fe; }
+        #q10 .site-contact form { max-width: 560px; display: grid; gap: .8rem; }
+        #q10 .site-contact input, #q10 .site-contact textarea { width: 100%; padding: .75rem; border: 1px solid #94a3b8; border-radius: 6px; }
+        #q10 .full-demo footer { position: relative; padding: 1.5rem; text-align: center; color: white; background: #102a43; }
+        #q10 .fixed-help { position: fixed; right: 14px; bottom: 14px; z-index: 6; padding: .65rem; color: white; border-radius: 8px; background: #0f766e; box-shadow: 0 4px 12px rgba(0,0,0,.2); }
+        @media (max-width: 650px) {
+            #q10 .about-columns, #q10 .services-grid { grid-template-columns: 1fr; }
+            #q10 .site-nav { flex-direction: column; }
+            #q10 .site-nav a { margin-left: 0; margin-right: .7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="assignment-header">
+        <h1>CSS Basics Assignment</h1>
+        <p>Complete answers to all 10 questions in one HTML file</p>
+        <p>CSS is included in the &lt;style&gt; element. No JavaScript or external framework is used.</p>
+    </header>
+
+    <nav class="question-index" aria-label="Question index">
+        <h2>Question Index</h2>
+        <ol>
+            <li><a href="#q1">Personal Portfolio Homepage</a></li>
+            <li><a href="#q2">Informational Webpage</a></li>
+            <li><a href="#q3">Team Members Layout</a></li>
+            <li><a href="#q4">Long Article Webpage</a></li>
+            <li><a href="#q5">Pricing Table</a></li>
+            <li><a href="#q6">Photo Gallery</a></li>
+            <li><a href="#q7">Contact Page</a></li>
+            <li><a href="#q8">Dashboard Layout</a></li>
+            <li><a href="#q9">Newspaper Columns</a></li>
+            <li><a href="#q10">Box Model and Positioning</a></li>
+        </ol>
+    </nav>
+
+    <main>
+        <section class="answer" id="q1">
+            <h2>Question 1: Personal Portfolio Homepage</h2>
+            <div class="portfolio-demo">
+                <header class="portfolio-nav">
+                    <strong>Alex Morgan</strong>
+                    <nav aria-label="Portfolio navigation">
+                        <a href="#q1">Home</a>
+                        <a href="#q1-about">About</a>
+                        <a href="#q1-contact">Contact</a>
+                    </nav>
+                </header>
+                <main class="portfolio-main" id="q1-about">
+                    <div>
+                        <h3>Hello, I'm Alex Morgan</h3>
+                        <p>I am a computer science enthusiast interested in web development, accessible design, and building useful digital experiences. I enjoy learning new technologies and turning ideas into practical projects.</p>
+                        <a class="demo-button" href="#q1-contact">Contact Me</a>
+                    </div>
+                    <img class="profile-image" src="https://placehold.co/400x400/155e9a/ffffff?text=Profile" alt="Profile placeholder for Alex Morgan">
+                </main>
+                <footer id="q1-contact">alex.morgan@example.com · Portfolio Homepage</footer>
+            </div>
+            <p><strong>CSS concepts:</strong> fixed-like sticky navigation, Flexbox, footer pushed to the bottom with flex layout, and units including px, em, %, vh, and rem.</p>
+        </section>
+
+        <section class="answer" id="q2">
+            <h2>Question 2: Multi-section Informational Webpage</h2>
+            <div class="city-demo">
+                <header><h3>Discover Jaipur</h3><p>The Pink City of India</p></header>
+                <nav><a href="#q2-history">History</a><a href="#q2-culture">Culture</a><a href="#q2-visit">Visit</a></nav>
+                <main>
+                    <section class="city-section city-linear" id="q2-history">
+                        <h3>History and Heritage</h3>
+                        <p>Jaipur is known for its historic architecture, forts, palaces, and planned streets. Its landmarks tell stories of regional art and royal history.</p>
+                    </section>
+                    <section class="city-section city-radial" id="q2-culture">
+                        <h3>Culture and Food</h3>
+                        <p>Visitors can explore traditional crafts, colourful markets, local music, and regional dishes. The city combines heritage with everyday modern life.</p>
+                    </section>
+                    <section class="city-parallax">Explore the colours, history, and traditions of Jaipur.</section>
+                    <section class="city-section city-linear" id="q2-visit">
+                        <h3>Plan Your Visit</h3>
+                        <p>Plan ahead, stay hydrated in warm weather, and check opening hours for attractions before travelling.</p>
+                    </section>
+                    <section class="city-parallax">A memorable destination for culture lovers.</section>
+                </main>
+                <footer><p>Informational webpage example</p></footer>
+            </div>
+        </section>
+
+        <section class="answer" id="q3">
+            <h2>Question 3: Three-column Team Members Layout</h2>
+            <div class="team-grid">
+                <article class="team-card lead">
+                    <div class="avatar" aria-hidden="true">AM</div>
+                    <h3>Alex Morgan</h3><p><strong>Team Lead</strong></p>
+                    <p>Coordinates the team, plans milestones, and helps keep the project focused on its goals.</p>
+                </article>
+                <article class="team-card">
+                    <div class="avatar" aria-hidden="true">JP</div>
+                    <h3>Jordan Patel</h3><p><strong>UI Developer</strong></p>
+                    <p>Builds accessible interfaces and ensures that pages are clear, consistent, and responsive.</p>
+                </article>
+                <article class="team-card">
+                    <div class="avatar" aria-hidden="true">SR</div>
+                    <h3>Sam Rivera</h3><p><strong>Data Analyst</strong></p>
+                    <p>Studies project data, identifies useful patterns, and communicates findings to the team.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="answer" id="q4">
+            <h2>Question 4: Long Article Webpage</h2>
+            <article class="article-demo">
+                <header>
+                    <h3>The Value of Lifelong Learning</h3>
+                    <p>By Taylor Reed · <time datetime="2026-10-28">October 28, 2026</time></p>
+                </header>
+                <p>Lifelong learning helps people adapt to a changing world. New skills can open opportunities, improve confidence, and make it easier to respond to new challenges.</p>
+                <p>Reading regularly is a simple way to develop knowledge. A thoughtful book, a reliable article, or a well-designed course can introduce useful ideas and different perspectives.</p>
+                <p>Practice turns information into ability. Small projects allow learners to test concepts, notice mistakes, and improve their understanding over time.</p>
+                <blockquote>“Learning is a continuous process: curiosity begins the journey, and practice helps it grow.”</blockquote>
+                <p>Feedback also plays an important role. Helpful feedback shows what is working, points out areas for improvement, and gives learners a clearer next step.</p>
+                <p>Consistency matters more than occasional bursts of effort. Setting aside a little time each day can build strong habits and make challenging goals feel manageable.</p>
+                <p>Ultimately, <mark>curiosity</mark>, <mark>practice</mark>, and reflection support meaningful progress. Learning becomes more effective when people stay open to new ideas and keep applying what they discover.</p>
+            </article>
+        </section>
+
+        <section class="answer" id="q5">
+            <h2>Question 5: Pricing Table</h2>
+            <div class="pricing-grid">
+                <article class="price-card">
+                    <h3>Basic</h3><p class="price">₹199<span>/month</span></p>
+                    <ul><li>Access to core features</li><li>Email support</li><li>One personal project</li></ul>
+                    <a class="demo-button" href="#q5">Choose Basic</a>
+                </article>
+                <article class="price-card popular">
+                    <p><strong>Most Popular</strong></p><h3>Standard</h3><p class="price">₹499<span>/month</span></p>
+                    <ul><li>All Basic features</li><li>Priority support</li><li>Five active projects</li><li>Usage reports</li></ul>
+                    <a class="demo-button" href="#q5">Choose Standard</a>
+                </article>
+                <article class="price-card">
+                    <h3>Premium</h3><p class="price">₹999<span>/month</span></p>
+                    <ul><li>All Standard features</li><li>Advanced reporting</li><li>Unlimited projects</li><li>Dedicated support</li></ul>
+                    <a class="demo-button" href="#q5">Choose Premium</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="answer" id="q6">
+            <h2>Question 6: CSS-only Photo Gallery</h2>
+            <p>Hover over an image to enlarge it and reveal its caption.</p>
+            <div class="gallery-grid">
+                <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Mountain landscape"><figcaption class="gallery-caption">Mountain Escape</figcaption></figure>
+                <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="Blue sea and beach"><figcaption class="gallery-caption">Ocean Breeze</figcaption></figure>
+                <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Lake surrounded by mountains"><figcaption class="gallery-caption">Quiet Lake</figcaption></figure>
+                <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80" alt="Sunlight through a forest"><figcaption class="gallery-caption">Forest Trail</figcaption></figure>
+                <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=700&q=80" alt="Snowy mountain under stars"><figcaption class="gallery-caption">Starry Summit</figcaption></figure>
+                <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=700&q=80" alt="Sunrise over a landscape"><figcaption class="gallery-caption">Golden Sunrise</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="answer" id="q7">
+            <h2>Question 7: Contact Page</h2>
+            <div class="contact-demo">
+                <form class="contact-form" action="#" method="get">
+                    <h3>Contact Us</h3>
+                    <p>Send a message using the form below.</p>
+                    <div class="form-field"><label for="contact-name">Name</label><input id="contact-name" name="name" type="text" placeholder="Your name" required></div>
+                    <div class="form-field"><label for="contact-email">Email</label><input id="contact-email" name="email" type="email" placeholder="you@example.com" required></div>
+                    <div class="form-field"><label for="contact-subject">Subject</label><input id="contact-subject" name="subject" type="text" placeholder="Message subject" required></div>
+                    <div class="form-field"><label for="contact-message">Message</label><textarea id="contact-message" name="message" rows="4" placeholder="Write your message..." required></textarea></div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="answer" id="q8">
+            <h2>Question 8: Dashboard Layout</h2>
+            <div class="dashboard-demo">
+                <header class="dashboard-header"><strong>Learning Dashboard</strong></header>
+                <div class="dashboard-layout">
+                    <aside class="dashboard-sidebar">
+                        <nav aria-label="Dashboard navigation">
+                            <a href="#q8">Overview</a><a href="#q8-box-courses">My Courses</a><a href="#q8-box-progress">Progress</a><a href="#q8">Settings</a>
+                        </nav>
+                    </aside>
+                    <main class="dashboard-content">
+                        <article class="dashboard-box" id="q8-box-courses"><h3>My Courses</h3><p>You are enrolled in HTML and CSS fundamentals, Python programming, and database basics.</p></article>
+                        <article class="dashboard-box" id="q8-box-progress"><h3>Learning Progress</h3><p>Weekly goal: complete three lessons and practise with one small project.</p></article>
+                        <article class="dashboard-box"><h3>Upcoming Tasks</h3><p>Review semantic HTML, practise Flexbox, and submit the next assignment.</p></article>
+                        <article class="dashboard-box"><h3>Announcements</h3><p>Remember to save your work and check assignment instructions before submitting.</p></article>
+                    </main>
+                </div>
+            </div>
+        </section>
+
+        <section class="answer" id="q9">
+            <h2>Question 9: Newspaper or Magazine Column Layout</h2>
+            <article class="newspaper-demo">
+                <h3 class="newspaper-title">THE DAILY LEARNER</h3>
+                <div class="newspaper-columns">
+                    <p><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=500&q=80" alt="Bright modern workspace">A productive learning environment does not need to be complicated. A clear desk, a comfortable chair, and a short list of priorities can help people focus on the work that matters most.</p>
+                    <p>Planning gives a day structure. Breaking a large assignment into smaller tasks makes progress easier to track and helps learners decide what to do next. Short breaks can also support concentration.</p>
+                    <p>Technology offers many ways to learn, from digital libraries to interactive lessons and discussion groups. Choosing reliable sources is important, especially when information is shared quickly online.</p>
+                    <p>Collaboration adds another dimension to learning. Explaining an idea to someone else can reveal gaps in understanding, while listening to different approaches can introduce better solutions.</p>
+                    <p>Healthy routines support steady effort. Sleep, movement, hydration, and realistic goals help make study sessions more sustainable over time. A balanced schedule is usually more useful than an exhausting one.</p>
+                    <p>In the end, progress grows from curiosity and repeated practice. Keep asking questions, review what you learn, and use new knowledge to create something useful.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="answer" id="q10">
+            <h2>Question 10: Complete Webpage Demonstrating Box Model and Positioning</h2>
+            <div class="full-demo">
+                <header class="site-nav">
+                    <strong>BrightSpace Studio</strong>
+                    <nav aria-label="Main site navigation">
+                        <a href="#q10-about">About</a><a href="#q10-services">Services</a><a href="#q10-contact">Contact</a>
+                    </nav>
+                </header>
+                <section class="hero">
+                    <div><h3>Build Something Meaningful</h3><p>Creative digital solutions for growing ideas.</p></div>
+                    <span class="absolute-note">Hero section</span>
+                </section>
+                <section class="about-columns" id="q10-about">
+                    <div><h3>About Us</h3><p>BrightSpace Studio creates practical web experiences with a focus on usability, clear communication, and responsive layouts. We combine thoughtful design with reliable implementation.</p></div>
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80" alt="Team collaborating around a table">
+                </section>
+                <section id="q10-services">
+                    <h3 style="padding: 0 2rem;">Our Services</h3>
+                    <div class="services-grid">
+                        <article class="service-box"><h4>Web Design</h4><p>Clean page structure and accessible interfaces.</p></article>
+                        <article class="service-box"><h4>Development</h4><p>Responsive websites built with maintainable code.</p></article>
+                        <article class="service-box"><h4>Consulting</h4><p>Practical guidance for planning and improving digital projects.</p></article>
+                    </div>
+                </section>
+                <section class="site-contact" id="q10-contact">
+                    <h3>Contact Us</h3>
+                    <form action="#" method="get">
+                        <label for="q10-name">Name</label><input id="q10-name" name="name" type="text" required>
+                        <label for="q10-email">Email</label><input id="q10-email" name="email" type="email" required>
+                        <label for="q10-message">Message</label><textarea id="q10-message" name="message" rows="4" required></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </section>
+                <footer><p>&copy; 2026 BrightSpace Studio. All rights reserved.</p></footer>
+                <a class="fixed-help" href="#q10-contact">Contact</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="assignment-footer">
+        <p>End of CSS Basics Assignment — Answers to Questions 1–10</p>
+    </footer>
+</body>
+</html>
